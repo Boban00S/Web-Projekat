@@ -34,7 +34,7 @@ Vue.component("login", {
 
                                 <div class="d-flex justify-content-center">
                                     <button type="button" v-on:click="loginUser()"
-                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Sign
+                                        class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Sign
                                         in</button>
                                 </div>
 

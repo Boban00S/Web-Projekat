@@ -5,16 +5,35 @@ public class Building {
 	private String name;
 	private BuildingType type;
 	private String content;
-	private String location;
+	private Location location;
 	private String imagePath;
 	private double averageGrade;
 	private String workingHours;
+	private OpeningHours openingHours;
 	
 	public Building() {
 		
 	}
 	
-	public Building(int id, String name, BuildingType type, String content, String location, String imagePath,
+	
+	
+	public Building(int id, String name, BuildingType type, String content, Location location, String imagePath,
+			double averageGrade, String workingHours, OpeningHours openingHours) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.content = content;
+		this.location = location;
+		this.imagePath = imagePath;
+		this.averageGrade = averageGrade;
+		this.workingHours = workingHours;
+		this.openingHours = openingHours;
+	}
+
+
+
+	public Building(int id, String name, BuildingType type, String content, Location location, String imagePath,
 			double averageGrade, String workingHours) {
 		super();
 		this.id = id;
@@ -26,6 +45,21 @@ public class Building {
 		this.averageGrade = averageGrade;
 		this.workingHours = workingHours;
 	}
+	
+	
+	
+	public OpeningHours getOpeningHours() {
+		return openingHours;
+	}
+
+
+
+	public void setOpeningHours(OpeningHours openingHours) {
+		this.openingHours = openingHours;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -50,10 +84,10 @@ public class Building {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getLocation() {
+	public Location getLocation() {
 		return location;
 	}
-	public void setLocation(String location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 	public String getImagePath() {

@@ -49,7 +49,7 @@ Vue.component("registration", {
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3cg" name="">Birth Date</label>
-                                    <input type="date" id="form3Example3cg" class="form-control form-control-lg border border-dark" 
+                                    <input type="date" min="1940-01-01" max="2013-01-01" id="form3Example3cg" class="form-control form-control-lg border border-dark" 
                                         v-model="user.birthdate" />
                                 </div>
 
@@ -71,11 +71,11 @@ Vue.component("registration", {
 
                                 <div class="d-flex justify-content-center">
                                     <button type="button" v-on:click="registrateUser()"
-                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                        class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                 </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
-                                        class="fw-bold text-body"><u>Login here</u></a></p>
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <router-link to="/login"
+                                        class="fw-bold text-body"><u>Sign in</u></router-link></p>
 
                             </form>
 

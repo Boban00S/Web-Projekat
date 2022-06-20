@@ -29,8 +29,8 @@ public class SparkAppMain {
 	
 	
 	private static Gson g = getGson();
-	private static UserDAO userDAO = new UserDAO("C:\\Users\\stani\\Desktop\\ProjekatWeb\\static\\users.json");
-	private static BuildingDAO buildingDAO = new BuildingDAO("C:\\Users\\stani\\Desktop\\ProjekatWeb\\static\\buildings.json");
+	private static UserDAO userDAO = new UserDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\users.json");
+	private static BuildingDAO buildingDAO = new BuildingDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\buildings.json");
 	
 	
 	/**
@@ -122,7 +122,15 @@ public class SparkAppMain {
 			return ("Yes");
 		});
 		
-
+		get("/rest/logout", (req, res) ->{
+			res.type("application/json");
+			Session ss = req.session(true);
+			User user = ss.attribute("user");
+			if(user != null) {
+				ss.invalidate();
+			}
+			return true;
+		});
 		
 /*
  * 

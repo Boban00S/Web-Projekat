@@ -53,16 +53,48 @@ Vue.component("homepage", {
 
             </div>
             <div class="row">
-                <div v-for="(b, i) in filteredBuildings" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
+                <div v-if="b.isOpen" v-for="(b, i) in filteredBuildings" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <img :src="b.imagePath" class="card-img-top" alt="..."></img>
                     <div class="card-body">
-                        <h4 class="card-title fw-bold">{{b.name}}</h4>
+                        <h4 class="card-title fw-bold">{{b.name}} - {{b.type.name}}</h4>
                         <p class="card-text">{{b.content}}</p>
                         <div class="container">
-                            <div class="row">
-                                Location: {{b.location}}
+                            <div class="row fw-bold">
+                            		Location:
                             </div>
                             <div class="row">
+                            	{{b.location.street}}, {{b.location.place}}, {{b.location.country}}
+                            </div>
+                            <div class="row text-secondary fst-italic">
+                            	{{b.location.longitude}}, {{b.location.latitude}}
+                            </div>
+                            <div class="row text-success fw-bold">
+                                Working Hours: {{b.workingHours}}
+                            </div>
+                        </div>
+                        </div>
+                    <div class="row align-text-bottom justify-content-end">
+                        <div class="fs-2 col-3">{{b.averageGrade}}</div>
+                        <div class="fs-2 col-2"> <img src="../images/rate.png" width="25" height="25"></img></div>
+                    </div>
+                </div>
+                                
+                 <div v-if="b.isOpen==false" v-for="(b, i) in filteredBuildings" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
+                    <img :src="b.imagePath" class="card-img-top" alt="..."></img>
+                    <div class="card-body">
+                        <h4 class="card-title fw-bold">{{b.name}} - {{b.type.name}}</h4>
+                        <p class="card-text">{{b.content}}</p>
+                        <div class="container">
+                            <div class="row fw-bold">
+                            		Location:
+                            </div>
+                            <div class="row">
+                            	{{b.location.street}}, {{b.location.place}}, {{b.location.country}}
+                            </div>
+                            <div class="row text-secondary fst-italic">
+                            	{{b.location.longitude}}, {{b.location.latitude}}
+                            </div>
+                            <div class="row text-danger fw-bold">
                                 Working Hours: {{b.workingHours}}
                             </div>
                         </div>
@@ -82,6 +114,9 @@ Vue.component("homepage", {
             .get('rest/homepage')
             .then(response => {
                 this.buildings = response.data;
+                for(building of this.buildings){
+					this.isOpen(building);
+				}
             });
         axios
             .get('rest/testlogin')
@@ -102,7 +137,18 @@ Vue.component("homepage", {
         },
         registrateUser: function () {
             this.$router.push({ name: 'registration' })
-        }
+        },
+        logoutUser: function(){
+			axios
+				.get('rest/logout')
+				.then(response =>{
+					this.mode = 'Browse';
+				});
+		},
+        isOpen: function(building){
+			var current = new Date();
+			building.isOpen = current.getHours() >= building.openingHours.fromHours && current.getHours() < building.openingHours.toHours;
+		},
     },
     computed: {
         filteredBuildings() {
@@ -112,14 +158,16 @@ Vue.component("homepage", {
             return this.buildings.filter(building => {
                 const nameBuilding = building.name.toString().toLowerCase();
                 const typeBuilding = building.type.name.toString().toLowerCase();
-                const locationBuilding = building.location.toString().toLowerCase();
+                const placeBuilding = building.location.place.toString().toLowerCase();
+                const countryBuilding = building.location.country.toString().toLowerCase();
                 const averageGradeBuilding = building.averageGrade.toString().toLowerCase();
                 const searchTerm = this.filter.toLowerCase();
 
                 return nameBuilding.includes(searchTerm) ||
                     typeBuilding.includes(searchTerm) ||
-                    locationBuilding.includes(searchTerm) ||
-                    averageGradeBuilding.includes(searchTerm);
+                    placeBuilding.includes(searchTerm) ||
+                    averageGradeBuilding.includes(searchTerm)||
+                    countryBuilding.includes(searchTerm);
             });
         }
     }
