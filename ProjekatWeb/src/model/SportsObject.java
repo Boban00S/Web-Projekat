@@ -1,64 +1,65 @@
 package model;
 
-public class Building {
+import java.util.List;
+
+public class SportsObject {
 	private int id;
 	private String name;
-	private BuildingType type;
-	private String content;
+	private SportsObjectType objectType;
+	private List<String> offers;
+	private boolean opened;
 	private Location location;
 	private String imagePath;
 	private double averageGrade;
 	private String workingHours;
 	private OpeningHours openingHours;
+	private String description;
 	
-	public Building() {
+	public SportsObject() {
 		
 	}
 	
 	
 	
-	public Building(int id, String name, BuildingType type, String content, Location location, String imagePath,
-			double averageGrade, String workingHours, OpeningHours openingHours) {
+	public SportsObject(int id, String name, SportsObjectType objectType, List<String> offers, boolean opened, Location location, String imagePath,
+			double averageGrade, String workingHours, OpeningHours openingHours, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.type = type;
-		this.content = content;
+		this.objectType = objectType;
+		this.offers = offers;
+		this.opened = opened;
 		this.location = location;
 		this.imagePath = imagePath;
 		this.averageGrade = averageGrade;
 		this.workingHours = workingHours;
 		this.openingHours = openingHours;
+		this.description = description;
 	}
 
 
 
-	public Building(int id, String name, BuildingType type, String content, Location location, String imagePath,
+	public SportsObject(int id, String name, SportsObjectType objectType, List<String> offers, boolean opened, Location location, String imagePath,
 			double averageGrade, String workingHours) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.type = type;
-		this.content = content;
+		this.objectType = objectType;
+		this.offers = offers;
+		this.opened = opened;
 		this.location = location;
 		this.imagePath = imagePath;
 		this.averageGrade = averageGrade;
 		this.workingHours = workingHours;
 	}
-	
-	
 	
 	public OpeningHours getOpeningHours() {
 		return openingHours;
 	}
 
-
-
 	public void setOpeningHours(OpeningHours openingHours) {
 		this.openingHours = openingHours;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -72,18 +73,36 @@ public class Building {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public BuildingType getType() {
-		return type;
+	public SportsObjectType getType() {
+		return objectType;
 	}
-	public void setType(BuildingType type) {
-		this.type = type;
+	public void setType(SportsObjectType objectType) {
+		this.objectType = objectType;
 	}
-	public String getContent() {
-		return content;
+	
+	public SportsObjectType getObjectType() {
+		return objectType;
 	}
-	public void setContent(String content) {
-		this.content = content;
+
+
+
+	public void setObjectType(SportsObjectType objectType) {
+		this.objectType = objectType;
 	}
+
+
+
+	public List<String> getOffers() {
+		return offers;
+	}
+
+
+	public void setOffers(List<String> offers) {
+		this.offers = offers;
+	}
+
+
+
 	public Location getLocation() {
 		return location;
 	}

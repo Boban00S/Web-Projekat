@@ -16,54 +16,54 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
-import model.Building;
+import model.SportsObject;
 import model.ISerializable;
 import model.User;
 
-public class BuildingDAO implements ISerializable<Integer, Building> {
-	private HashMap<Integer, Building> buildings;
+public class SportsObjectDAO implements ISerializable<Integer, SportsObject> {
+	private HashMap<Integer, SportsObject> SportsObjects;
 	private String fileName;
 	
-	public BuildingDAO() {
+	public SportsObjectDAO() {
 		
 	}
 	
-	public BuildingDAO(String fileName) {
+	public SportsObjectDAO(String fileName) {
 		this.fileName = fileName;
 		try {
-			buildings = deserialize();
+			SportsObjects = deserialize();
 
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	public Collection<Building> findAll() {
-		return buildings.values();
+	public Collection<SportsObject> findAll() {
+		return SportsObjects.values();
 	}
 	
 	@Override
-	public void serialize(List<Building> buildingList, boolean append) throws IOException{
+	public void serialize(List<SportsObject> SportsObjectList, boolean append) throws IOException{
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);
-		gson.toJson(buildingList, writer);
+		gson.toJson(SportsObjectList, writer);
 		writer.flush();
 		writer.close();
 	}
 
 	@Override
-	public HashMap<Integer, Building> deserialize() throws IOException{
+	public HashMap<Integer, SportsObject> deserialize() throws IOException{
 		Reader reader = Files.newBufferedReader(Paths.get(fileName));
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
-		Building[] buildingsA = gson.fromJson(reader, Building[].class);
-		HashMap<Integer, Building> output; 
-		output = new HashMap<Integer, Building>();
-		if(buildingsA != null) { 
-			for(Building b: buildingsA) {
+		SportsObject[] SportsObjectsA = gson.fromJson(reader, SportsObject[].class);
+		HashMap<Integer, SportsObject> output; 
+		output = new HashMap<Integer, SportsObject>();
+		if(SportsObjectsA != null) { 
+			for(SportsObject b: SportsObjectsA) {
 				output.put(b.getId(), b);
 			}
 		}

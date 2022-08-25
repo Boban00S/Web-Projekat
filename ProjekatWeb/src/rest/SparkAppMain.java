@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import dao.BuildingDAO;
+import dao.SportsObjectDAO;
 import dao.UserDAO;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -30,7 +30,7 @@ public class SparkAppMain {
 	
 	private static Gson g = getGson();
 	private static UserDAO userDAO = new UserDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\users.json");
-	private static BuildingDAO buildingDAO = new BuildingDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\buildings.json");
+	private static SportsObjectDAO SportsObjectDAO = new SportsObjectDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
 	
 	
 	/**
@@ -69,7 +69,9 @@ public class SparkAppMain {
 		
 		get("/rest/homepage", (req, res) -> {
 			res.status(200);
-			return g.toJson(buildingDAO.findAll());
+			
+			System.out.println(g.toJson(SportsObjectDAO.findAll()).toString());
+			return g.toJson(SportsObjectDAO.findAll());
 		});
 		
 		get("rest/testlogin", (req, res) ->{

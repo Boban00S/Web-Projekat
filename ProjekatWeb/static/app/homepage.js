@@ -1,7 +1,7 @@
 Vue.component("homepage", {
     data: function () {
         return {
-            buildings: null,
+            sportsObjects: null,
             user: null,
             error: '',
             mode: 'Browse',
@@ -53,11 +53,11 @@ Vue.component("homepage", {
 
             </div>
             <div class="row">
-                <div v-if="b.isOpen" v-for="(b, i) in filteredBuildings" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
+                <div v-if="b.isOpen" v-for="(b, i) in filteredSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <img :src="b.imagePath" class="card-img-top" alt="..."></img>
                     <div class="card-body">
-                        <h4 class="card-title fw-bold">{{b.name}} - {{b.type.name}}</h4>
-                        <p class="card-text">{{b.content}}</p>
+                        <h4 class="card-title fw-bold">{{b.name}} - {{b.objectType.name}}</h4>
+                        <p class="card-text">{{b.description}}</p>
                         <div class="container">
                             <div class="row fw-bold">
                             		Location:
@@ -75,15 +75,15 @@ Vue.component("homepage", {
                         </div>
                     <div class="row align-text-bottom justify-content-end">
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
-                        <div class="fs-2 col-2"> <img src="../images/rate.png" width="25" height="25"></img></div>
+                        <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
                 </div>
                                 
-                 <div v-if="b.isOpen==false" v-for="(b, i) in filteredBuildings" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
+                 <div v-if="b.isOpen==false" v-for="(b, i) in filteredSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <img :src="b.imagePath" class="card-img-top" alt="..."></img>
                     <div class="card-body">
-                        <h4 class="card-title fw-bold">{{b.name}} - {{b.type.name}}</h4>
-                        <p class="card-text">{{b.content}}</p>
+                        <h4 class="card-title fw-bold">{{b.name}} - {{b.objectType.name}}</h4>
+                        <p class="card-text">{{b.description}}</p>
                         <div class="container">
                             <div class="row fw-bold">
                             		Location:
@@ -101,7 +101,7 @@ Vue.component("homepage", {
                         </div>
                     <div class="row align-text-bottom justify-content-end">
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
-                        <div class="fs-2 col-2"> <img src="../images/rate.png" width="25" height="25"></img></div>
+                        <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
                 </div>
             </div>
@@ -113,9 +113,9 @@ Vue.component("homepage", {
         axios
             .get('rest/homepage')
             .then(response => {
-                this.buildings = response.data;
-                for(building of this.buildings){
-					this.isOpen(building);
+                this.sportsObjects = response.data;
+                for(SportsObject of this.sportsObjects){
+					this.isOpen(SportsObject);
 				}
             });
         axios
@@ -145,29 +145,29 @@ Vue.component("homepage", {
 					this.mode = 'Browse';
 				});
 		},
-        isOpen: function(building){
+        isOpen: function(SportsObject){
 			var current = new Date();
-			building.isOpen = current.getHours() >= building.openingHours.fromHours && current.getHours() < building.openingHours.toHours;
+			SportsObject.isOpen = current.getHours() >= SportsObject.openingHours.fromHours && current.getHours() < SportsObject.openingHours.toHours;
 		},
     },
     computed: {
-        filteredBuildings() {
-            if (this.buildings === null) {
+        filteredSportsObjects() {
+            if (this.sportsObjects === null) {
                 return;
             }
-            return this.buildings.filter(building => {
-                const nameBuilding = building.name.toString().toLowerCase();
-                const typeBuilding = building.type.name.toString().toLowerCase();
-                const placeBuilding = building.location.place.toString().toLowerCase();
-                const countryBuilding = building.location.country.toString().toLowerCase();
-                const averageGradeBuilding = building.averageGrade.toString().toLowerCase();
+            return this.sportsObjects.filter(SportsObject => {
+                const nameSportsObject = SportsObject.name.toString().toLowerCase();
+                const typeSportsObject = SportsObject.objectType.name.toString().toLowerCase();
+                const placeSportsObject = SportsObject.location.place.toString().toLowerCase();
+                const countrySportsObject = SportsObject.location.country.toString().toLowerCase();
+                const averageGradeSportsObject = SportsObject.averageGrade.toString().toLowerCase();
                 const searchTerm = this.filter.toLowerCase();
 
-                return nameBuilding.includes(searchTerm) ||
-                    typeBuilding.includes(searchTerm) ||
-                    placeBuilding.includes(searchTerm) ||
-                    averageGradeBuilding.includes(searchTerm)||
-                    countryBuilding.includes(searchTerm);
+                return nameSportsObject.includes(searchTerm) ||
+                    typeSportsObject.includes(searchTerm) ||
+                    placeSportsObject.includes(searchTerm) ||
+                    averageGradeSportsObject.includes(searchTerm)||
+                    countrySportsObject.includes(searchTerm);
             });
         }
     }

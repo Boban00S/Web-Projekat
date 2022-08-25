@@ -68,6 +68,8 @@ public class UserDAO implements ISerializable<String, User> {
 	}
 	
 	public void addUser(User user) throws IOException{
+		int id = users.size()+1;
+		user.setId(id);
 		users.put(user.getUsername(), user);
 		List<User> usersList = new ArrayList<>(findAll());
 		serialize(usersList, false);

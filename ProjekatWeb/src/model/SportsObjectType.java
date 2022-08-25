@@ -1,14 +1,14 @@
 package model;
 
-public class BuildingType {
+public class SportsObjectType {
 	private String name;
 
-	public BuildingType() {
+	public SportsObjectType() {
 		
 	}
 	
 	
-	public BuildingType(String name) {
+	public SportsObjectType(String name) {
 		super();
 		this.name = name;
 	}

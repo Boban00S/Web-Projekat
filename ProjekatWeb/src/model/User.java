@@ -2,38 +2,34 @@ package model;
 
 import java.time.LocalDate;
 
-
-
-
 public class User {
 	
 	private int id;
+	private String username;
+	private String password;	
 	private String name;
 	private String lastName;
-	private LocalDate birthdate;
 	private Gender gender;
-	private String password;	
-	private String username;
-	private CustomerType customerType;
+	private LocalDate birthdate;
+	private Role role;
 	
 	public User() {
 		
 	}
 	
-	public User(int id, String name, String lastName, LocalDate birthdate, Gender gender, String password,
-			String username, CustomerType customerType) {
+	public User(int id, String username, String password, String name, String lastName, Gender gender,
+			LocalDate birthdate, Role role) {
 		super();
 		this.id = id;
+		this.username = username;
+		this.password = password;
 		this.name = name;
 		this.lastName = lastName;
-		this.birthdate = birthdate;
 		this.gender = gender;
-		this.password = password;
-		this.username = username;
-		this.customerType = customerType;
+		this.birthdate = birthdate;
+		this.role = role;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -75,6 +71,14 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	
