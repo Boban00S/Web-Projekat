@@ -29,8 +29,8 @@ public class SparkAppMain {
 	
 	
 	private static Gson g = getGson();
-	private static UserDAO userDAO = new UserDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\users.json");
-	private static SportsObjectDAO SportsObjectDAO = new SportsObjectDAO("C:\\Users\\stani\\Desktop\\FTN\\WEB\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
+	private static UserDAO userDAO = new UserDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\users.json");
+	private static SportsObjectDAO SportsObjectDAO = new SportsObjectDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
 	
 	
 	/**
@@ -90,14 +90,13 @@ public class SparkAppMain {
 		post("/rest/registration", (req, res) ->{
 			res.type("application/json");
 			String user = req.body();
-			System.out.println(user);
 			User u = g.fromJson(user, User.class);
 			boolean contains = userDAO.contains(u);
 			if(contains == true) {
 				res.status(400);
 				return ("No");
 			}
-			userDAO.addUser(u);
+			userDAO.addCustomer(u);
 			Session ss = req.session(true);
 			ss.attribute("user", u);
 			res.status(200);

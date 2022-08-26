@@ -17,8 +17,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
+import model.Administrator;
 import model.ISerializable;
 import model.LoginUser;
+import model.Role;
 import model.User;
 
 
@@ -35,9 +37,7 @@ public class UserDAO implements ISerializable<String, User> {
 	public UserDAO(String fileName) {
 		this.fileName = fileName;
 		try {
-			System.out.println("asfaf");
 			users = deserialize();
-
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -67,9 +67,27 @@ public class UserDAO implements ISerializable<String, User> {
 		return users.containsKey(user.getUsername());
 	}
 	
-	public void addUser(User user) throws IOException{
-		int id = users.size()+1;
-		user.setId(id);
+	private int getNextId() {
+		int maxId = 0;
+		for(User u:users.values()) {
+			if(u.getId()> maxId) {
+				maxId = u.getId();
+			}
+		}
+		return ++maxId;
+	}
+	
+	public void addCustomer(User user) throws IOException{
+		user.setId(getNextId());
+		user.setRole(Role.customer);
+		users.put(user.getUsername(), user);
+		List<User> usersList = new ArrayList<>(findAll());
+		serialize(usersList, false);
+	}
+	
+	public void addUser(User user, Role role) throws IOException{
+		user.setId(getNextId());
+		user.setRole(role);
 		users.put(user.getUsername(), user);
 		List<User> usersList = new ArrayList<>(findAll());
 		serialize(usersList, false);
