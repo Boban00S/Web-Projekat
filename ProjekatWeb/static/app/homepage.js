@@ -29,8 +29,10 @@ Vue.component("homepage", {
                             up</button>
                         <button class="btn btn-primary" type="submit" v-on:click="loginUser()">Sign in</button>
                     </form>
-                    <label class="fw-bold me-1" v-if="mode=='LoggedIn'">User </label>
-                    <label class="me-4 fw-italic" v-if="mode=='LoggedIn'"> {{this.user.username}}</label>
+                    <button class ="btn btn-primary me-2" v-if="mode=='LoggedIn'" type="submit" v-on:click="usersSettings()">
+                        <label class="fw-bold me-1" v-if="mode=='LoggedIn'">User </label>
+                        <label class="me-4 fw-italic" v-if="mode=='LoggedIn'"> {{this.user.username}}</label>
+                    </button>
                     <form class="d-flex" v-if="mode=='LoggedIn'">
                         <button class="btn btn-primary" type="submit" v-on:click="logoutUser()">Log out</button>
                     </form>
@@ -114,9 +116,9 @@ Vue.component("homepage", {
             .get('rest/homepage')
             .then(response => {
                 this.sportsObjects = response.data;
-                for(SportsObject of this.sportsObjects){
-					this.isOpen(SportsObject);
-				}
+                for (SportsObject of this.sportsObjects) {
+                    this.isOpen(SportsObject);
+                }
             });
         axios
             .get('rest/testlogin')
@@ -138,17 +140,20 @@ Vue.component("homepage", {
         registrateUser: function () {
             this.$router.push({ name: 'registration' })
         },
-        logoutUser: function(){
-			axios
-				.get('rest/logout')
-				.then(response =>{
-					this.mode = 'Browse';
-				});
-		},
-        isOpen: function(SportsObject){
-			var current = new Date();
-			SportsObject.isOpen = current.getHours() >= SportsObject.openingHours.fromHours && current.getHours() < SportsObject.openingHours.toHours;
-		},
+        logoutUser: function () {
+            axios
+                .get('rest/logout')
+                .then(response => {
+                    this.mode = 'Browse';
+                });
+        },
+        isOpen: function (SportsObject) {
+            var current = new Date();
+            SportsObject.isOpen = current.getHours() >= SportsObject.openingHours.fromHours && current.getHours() < SportsObject.openingHours.toHours;
+        },
+        usersSettings: function () {
+            this.$router.push({ name: 'user-profile', params: { id: this.user.id } })
+        }
     },
     computed: {
         filteredSportsObjects() {
@@ -166,7 +171,7 @@ Vue.component("homepage", {
                 return nameSportsObject.includes(searchTerm) ||
                     typeSportsObject.includes(searchTerm) ||
                     placeSportsObject.includes(searchTerm) ||
-                    averageGradeSportsObject.includes(searchTerm)||
+                    averageGradeSportsObject.includes(searchTerm) ||
                     countrySportsObject.includes(searchTerm);
             });
         }

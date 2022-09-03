@@ -58,7 +58,7 @@ Vue.component("login", {
             this.error = ""
             axios.post('rest/login', this.user)
                 .then((response) => {
-                    this.$router.push({ name: 'homepage' })
+                    this.$router.push({ path: '/user/' + response.data })
                 })
                 .catch(error => {
                     alert("Wrong username or password!");

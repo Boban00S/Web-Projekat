@@ -1,7 +1,7 @@
 const Homepage = { template: '<homepage></homepage>' }
 const Login = { template: '<login></login>' }
 const Registration = { template: '<registration></registration>' }
-const Settings = { template: '<settings></settings>' }
+const UserProfile = { template: '<user-profile></user-profile>' }
 
 const router = new VueRouter({
     mode: 'hash',
@@ -9,8 +9,12 @@ const router = new VueRouter({
         { path: '/', name: 'homepage', component: Homepage },
         { path: '/login', name: 'login', component: Login },
         { path: '/registration', name: 'registration', component: Registration },
-        { path: '/homepage/:username', name: 'homepage-login', component: Homepage },
-        { path: '/settings/:username', name: 'settings', component: Settings },
+        {
+            path: '/user/:id',
+            component: Homepage,
+            name: 'homepage-login',
+        },
+        { path: '/user/:id/profile', component: UserProfile, name: 'user-profile' },
     ]
 });
 
@@ -18,3 +22,9 @@ var app = new Vue({
     router,
     el: "#homepage"
 })
+
+// zameniti /homepage/:username na /:username/homepage
+// dodati na to /:username/settings
+
+// { path: '/homepage/:username', name: 'homepage-login', component: Homepage },
+// { path: '/settings/:username', name: 'settings', component: Settings },

@@ -29,8 +29,8 @@ public class SparkAppMain {
 	
 	
 	private static Gson g = getGson();
-	private static UserDAO userDAO = new UserDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\users.json");
-	private static SportsObjectDAO SportsObjectDAO = new SportsObjectDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
+	private static UserDAO userDAO = new UserDAO("data/users.json");
+	private static SportsObjectDAO SportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
 	
 	
 	/**
@@ -120,7 +120,7 @@ public class SparkAppMain {
 				ss.attribute("user", user);
 			}
 			res.status(200);
-			return ("Yes");
+			return user.getId();
 		});
 		
 		get("/rest/logout", (req, res) ->{

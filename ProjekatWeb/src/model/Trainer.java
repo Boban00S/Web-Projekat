@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Trainer extends User{
-	private List<TrainingHistory> trainingHistory;
 
 	public Trainer() {
 		super();
@@ -19,19 +18,4 @@ public class Trainer extends User{
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	public List<TrainingHistory> getTrainingHistory() {
-		return trainingHistory;
-	}
-
-	public void setTrainingHistory(List<TrainingHistory> trainingHistory) {
-		this.trainingHistory = trainingHistory;
-	}
-
-	public Trainer(List<TrainingHistory> trainingHistory) {
-		super();
-		this.trainingHistory = trainingHistory;
-	}
-	
 }

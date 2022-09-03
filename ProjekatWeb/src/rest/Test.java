@@ -1,24 +1,20 @@
 package rest;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import dao.AdminDAO;
-import dao.SportsObjectDAO;
+import dao.TrainerDAO;
 import dao.UserDAO;
 import model.Administrator;
 import model.Gender;
-import model.Location;
-import model.OpeningHours;
 import model.Role;
-import model.SportsObject;
-import model.SportsObjectType;
+import model.Trainer;
 
 public class Test {
-	private static UserDAO userDAO = new UserDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\users.json");
-	private static AdminDAO adminDAO = new AdminDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\administrators.json");
-	
+	private static UserDAO userDAO = new UserDAO("data/users.json");
+	private static AdminDAO adminDAO = new AdminDAO("data/administrators.json");
+	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
+
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 //		SportsObjectType bt = new SportsObjectType("gym");
@@ -38,12 +34,18 @@ public class Test {
 //		SportsObjectDAO bd = new SportsObjectDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
 //		bd.serialize(SportsObjects, false);
 		
-		createAdministrators();
+//		createAdministrators();
+		createTrainers();
 	}
 
 	
 	private static void createAdministrators() throws Exception{
 		Administrator admin1 = new Administrator(-1, "markoM", "sifra123", "Marko", "Markovic", Gender.male, LocalDate.of(1980, 12, 5), Role.administrator);
 		adminDAO.addAdministrator(admin1);
+	}
+	
+	private static void createTrainers() throws Exception{
+		Trainer t1 = new Trainer(-1, "nikolaN", "sifra123", "Nikola", "Nikolic", Gender.male, LocalDate.of(1988, 2, 12), Role.trainer);
+		trainerDAO.addTrainer(t1);
 	}
 }

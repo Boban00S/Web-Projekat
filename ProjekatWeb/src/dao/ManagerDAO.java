@@ -24,7 +24,7 @@ import model.User;
 import model.UserExcludingStrategy;
 
 public class ManagerDAO implements ISerializable<String, Manager> {
-	private UserDAO userDAO = new UserDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\users.json");
+	private UserDAO userDAO = new UserDAO("data/users.json");
 	
 	private HashMap<String, Manager> managers;
 	private String fileName;

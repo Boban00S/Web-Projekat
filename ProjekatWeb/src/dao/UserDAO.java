@@ -88,6 +88,7 @@ public class UserDAO implements ISerializable<String, User> {
 	public void addUser(User user, Role role) throws IOException{
 		user.setId(getNextId());
 		user.setRole(role);
+		System.out.println(user.getBirthdate());
 		users.put(user.getUsername(), user);
 		List<User> usersList = new ArrayList<>(findAll());
 		serialize(usersList, false);
@@ -107,6 +108,7 @@ public class UserDAO implements ISerializable<String, User> {
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);
+		System.out.println(objectList.size());
 		gson.toJson(objectList, writer);
 		writer.flush();
 		writer.close();

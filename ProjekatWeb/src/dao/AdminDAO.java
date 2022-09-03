@@ -24,7 +24,7 @@ import model.User;
 import model.UserExcludingStrategy;
 
 public class AdminDAO implements ISerializable<String, Administrator>{
-	private UserDAO userDAO = new UserDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\users.json");
+	private UserDAO userDAO = new UserDAO("data/users.json");
 	
 	private HashMap<String, Administrator> administrators;
 	private String fileName;
@@ -33,11 +33,9 @@ public class AdminDAO implements ISerializable<String, Administrator>{
 		
 	}
 	
-	// fileName - naziv fajla gde se nalaze administratori
 	public AdminDAO(String fileName) {
 		this.fileName = fileName;
 		try {
-			// citanje administratora iz fajla (username, Administrator)
 			administrators = deserialize();
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -50,10 +48,8 @@ public class AdminDAO implements ISerializable<String, Administrator>{
 	
 	
 	public void addAdministrator(Administrator administrator) throws IOException{
-		// dodavanje novog korisnika jer je administrator novi korisnik
 		userDAO.addUser(administrator, Role.administrator);
 		administrators.put(administrator.getUsername(), administrator);
-		// potrebna je lista za serijalizaciju
 		List<Administrator> administratorsList = new ArrayList<>(findAll());
 		serialize(administratorsList, false);
 	}
@@ -81,6 +77,7 @@ public class AdminDAO implements ISerializable<String, Administrator>{
 		if(adminsA != null) {
 			for(Administrator a: adminsA) {
 				User user = userDAO.findUserByUsername(a.getUsername());
+				System.out.println(a.getUsername());
 				a.setId(user.getId());
 				a.setBirthdate(user.getBirthdate());
 				a.setGender(user.getGender());
