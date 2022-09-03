@@ -14,12 +14,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import dao.ManagerDAO;
 import dao.SportsObjectDAO;
 import dao.UserDAO;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jsonparsing.LocalDateConverter;
 import model.LoginUser;
+import model.Manager;
+import model.SportsObject;
 import model.User;
 import spark.Session;
 import ws.WsHandler;
@@ -30,7 +33,8 @@ public class SparkAppMain {
 	
 	private static Gson g = getGson();
 	private static UserDAO userDAO = new UserDAO("data/users.json");
-	private static SportsObjectDAO SportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
+	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
+	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
 	
 	
 	/**
@@ -63,15 +67,24 @@ public class SparkAppMain {
 //			}
 		});
 		
-		get("/rest/registration", (req, res) -> {
-			return userDAO.findAll();
+		get("/rest/users", (req, res) -> {
+			res.status(200);
+			
+			return g.toJson(userDAO.findAll());
 		});
 		
 		get("/rest/homepage", (req, res) -> {
 			res.status(200);
 			
-			System.out.println(g.toJson(SportsObjectDAO.findAll()).toString());
-			return g.toJson(SportsObjectDAO.findAll());
+			return g.toJson(sportsObjectDAO.findAll());
+		});
+		
+		get("/rest/user", (req, res) -> {
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			User u = userDAO.findUserById(userId);
+			res.status(200);
+			return g.toJson(u);
 		});
 		
 		get("rest/testlogin", (req, res) ->{
@@ -81,7 +94,6 @@ public class SparkAppMain {
 			if(user == null) {
 				return ("No");
 			}else {
-				System.out.println(g.toJson(user));
 				return g.toJson(user);
 			}
 		});
@@ -131,6 +143,49 @@ public class SparkAppMain {
 				ss.invalidate();
 			}
 			return true;
+		});
+		
+		post("/rest/edit_user", (req, res)-> {
+			res.type("application/json");
+			String user = req.body();
+			User u = g.fromJson(user, User.class);
+			boolean containsOtherUsername = userDAO.containsOtherUsername(u);
+			if(containsOtherUsername == true) {
+				res.status(400);
+				return ("No");
+			}
+			userDAO.editUser(u);
+			res.status(200);
+			
+			return ("Yes");
+		});
+		
+		
+		
+		post("/rest/registration", (req, res) ->{
+			res.type("application/json");
+			String user = req.body();
+			User u = g.fromJson(user, User.class);
+			boolean contains = userDAO.contains(u);
+			if(contains == true) {
+				res.status(400);
+				return ("No");
+			}
+			userDAO.addCustomer(u);
+			Session ss = req.session(true);
+			ss.attribute("user", u);
+			res.status(200);
+			return ("Yes");
+		});
+		
+		get("rest/sportsobject", (req, res) ->{
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			Manager m = managerDAO.findManagerById(userId);
+			SportsObject sportsObject = sportsObjectDAO.findById(m.getSportsObject());
+			
+			
+			return g.toJson(m.getSportsObject());
 		});
 		
 /*

@@ -17,8 +17,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
-import model.Manager;
 import model.ISerializable;
+import model.Manager;
 import model.Role;
 import model.User;
 import model.UserExcludingStrategy;
@@ -39,6 +39,15 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public Manager findManagerById(int userId) {
+		for(Manager m: managers.values()) {
+			if(m.getId() == userId) {
+				return m;
+			}
+		}
+		return null;
 	}
 	
 	public Collection<Manager> findAll() {

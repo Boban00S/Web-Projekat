@@ -21,7 +21,7 @@ import model.ISerializable;
 import model.User;
 
 public class SportsObjectDAO implements ISerializable<Integer, SportsObject> {
-	private HashMap<Integer, SportsObject> SportsObjects;
+	private HashMap<Integer, SportsObject> sportsObjects;
 	private String fileName;
 	
 	public SportsObjectDAO() {
@@ -31,15 +31,24 @@ public class SportsObjectDAO implements ISerializable<Integer, SportsObject> {
 	public SportsObjectDAO(String fileName) {
 		this.fileName = fileName;
 		try {
-			SportsObjects = deserialize();
+			sportsObjects = deserialize();
 
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 	
+	public SportsObject findById(int id) {
+		for(SportsObject sp: sportsObjects.values()) {
+			if(sp.getId() == id) {
+				return sp;
+			}
+		}
+		return null;
+	}
+	
 	public Collection<SportsObject> findAll() {
-		return SportsObjects.values();
+		return sportsObjects.values();
 	}
 	
 	@Override

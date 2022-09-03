@@ -1,44 +1,14 @@
-Vue.component("homepage", {
+Vue.component("sports-object", {
     data: function () {
         return {
             sportsObjects: null,
-            user: null,
-            error: '',
             mode: 'Browse',
             filter: '',
         }
     },
     template: `
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-            <div class="container-fluid" id="index">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                        <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
-                        </li>
-                    </ul>
-                    <form class="d-flex" v-if="mode=='Browse'">
-                        <button class="btn btn-primary me-2" type="submit" v-on:click="registrateUser()">Sign
-                            up</button>
-                        <button class="btn btn-primary" type="submit" v-on:click="loginUser()">Sign in</button>
-                    </form>
-                    <button class ="btn btn-primary me-2" v-if="mode=='LoggedIn'" type="submit" v-on:click="usersSettings()">
-                        <label class="fw-bold me-1" v-if="mode=='LoggedIn'">User </label>
-                        <label class="me-4 fw-italic" v-if="mode=='LoggedIn'"> {{this.user.username}}</label>
-                    </button>
-                    <form class="d-flex" v-if="mode=='LoggedIn'">
-                        <button class="btn btn-primary" type="submit" v-on:click="logoutUser()">Log out</button>
-                    </form>
-
-
-                </div>
-            </div>
-        </nav>
-        </section>
-
         <div class="container mt-5 px-2">
-
             <div class="mb-2 d-flex justify-content-between align-items-center">
 
                 <div class="position-relative">
@@ -120,7 +90,6 @@ Vue.component("homepage", {
                 this.user = response.data;
                 if (this.user != "No") {
                     this.mode = 'LoggedIn'
-                    this.$router.push({ path: '/user/' + response.data.id })
                 }
             })
             .catch((error) => {

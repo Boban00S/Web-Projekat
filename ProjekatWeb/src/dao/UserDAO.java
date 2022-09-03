@@ -62,6 +62,15 @@ public class UserDAO implements ISerializable<String, User> {
 		return users.get(username);
 	}
 	
+	public User findUserById(int userId) {
+		for(User u: users.values()) {
+			if(u.getId() == userId) {
+				return u;
+			}
+		}
+		return null;
+	}
+	
 	public boolean contains(User user) {
 		System.out.println(users.size());
 		return users.containsKey(user.getUsername());
@@ -101,6 +110,33 @@ public class UserDAO implements ISerializable<String, User> {
 		}
 		return user.getPassword().equals(loginUser.getPassword());
 	}
+	
+	public boolean containsOtherUsername(User u) {
+		for(User userFromList: users.values()) {
+			if(userFromList.getUsername() == u.getUsername() &&
+					userFromList.getId() != u.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void editUser(User u) throws IOException{
+		for(User userFromList: users.values()) {
+			if(userFromList.getId() == u.getId()) {
+				userFromList.setName(u.getName());
+				userFromList.setUsername(u.getUsername());
+				userFromList.setPassword(u.getPassword());
+				userFromList.setLastName(u.getLastName());
+				userFromList.setGender(u.getGender());
+				userFromList.setBirthdate(u.getBirthdate());
+				userFromList.setRole(u.getRole());
+				List<User> usersList = new ArrayList<>(findAll());
+				serialize(usersList, false);
+			}
+		}
+	}
+	
 	
 	@Override
 	public void serialize(List<User> objectList, boolean append) throws IOException{
