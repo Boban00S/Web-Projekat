@@ -9,20 +9,25 @@ import static spark.Spark.webSocket;
 import java.io.File;
 import java.security.Key;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import dao.CustomerDAO;
 import dao.ManagerDAO;
 import dao.SportsObjectDAO;
+import dao.TrainerDAO;
 import dao.UserDAO;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jsonparsing.LocalDateConverter;
+import model.Customer;
 import model.LoginUser;
 import model.Manager;
 import model.SportsObject;
+import model.Trainer;
 import model.User;
 import spark.Session;
 import ws.WsHandler;
@@ -35,6 +40,8 @@ public class SparkAppMain {
 	private static UserDAO userDAO = new UserDAO("data/users.json");
 	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
 	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
+	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
+	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
 	
 	
 	/**
@@ -183,9 +190,29 @@ public class SparkAppMain {
 			int userId = Integer.parseInt(req.queryMap("id").value());
 			Manager m = managerDAO.findManagerById(userId);
 			SportsObject sportsObject = sportsObjectDAO.findById(m.getSportsObject());
+			res.status(200);
 			
+			return g.toJson(sportsObject);
+		});
+		
+		get("rest/customers", (req, res) ->{
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			Manager m = managerDAO.findManagerById(userId);
+			List<Customer> customers = customerDAO.findCustomersBySportsObjectId(m.getSportsObject());
+			res.status(200);
+
+			return g.toJson(customers);
+		});
+		
+		get("rest/trainers", (req, res) ->{
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			Manager m = managerDAO.findManagerById(userId);
+			List<Trainer> trainers = trainerDAO.findTrainerBySportsObjectId(m.getSportsObject());
+			res.status(200);
 			
-			return g.toJson(m.getSportsObject());
+			return g.toJson(trainers);
 		});
 		
 /*

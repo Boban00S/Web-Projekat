@@ -1,12 +1,18 @@
 package rest;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.AdminDAO;
+import dao.CustomerDAO;
+import dao.ManagerDAO;
 import dao.TrainerDAO;
 import dao.UserDAO;
 import model.Administrator;
+import model.Customer;
 import model.Gender;
+import model.Manager;
 import model.Role;
 import model.Trainer;
 
@@ -14,6 +20,8 @@ public class Test {
 	private static UserDAO userDAO = new UserDAO("data/users.json");
 	private static AdminDAO adminDAO = new AdminDAO("data/administrators.json");
 	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
+	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
+	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -40,12 +48,31 @@ public class Test {
 
 	
 	private static void createAdministrators() throws Exception{
-		Administrator admin1 = new Administrator(-1, "markoM", "sifra123", "Marko", "Markovic", Gender.male, LocalDate.of(1980, 12, 5), Role.administrator);
+		Administrator admin1 = new Administrator(-1, "markoM", "123", "Marko", "Markovic", Gender.male, LocalDate.of(1980, 12, 5), Role.administrator);
 		adminDAO.addAdministrator(admin1);
 	}
 	
 	private static void createTrainers() throws Exception{
-		Trainer t1 = new Trainer(-1, "nikolaN", "sifra123", "Nikola", "Nikolic", Gender.male, LocalDate.of(1988, 2, 12), Role.trainer);
+		Trainer t1 = new Trainer(-1, "stefanS", "sifra123", "Stefan", "Stefic", Gender.male, LocalDate.of(1988, 2, 12), Role.trainer);
+		t1.setSportsObjectId(1);
+		
 		trainerDAO.addTrainer(t1);
+	}
+	
+	private static void createManagers() throws Exception{
+		Manager m1 = new Manager(-1, "markoM", "123", "Marko", "Markovic", Gender.male, LocalDate.of(1980, 12, 5), Role.manager);
+		m1.setSportsObject(1);
+		managerDAO.addManager(m1);
+	}
+	
+	private static void createCustomers() throws Exception{
+		Customer c1 = new Customer(-1, "nikolaN", "123", "Nikola", "Nikolic", Gender.male, LocalDate.of(1988, 2, 12), Role.customer);
+		c1.setPoints(0);
+		c1.setMembership(null);
+		List<Integer> sOA = new ArrayList<>();
+		sOA.add(1);
+		sOA.add(2);
+		c1.setSportsObjectAttended(sOA);
+		customerDAO.addCustomer(c1);
 	}
 }

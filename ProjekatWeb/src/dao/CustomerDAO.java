@@ -17,54 +17,56 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
+import model.Customer;
 import model.ISerializable;
-import model.Manager;
 import model.Role;
 import model.User;
 import model.UserExcludingStrategy;
 
-public class ManagerDAO implements ISerializable<String, Manager> {
+public class CustomerDAO implements ISerializable<String, Customer> {
 	private UserDAO userDAO = new UserDAO("data/users.json");
 	
-	private HashMap<String, Manager> managers;
+	private HashMap<String, Customer> customers;
 	private String fileName;
 	
-	public ManagerDAO() {}
+	public CustomerDAO() {}
 	
-	public ManagerDAO(String fileName) {
+	public CustomerDAO(String fileName) {
 		this.fileName = fileName;
 		try {
-			// citanje menadzera iz fajla (username, Menadzer)
-			managers = deserialize();
+			customers = deserialize();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	public Manager findManagerById(int userId) {
-		for(Manager m: managers.values()) {
-			if(m.getId() == userId) {
-				return m;
+	
+	public List<Customer> findCustomersBySportsObjectId(int sportsObjectId){
+		List<Customer> output = new ArrayList<>();
+		for(Customer c: customers.values()) {
+			for(int i: c.getSportsObjectAttended()) {
+				if(i == sportsObjectId) {
+					output.add(c);
+					break;
+				}
 			}
 		}
-		return null;
+		return output;
 	}
 	
-	public Collection<Manager> findAll() {
-		return managers.values();
+	public Collection<Customer> findAll(){
+		return customers.values();
 	}
 	
-	public void addManager(Manager manager) throws IOException {
-		// dodavanje novog korisnika jer je menadzer novi korisnik
-				userDAO.addUser(manager, Role.manager);
-				managers.put(manager.getUsername(), manager);
-				// potrebna je lista za serijalizaciju
-				List<Manager> managersList = new ArrayList<>(findAll());
-				serialize(managersList, false);
+	public void addCustomer(Customer customer) throws IOException{
+		userDAO.addUser(customer, Role.customer);
+		customers.put(customer.getUsername(), customer);
+		List<Customer> customersList = new ArrayList<>(findAll());
+		serialize(customersList, false);
 	}
 	
 	@Override
-	public void serialize(List<Manager> objectList, boolean append) throws IOException {
+	public void serialize(List<Customer> objectList, boolean append) throws IOException {
 		GsonBuilder builder = new GsonBuilder()
 				.setExclusionStrategies(new UserExcludingStrategy());
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
@@ -76,16 +78,16 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 	}
 	
 	@Override
-	public HashMap<String, Manager> deserialize() throws IOException {
+	public HashMap<String, Customer> deserialize() throws IOException {
 		Reader reader = Files.newBufferedReader(Paths.get(fileName));
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
-		Manager[] managersA = gson.fromJson(reader, Manager[].class);
-		HashMap<String, Manager> output;
-		output = new HashMap<String, Manager>();
-		if(managersA != null) {
-			for(Manager m: managersA) {
+		Customer[] customersA = gson.fromJson(reader, Customer[].class);
+		HashMap<String, Customer> output;
+		output = new HashMap<String, Customer>();
+		if(customersA != null) {
+			for(Customer m: customersA) {
 				User user = userDAO.findUserByUsername(m.getUsername());
 				m.setId(user.getId());
 				m.setBirthdate(user.getBirthdate());
@@ -93,10 +95,11 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 				m.setLastName(user.getLastName());
 				m.setName(user.getName());
 				m.setPassword(user.getPassword());
-				m.setRole(Role.manager);
+				m.setRole(Role.customer);
 				output.put(m.getUsername(), m);
 			}
 		}
 		return output;
 	}
+
 }

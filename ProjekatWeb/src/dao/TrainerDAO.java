@@ -51,6 +51,16 @@ public class TrainerDAO implements ISerializable<String, Trainer>{
 		serialize(trainersList, false);
 	}
 	
+	public List<Trainer> findTrainerBySportsObjectId(int sportsObjectId){
+		List<Trainer> output = new ArrayList<>();
+		for(Trainer t: trainers.values()) {
+			if(t.getSportsObjectId() == sportsObjectId) {
+				output.add(t);
+			}
+		}
+		return output;
+	}
+	
 	@Override
 	public void serialize(List<Trainer> objectList, boolean append) throws IOException {
 		GsonBuilder builder = new GsonBuilder()

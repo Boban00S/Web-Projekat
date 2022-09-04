@@ -1,14 +1,26 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Customer extends User{
 	private int points;
 	private Membership membership;
-	private List<SportsObject> sportsObjectAttended;
+	private List<Integer> sportsObjectAttended;
 	private CustomerType customerType;
 	
-	public Customer(int points, Membership membership, List<SportsObject> sportsObjectAttended, CustomerType customerType) {
+	
+	
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Customer(int id, String username, String password, String name, String lastName, Gender gender,
+			LocalDate birthdate, Role role) {
+		super(id, username, password, name, lastName, gender, birthdate, role);
+		// TODO Auto-generated constructor stub
+	}
+	public Customer(int points, Membership membership, List<Integer> sportsObjectAttended, CustomerType customerType) {
 		super();
 		this.points = points;
 		this.membership = membership;
@@ -27,10 +39,10 @@ public class Customer extends User{
 	public void setMembership(Membership membership) {
 		this.membership = membership;
 	}
-	public List<SportsObject> getSportsObjectAttended() {
+	public List<Integer> getSportsObjectAttended() {
 		return sportsObjectAttended;
 	}
-	public void setSportsObjectAttended(List<SportsObject> sportsObjectAttended) {
+	public void setSportsObjectAttended(List<Integer> sportsObjectAttended) {
 		this.sportsObjectAttended = sportsObjectAttended;
 	}
 	public CustomerType getCustomerType() {
