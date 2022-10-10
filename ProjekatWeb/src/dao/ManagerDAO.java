@@ -20,6 +20,7 @@ import jsonparsing.LocalDateConverter;
 import model.ISerializable;
 import model.Manager;
 import model.Role;
+import model.SportsObject;
 import model.User;
 import model.UserExcludingStrategy;
 
@@ -41,6 +42,29 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 		}
 	}
 	
+	
+	public void addSportsObjectToManager(SportsObject s) throws IOException{
+		for(Manager m: managers.values()) {
+			System.out.println(m.getUsername());
+			if(m.getUsername().equals(s.getManagerUsername())) {
+				m.setSportsObject(s.getId());
+				List<Manager> managersList = new ArrayList<>(managers.values());
+				serialize(managersList, false);
+				break;
+			}
+		}
+
+	}
+	
+	public Manager findManagerByUsername(String username) {
+		for(Manager m: managers.values()) {
+			if(m.getUsername().equals(username)) {
+				return m;
+			}
+		}
+		return null;
+	}
+	
 	public Manager findManagerById(int userId) {
 		for(Manager m: managers.values()) {
 			if(m.getId() == userId) {
@@ -48,6 +72,16 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 			}
 		}
 		return null;
+	}
+	
+	public List<Manager> findAvailableManagers(){
+		List<Manager> output = new ArrayList<>();
+		for(Manager m: managers.values()) {
+			if(m.getSportsObject() == -1) {
+				output.add(m);
+			}
+		}
+		return output;
 	}
 	
 	public Collection<Manager> findAll() {

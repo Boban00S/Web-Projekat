@@ -42,13 +42,12 @@ public class Test {
 //		SportsObjectDAO bd = new SportsObjectDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
 //		bd.serialize(SportsObjects, false);
 		
-//		createAdministrators();
-		createTrainers();
+		createManagers();
 	}
 
 	
 	private static void createAdministrators() throws Exception{
-		Administrator admin1 = new Administrator(-1, "markoM", "123", "Marko", "Markovic", Gender.male, LocalDate.of(1980, 12, 5), Role.administrator);
+		Administrator admin1 = new Administrator(-1, "andrejA", "123", "Andrej", "Andric", Gender.male, LocalDate.of(1980, 12, 5), Role.administrator);
 		adminDAO.addAdministrator(admin1);
 	}
 	
@@ -60,8 +59,8 @@ public class Test {
 	}
 	
 	private static void createManagers() throws Exception{
-		Manager m1 = new Manager(-1, "markoM", "123", "Marko", "Markovic", Gender.male, LocalDate.of(1980, 12, 5), Role.manager);
-		m1.setSportsObject(1);
+		Manager m1 = new Manager(-1, "peraP", "123", "Pera", "Peric", Gender.male, LocalDate.of(1980, 12, 5), Role.manager);
+		m1.setSportsObject(-1);
 		managerDAO.addManager(m1);
 	}
 	

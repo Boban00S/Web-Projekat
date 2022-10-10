@@ -7,6 +7,8 @@ const UserHomepage = { template: '<user-homepage></user-homepage>' }
 const SportsObjectsInfo = { template: '<sports-object></sports-object>' }
 const ShowUsers = { template: '<show-users></show-users>' }
 const ManagersSportsObject = { template: '<managers-object></managers-object>' }
+const CreateSportsObject = { template: '<admin-object></admin-object>' }
+
 
 const router = new VueRouter({
     mode: 'hash',
@@ -21,7 +23,8 @@ const router = new VueRouter({
                 { path: '', component: SportsObjectsInfo, name: 'sports-object' },
                 { path: 'profile', component: UserProfile, name: 'user-profile' },
                 { path: 'users', component: ShowUsers, name: 'show-users' },
-                { path: 'object', component: ManagersSportsObject, name: 'managers-object' }
+                { path: 'object', component: ManagersSportsObject, name: 'managers-object' },
+                { path: 'create/object', component: CreateSportsObject, name: 'admin-object' }
             ]
         },
     ]

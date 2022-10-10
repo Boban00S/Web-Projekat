@@ -7,9 +7,16 @@ import static spark.Spark.staticFiles;
 import static spark.Spark.webSocket;
 
 import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Key;
 import java.time.LocalDate;
 import java.util.List;
+
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.http.Part;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -122,7 +129,6 @@ public class SparkAppMain {
 			return ("Yes");
 		});
 		
-		
 		post("/rest/login", (req, res) ->{
 			res.type("application/json");
 			String userLogin = req.body();
@@ -166,9 +172,7 @@ public class SparkAppMain {
 			
 			return ("Yes");
 		});
-		
-		
-		
+	
 		post("/rest/registration", (req, res) ->{
 			res.type("application/json");
 			String user = req.body();
@@ -214,6 +218,58 @@ public class SparkAppMain {
 			
 			return g.toJson(trainers);
 		});
+		
+		get("rest/available/managers", (req, res) ->{
+			res.type("application/json");
+			List<Manager> availableManagers = managerDAO.findAvailableManagers();
+			res.status(200);
+			return g.toJson(availableManagers);
+		});
+		
+		post("rest/manager/registration", (req, res) -> {
+			String manager = req.body();
+			Manager m = g.fromJson(manager, Manager.class);
+			boolean contains = userDAO.contains(m);
+			if(contains == true) {
+				res.status(400);
+				return ("No");
+			}
+			managerDAO.addManager(m);
+			return ("Yes");
+			
+		});
+		
+		post("rest/create/object", (req, res) ->{
+			String sportsObject = req.body();
+			SportsObject s = g.fromJson(sportsObject, SportsObject.class);
+			boolean contains = sportsObjectDAO.contains(s);
+			if(contains == true) {
+				res.status(400);
+				return ("No");
+			}
+			int objectsId = sportsObjectDAO.getNextId();
+			s.setImagePath("../images/"+s.getName()+"_"+objectsId+".jpg");
+			sportsObjectDAO.addObject(s);
+			managerDAO.addSportsObjectToManager(s);
+			return ("Yes");
+		});
+		
+		post("rest/object/image", (req, res) -> {
+			MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/tmp");
+			req.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
+			String fileName = req.raw().getParameter("fileName");
+			int lastId = sportsObjectDAO.getLastId();
+			String fullPath = "static/images/" + fileName+"_"+lastId+".jpg";
+			Part file = req.raw().getPart("file");
+			Path path = Paths.get(fullPath);
+			try(final InputStream in = file.getInputStream()){
+				Files.copy(in, path);
+			}
+			
+			return "OK";
+			
+		});
+
 		
 /*
  * 

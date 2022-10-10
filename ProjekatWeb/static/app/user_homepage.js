@@ -24,6 +24,9 @@ Vue.component("user-homepage", {
                         <li class="nav-item" v-if="userRole=='manager'">
                             <router-link :to="{name:'managers-object', params:{id:user.id}}" class="nav-link active" aria-current="page">Sports Object</router-link>
                         </li>
+                        <li class="nav-item" v-if="userRole=='administrator'">
+                            <router-link :to="{name:'admin-object', params:{id:user.id}}" class="nav-link active" aria-current="page">Create Sports Object</router-link>
+                        </li>
                     </ul>
                     <form class="d-flex" v-if="mode=='Browse'">
                         <button class="btn btn-primary me-2" type="submit" v-on:click="registrateUser()">Sign

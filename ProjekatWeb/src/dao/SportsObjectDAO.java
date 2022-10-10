@@ -7,6 +7,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -18,10 +19,9 @@ import com.google.gson.reflect.TypeToken;
 import jsonparsing.LocalDateConverter;
 import model.SportsObject;
 import model.ISerializable;
-import model.User;
 
-public class SportsObjectDAO implements ISerializable<Integer, SportsObject> {
-	private HashMap<Integer, SportsObject> sportsObjects;
+public class SportsObjectDAO implements ISerializable<String, SportsObject> {
+	private HashMap<String, SportsObject> sportsObjects;
 	private String fileName;
 	
 	public SportsObjectDAO() {
@@ -47,8 +47,39 @@ public class SportsObjectDAO implements ISerializable<Integer, SportsObject> {
 		return null;
 	}
 	
+	public void addObject(SportsObject sportsObject) throws IOException{
+		sportsObject.setId(getNextId());
+		sportsObjects.put(sportsObject.getName(), sportsObject);
+		List<SportsObject> sportsObjectList = new ArrayList<>(findAll());
+		serialize(sportsObjectList, false);
+	}
+	
+	
+	public int getNextId() {
+		int maxId = 0;
+		for(SportsObject s:sportsObjects.values()) {
+			if(s.getId()> maxId) {
+				maxId = s.getId();
+			}
+		}
+		return ++maxId;
+	}
+	
 	public Collection<SportsObject> findAll() {
 		return sportsObjects.values();
+	}
+
+	public boolean contains(SportsObject sportsObject) {
+		return sportsObjects.containsKey(sportsObject.getName());
+	}
+	
+	public int getLastId() {
+		int i = 0;
+		for(SportsObject s: sportsObjects.values()) {
+			if(s.getId() > i)
+				i = s.getId();
+		}
+		return i;
 	}
 	
 	@Override
@@ -63,17 +94,17 @@ public class SportsObjectDAO implements ISerializable<Integer, SportsObject> {
 	}
 
 	@Override
-	public HashMap<Integer, SportsObject> deserialize() throws IOException{
+	public HashMap<String, SportsObject> deserialize() throws IOException{
 		Reader reader = Files.newBufferedReader(Paths.get(fileName));
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
 		SportsObject[] SportsObjectsA = gson.fromJson(reader, SportsObject[].class);
-		HashMap<Integer, SportsObject> output; 
-		output = new HashMap<Integer, SportsObject>();
+		HashMap<String, SportsObject> output; 
+		output = new HashMap<String, SportsObject>();
 		if(SportsObjectsA != null) { 
 			for(SportsObject b: SportsObjectsA) {
-				output.put(b.getId(), b);
+				output.put(b.getName(), b);
 			}
 		}
 		return output;

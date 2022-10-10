@@ -72,7 +72,6 @@ public class UserDAO implements ISerializable<String, User> {
 	}
 	
 	public boolean contains(User user) {
-		System.out.println(users.size());
 		return users.containsKey(user.getUsername());
 	}
 	
@@ -140,11 +139,11 @@ public class UserDAO implements ISerializable<String, User> {
 	
 	@Override
 	public void serialize(List<User> objectList, boolean append) throws IOException{
-		GsonBuilder builder = new GsonBuilder();
+		GsonBuilder builder = new GsonBuilder()
+				.excludeFieldsWithoutExposeAnnotation();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);
-		System.out.println(objectList.size());
 		gson.toJson(objectList, writer);
 		writer.flush();
 		writer.close();
