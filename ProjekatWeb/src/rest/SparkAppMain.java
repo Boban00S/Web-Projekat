@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Key;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.MultipartConfigElement;
@@ -268,6 +269,12 @@ public class SparkAppMain {
 			
 			return "OK";
 			
+		});
+
+		get("rest/sort", (req, res) ->{
+			res.type("application/json");
+			String sortColumn = req.queryMap("sortColumn").value();
+			return g.toJson(sportsObjectDAO.sortBy(sortColumn));
 		});
 
 		

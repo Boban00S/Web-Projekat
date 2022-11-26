@@ -7,16 +7,14 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
+import model.FlexibleCentersComparator;
 import model.SportsObject;
 import model.ISerializable;
 
@@ -80,6 +78,14 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 				i = s.getId();
 		}
 		return i;
+	}
+
+	public Collection<SportsObject> sortBy(String sortColumn){
+		FlexibleCentersComparator comparator = new FlexibleCentersComparator();
+		comparator.setSortingBy(sortColumn);
+		List<SportsObject> objects = new ArrayList<>(findAll());
+		Collections.sort(objects, comparator);
+		return objects;
 	}
 	
 	@Override

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/dao/SportsObjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/SportsObjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SportsObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SportsObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/homepage.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I5aikVKAQfcH1cHdfyVJEXmvZS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/stani/Desktop/FTN Projekti/Web-Projekat/ProjekatWeb",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="SparkAppMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="JavaSE-1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="rest.SparkAppMain" />
+      <module name="ProjekatWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ProjekatWeb" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ProjekatWeb" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="" />
+      <created>1669474028203</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669474028203</updated>
+      <workItem from="1669474029959" duration="50000" />
+      <workItem from="1669474148002" duration="92000" />
+      <workItem from="1669474330036" duration="6424000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -10,7 +10,7 @@ public class SportsObject {
 	private boolean opened;
 	private Location location;
 	private String imagePath;
-	private double averageGrade;
+	private Double averageGrade;
 	private String workingHours;
 	private OpeningHours openingHours;
 	private String description;
@@ -23,7 +23,7 @@ public class SportsObject {
 	
 	
 	public SportsObject(int id, String name, SportsObjectType objectType, List<String> offers, boolean opened, Location location, String imagePath,
-			double averageGrade, String workingHours, OpeningHours openingHours, String description, String managerUsername) {
+			Double averageGrade, String workingHours, OpeningHours openingHours, String description, String managerUsername) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -42,7 +42,7 @@ public class SportsObject {
 
 
 	public SportsObject(int id, String name, SportsObjectType objectType, List<String> offers, boolean opened, Location location, String imagePath,
-			double averageGrade, String workingHours) {
+			Double averageGrade, String workingHours) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -117,10 +117,10 @@ public class SportsObject {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-	public double getAverageGrade() {
+	public Double getAverageGrade() {
 		return averageGrade;
 	}
-	public void setAverageGrade(double averageGrade) {
+	public void setAverageGrade(Double averageGrade) {
 		this.averageGrade = averageGrade;
 	}
 	public String getWorkingHours() {
