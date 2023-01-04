@@ -2,24 +2,48 @@ Vue.component("sports-object", {
     data: function () {
         return {
             sportsObjects: null,
+            user: null,
+            error: '',
             mode: 'Browse',
-            filter: '',
+            searchText: '',
+            filterText: '',
+            sortColumns:[{name: "Name"},
+                {name: "City"},
+                {name: "Country"},
+                {name: "Average Rate"}],
+            searched: false,
         }
     },
     template: `
     <div>
+        </section>
+
         <div class="container mt-5 px-2">
+
             <div class="mb-2 d-flex justify-content-between align-items-center">
 
                 <div class="position-relative">
                     <span class="position-absolute search"><i class="fa fa-search"></i></span>
-                    <input class="form-control w-100" v-model="filter" style="border:4px solid #e3f2fd;"
+                    <input class="form-control w-100" @input="searchCenter()" v-model="searchText" style="border:4px solid #e3f2fd;"
                         placeholder="Search by name, type...">
                 </div>
-
+                
+                <div class="position-relative">
+                    <span class="position-absolute search"><i class="fa fa-search"></i></span>
+                    <input class="form-control w-100" v-model="filterText" style="border:4px solid #e3f2fd;"
+                        placeholder="Filter by type, status...">
+                </div>
             </div>
+            
+            <div class="float-right">
+            
+              <select name="sel2" @change="sortTable($event)">
+                <option :value="col.name" v-for="col in sortColumns">{{col.name}}</option>
+              </select>
+            </div>
+            
             <div class="row">
-                <div v-if="b.isOpen" v-for="(b, i) in filteredSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
+                <div v-if="b.isOpen" v-for="(b, i) in sortedSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <img :src="b.imagePath" class="card-img-top" alt="..."></img>
                     <div class="card-body">
                         <h4 class="card-title fw-bold">{{b.name}} - {{b.objectType.name}}</h4>
@@ -38,14 +62,15 @@ Vue.component("sports-object", {
                                 Working Hours: {{b.workingHours}}
                             </div>
                         </div>
-                        </div>
+                    </div>
                     <div class="row align-text-bottom justify-content-end">
+                        <router-link :to="{name:'sport-object', params:{objectId:b.id, userId:user.id}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
                         <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
                 </div>
                                 
-                 <div v-if="b.isOpen==false" v-for="(b, i) in filteredSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
+                 <div v-if="b.isOpen==false" v-for="(b, i) in sortedSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <img :src="b.imagePath" class="card-img-top" alt="..."></img>
                     <div class="card-body">
                         <h4 class="card-title fw-bold">{{b.name}} - {{b.objectType.name}}</h4>
@@ -64,8 +89,9 @@ Vue.component("sports-object", {
                                 Working Hours: {{b.workingHours}}
                             </div>
                         </div>
-                        </div>
+                    </div>
                     <div class="row align-text-bottom justify-content-end">
+                        <router-link :to="{name:'sport-object', params:{objectId:b.id, userId:user.id}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
                         <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
@@ -90,6 +116,7 @@ Vue.component("sports-object", {
                 this.user = response.data;
                 if (this.user != "No") {
                     this.mode = 'LoggedIn'
+                    this.$router.push({ path: '/user/' + response.data.id })
                 }
             })
             .catch((error) => {
@@ -98,29 +125,33 @@ Vue.component("sports-object", {
     }
     ,
     methods: {
-        loginUser: function () {
-            this.$router.push({ name: 'login' })
-        },
-        registrateUser: function () {
-            this.$router.push({ name: 'registration' })
-        },
-        logoutUser: function () {
-            axios
-                .get('rest/logout')
-                .then(response => {
-                    this.mode = 'Browse';
-                });
-        },
         isOpen: function (SportsObject) {
             var current = new Date();
             SportsObject.isOpen = current.getHours() >= SportsObject.openingHours.fromHours && current.getHours() < SportsObject.openingHours.toHours;
         },
-        usersSettings: function () {
-            this.$router.push({ name: 'user-profile', params: { id: this.user.id } })
+        sortTable(event){
+            axios
+                .get('rest/sort', {params: {sortColumn: event.target.value}})
+                .then(response =>{
+                    this.sportsObjects = response.data;
+                    for (SportsObject of this.sportsObjects) {
+                        this.isOpen(SportsObject);
+                    }
+                })
+        },
+        searchCenter() {
+            this.searched = this.searchText != ""
+        },
+        getStatusString(isOpen) {
+            if(isOpen){
+                return "open"
+            }else{
+                return "close"
+            }
         }
     },
     computed: {
-        filteredSportsObjects() {
+        sortedSportsObjects() {
             if (this.sportsObjects === null) {
                 return;
             }
@@ -130,14 +161,19 @@ Vue.component("sports-object", {
                 const placeSportsObject = SportsObject.location.place.toString().toLowerCase();
                 const countrySportsObject = SportsObject.location.country.toString().toLowerCase();
                 const averageGradeSportsObject = SportsObject.averageGrade.toString().toLowerCase();
-                const searchTerm = this.filter.toLowerCase();
+                const statusSportsObject = this.getStatusString(SportsObject.isOpen);
+                const searchTerm = this.searchText.toLowerCase();
+                const filterTerm = this.filterText.toLowerCase();
 
-                return nameSportsObject.includes(searchTerm) ||
-                    typeSportsObject.includes(searchTerm) ||
-                    placeSportsObject.includes(searchTerm) ||
-                    averageGradeSportsObject.includes(searchTerm) ||
-                    countrySportsObject.includes(searchTerm);
+                return (nameSportsObject.includes(searchTerm) ||
+                        typeSportsObject.includes(searchTerm) ||
+                        placeSportsObject.includes(searchTerm) ||
+                        averageGradeSportsObject.includes(searchTerm) ||
+                        countrySportsObject.includes(searchTerm)) &&
+                    (typeSportsObject.includes(filterTerm) ||
+                        statusSportsObject.includes(filterTerm));
             });
-        }
+        },
+
     }
 });

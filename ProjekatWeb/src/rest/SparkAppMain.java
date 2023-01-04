@@ -1,11 +1,5 @@
 package rest;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.post;
-import static spark.Spark.staticFiles;
-import static spark.Spark.webSocket;
-
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -31,14 +25,11 @@ import dao.UserDAO;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jsonparsing.LocalDateConverter;
-import model.Customer;
-import model.LoginUser;
-import model.Manager;
-import model.SportsObject;
-import model.Trainer;
-import model.User;
+import model.*;
 import spark.Session;
 import ws.WsHandler;
+
+import static spark.Spark.*;
 
 public class SparkAppMain {
 
@@ -129,7 +120,29 @@ public class SparkAppMain {
 			res.status(200);
 			return ("Yes");
 		});
-		
+
+		post("/rest/create-employee", (req, res) ->{
+			res.type("application/json");
+			String user = req.body();
+			User u = g.fromJson(user, User.class);
+			boolean contains = userDAO.contains(u);
+			if(contains == true) {
+				res.status(400);
+				return ("No");
+			}
+			if(u.getRole() == Role.manager){
+				Manager m = g.fromJson(user, Manager.class);
+				managerDAO.addManager(m);
+			}else{
+				Trainer t = g.fromJson(user, Trainer.class);
+				trainerDAO.addTrainer(t);
+			}
+			Session ss = req.session(true);
+			ss.attribute("newUser", u);
+			res.status(200);
+			return ("Yes");
+		});
+
 		post("/rest/login", (req, res) ->{
 			res.type("application/json");
 			String userLogin = req.body();
@@ -190,7 +203,7 @@ public class SparkAppMain {
 			return ("Yes");
 		});
 		
-		get("rest/sportsobject", (req, res) ->{
+		get("rest/manager-object", (req, res) ->{
 			res.type("application/json");
 			int userId = Integer.parseInt(req.queryMap("id").value());
 			Manager m = managerDAO.findManagerById(userId);
@@ -199,7 +212,44 @@ public class SparkAppMain {
 			
 			return g.toJson(sportsObject);
 		});
-		
+
+		put("rest/sport-object", (req, res) ->{
+			res.type("application/json");
+			String sportObject = req.body();
+			SportsObject sO = g.fromJson(sportObject, SportsObject.class);
+			SportsObject sportsObject = sportsObjectDAO.editObject(sO);
+			res.status(200);
+			return g.toJson(sportsObject);
+		});
+
+		delete("rest/sport-object/offer", (req, res) -> {
+			res.type("application/json");
+			int sportObjectId = Integer.parseInt(req.queryMap("objectId").value());
+			int offerId = Integer.parseInt(req.queryMap("offerId").value());
+			SportsObject sportsObject = sportsObjectDAO.deleteOfferById(sportObjectId, offerId);
+			res.status(200);
+			return g.toJson(sportsObject);
+		});
+
+		get("rest/sport-object/trainers", (req, res) ->{
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			Manager m = managerDAO.findManagerById(userId);
+			List<Trainer> trainers = trainerDAO.findTrainerBySportsObjectId(m.getSportsObject());
+			res.status(200);
+
+			return g.toJson(trainers);
+		});
+
+		get("rest/sport-object", (req, res) ->{
+			res.type("application/json");
+			int objectId = Integer.parseInt(req.queryMap("id").value());
+			SportsObject sportsObject = sportsObjectDAO.findById(objectId);
+			res.status(200);
+
+			return g.toJson(sportsObject);
+		});
+
 		get("rest/customers", (req, res) ->{
 			res.type("application/json");
 			int userId = Integer.parseInt(req.queryMap("id").value());
@@ -261,6 +311,21 @@ public class SparkAppMain {
 			String fileName = req.raw().getParameter("fileName");
 			int lastId = sportsObjectDAO.getLastId();
 			String fullPath = "static/images/" + fileName+"_"+lastId+".jpg";
+			Part file = req.raw().getPart("file");
+			Path path = Paths.get(fullPath);
+			try(final InputStream in = file.getInputStream()){
+				Files.copy(in, path);
+			}
+			
+			return "OK";
+			
+		});
+
+		post("rest/offer/image", (req, res) -> {
+			MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/tmp");
+			req.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
+			String fileName = req.raw().getParameter("fileName");
+			String fullPath = "static/images/" + fileName+".jpg";
 			Part file = req.raw().getPart("file");
 			Path path = Paths.get(fullPath);
 			try(final InputStream in = file.getInputStream()){

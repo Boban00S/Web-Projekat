@@ -15,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
 import model.FlexibleCentersComparator;
+import model.Offer;
 import model.SportsObject;
 import model.ISerializable;
 
@@ -51,8 +52,35 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 		List<SportsObject> sportsObjectList = new ArrayList<>(findAll());
 		serialize(sportsObjectList, false);
 	}
+
+	public SportsObject editObject(SportsObject sportsObject) throws IOException{
+		SportsObject oldObject = findById(sportsObject.getId());
+		oldObject.setName(sportsObject.getName());
+		oldObject.setImagePath(sportsObject.getImagePath());
+		oldObject.setObjectType(sportsObject.getObjectType());
+		oldObject.setDescription(sportsObject.getDescription());
+		oldObject.setLocation(sportsObject.getLocation());
+		oldObject.setAverageGrade(sportsObject.getAverageGrade());
+		oldObject.setOffers(sportsObject.getOffers());
+		oldObject.setType(sportsObject.getType());
+		oldObject.setManagerUsername(sportsObject.getManagerUsername());
+
+		serialize(new ArrayList<>(findAll()), false);
+
+		return oldObject;
+	}
 	
-	
+	public SportsObject deleteOfferById(int sportObjectId, int offerId){
+		SportsObject sportsObject = findById(sportObjectId);
+		for(Offer o: sportsObject.getOffers()){
+			if(o.getId() == offerId){
+				sportsObject.getOffers().remove(o);
+				break;
+			}
+		}
+		return sportsObject;
+	}
+
 	public int getNextId() {
 		int maxId = 0;
 		for(SportsObject s:sportsObjects.values()) {

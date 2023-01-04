@@ -1,15 +1,5 @@
 [
     {
-        "id": 2,
-        "username": "bobanS",
-        "password": "123",
-        "name": "Boban",
-        "lastName": "Stanisljevic",
-        "gender": "male",
-        "birthdate": "2012-12-31",
-        "role": "manager"
-    },
-    {
         "id": 3,
         "username": "anjaS",
         "password": "123",
@@ -20,6 +10,16 @@
         "role": "customer"
     },
     {
+        "id": 18,
+        "username": "nikolaN",
+        "password": "123",
+        "name": "Nikola",
+        "lastName": "Nikolic",
+        "gender": "male",
+        "birthdate": "2012-12-31",
+        "role": "trainer"
+    },
+    {
         "id": 7,
         "username": "andrejA",
         "password": "123",
@@ -28,5 +28,35 @@
         "gender": "male",
         "birthdate": "1980-12-05",
         "role": "administrator"
+    },
+    {
+        "id": 2,
+        "username": "bobanS",
+        "password": "123",
+        "name": "Boban",
+        "lastName": "Stanisljevic",
+        "gender": "male",
+        "birthdate": "2012-12-31",
+        "role": "manager"
+    },
+    {
+        "id": 9,
+        "username": "peraP",
+        "password": "123",
+        "name": "Pera",
+        "lastName": "Peric",
+        "gender": "male",
+        "birthdate": "1980-12-05",
+        "role": "manager"
+    },
+    {
+        "id": 19,
+        "username": "alekA",
+        "password": "123",
+        "name": "Aleks",
+        "lastName": "Aleksic",
+        "gender": "male",
+        "birthdate": "2012-12-13",
+        "role": "trainer"
     }
 ]

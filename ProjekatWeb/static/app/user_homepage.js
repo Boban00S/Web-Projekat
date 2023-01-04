@@ -27,6 +27,12 @@ Vue.component("user-homepage", {
                         <li class="nav-item" v-if="userRole=='administrator'">
                             <router-link :to="{name:'admin-object', params:{id:user.id}}" class="nav-link active" aria-current="page">Create Sports Object</router-link>
                         </li>
+                        <li class="nav-item" v-if="userRole=='administrator'">
+                            <router-link :to="{name:'create-employee', params:{id:user.id}}" class="nav-link active" aria-current="page">Create Employee</router-link>
+                        </li> 
+                        <li class="nav-item" v-if="userRole=='manager'">
+                            <router-link :to="{name:'add-offer', params:{id:user.id}}" class="nav-link active" aria-current="page">Add Offer</router-link>
+                        </li>                                                   
                     </ul>
                     <form class="d-flex" v-if="mode=='Browse'">
                         <button class="btn btn-primary me-2" type="submit" v-on:click="registrateUser()">Sign
@@ -86,7 +92,7 @@ Vue.component("user-homepage", {
                 .get('rest/logout')
                 .then(response => {
                     this.mode = 'Browse';
-                    this.$router.push({ name: 'homepage' })
+                    this.$router.push({ name: 'sports-object' })
                 });
         },
         isOpen: function (SportsObject) {

@@ -19,10 +19,16 @@ Vue.component("managers-object", {
         <p>
           {{sportsObject.description}}
         </p>
+        <h4 clas="col-md-8">Offers</h4>
+        <p>
+        <li v-for="offer in sportsObject.offers">
+            <router-link :to="{name:'edit-offer', params:{userId:user.id, oldOffer:offer}}">{{offer.name}}</router-link>
+        </li>
+        </p>
       </div>
       </div>
       <div class="container">
-          <h2>Prikaz kupaca objekta</h2>
+          <h2>Customers</h2>
           <table class="table">
           <thead class="thead-light">
             <tr>
@@ -43,7 +49,7 @@ Vue.component("managers-object", {
         </table>
       </div>
       <div class="container">
-      <h2>Prikaz trenera objekta</h2>
+      <h2>Trainers</h2>
       <table class="table">
       <thead class="thead-light">
         <tr>
@@ -75,7 +81,7 @@ Vue.component("managers-object", {
         this.user = response.data;
       });
     axios
-      .get('rest/sportsobject', { params: { id: this.$route.params.id } })
+      .get('rest/manager-object', { params: { id: this.$route.params.id } })
       .then(response => {
         this.sportsObject = response.data;
       });
@@ -90,4 +96,7 @@ Vue.component("managers-object", {
         this.trainers = response.data;
       })
   },
+  methods:{
+  }
+
 });

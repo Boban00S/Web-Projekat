@@ -87,8 +87,9 @@ Vue.component("homepage", {
                                 Working Hours: {{b.workingHours}}
                             </div>
                         </div>
-                        </div>
+                    </div>
                     <div class="row align-text-bottom justify-content-end">
+                        <router-link :to="{name:'sport-object', params:{objectId:b.id}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
                         <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
@@ -113,8 +114,9 @@ Vue.component("homepage", {
                                 Working Hours: {{b.workingHours}}
                             </div>
                         </div>
-                        </div>
+                    </div>
                     <div class="row align-text-bottom justify-content-end">
+                        <router-link :to="{name:'sport-object', params:{objectId:b.id}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
                         <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>

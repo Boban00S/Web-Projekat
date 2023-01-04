@@ -6,7 +6,7 @@ public class SportsObject {
 	private int id;
 	private String name;
 	private SportsObjectType objectType;
-	private List<String> offers;
+	private List<Offer> offers;
 	private boolean opened;
 	private Location location;
 	private String imagePath;
@@ -22,7 +22,7 @@ public class SportsObject {
 	
 	
 	
-	public SportsObject(int id, String name, SportsObjectType objectType, List<String> offers, boolean opened, Location location, String imagePath,
+	public SportsObject(int id, String name, SportsObjectType objectType, List<Offer> offers, boolean opened, Location location, String imagePath,
 			Double averageGrade, String workingHours, OpeningHours openingHours, String description, String managerUsername) {
 		super();
 		this.id = id;
@@ -41,7 +41,7 @@ public class SportsObject {
 
 
 
-	public SportsObject(int id, String name, SportsObjectType objectType, List<String> offers, boolean opened, Location location, String imagePath,
+	public SportsObject(int id, String name, SportsObjectType objectType, List<Offer> offers, boolean opened, Location location, String imagePath,
 			Double averageGrade, String workingHours) {
 		super();
 		this.id = id;
@@ -94,12 +94,12 @@ public class SportsObject {
 
 
 
-	public List<String> getOffers() {
+	public List<Offer> getOffers() {
 		return offers;
 	}
 
 
-	public void setOffers(List<String> offers) {
+	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
 	}
 

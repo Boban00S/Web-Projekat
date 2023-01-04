@@ -5,15 +5,25 @@ const UserProfile = { template: '<user-profile></user-profile>' }
 const UserHomepage = { template: '<user-homepage></user-homepage>' }
 
 const SportsObjectsInfo = { template: '<sports-object></sports-object>' }
+const SportObjectInfo = { template: '<sport-object></sport-object>' }
 const ShowUsers = { template: '<show-users></show-users>' }
 const ManagersSportsObject = { template: '<managers-object></managers-object>' }
 const CreateSportsObject = { template: '<admin-object></admin-object>' }
+const CreateEmployee = { template: '<create-employee></create-employee>' }
+const AddOffer = {template: '<add-offer></add-offer>'}
+const EditOffer = { template: '<edit-offer></edit-offer>'}
 
 
 const router = new VueRouter({
     mode: 'hash',
     routes: [
-        { path: '/', name: 'homepage', component: Homepage },
+        {
+            path: '/',
+            component: UserHomepage,
+            children: [
+                {path: '', component: SportsObjectsInfo, name: 'sports-object'},
+                {path: 'sport-object', component: SportObjectInfo, name: 'sport-object'}
+            ]},
         { path: '/login', name: 'login', component: Login },
         { path: '/registration', name: 'registration', component: Registration },
         {
@@ -24,7 +34,11 @@ const router = new VueRouter({
                 { path: 'profile', component: UserProfile, name: 'user-profile' },
                 { path: 'users', component: ShowUsers, name: 'show-users' },
                 { path: 'object', component: ManagersSportsObject, name: 'managers-object' },
-                { path: 'create/object', component: CreateSportsObject, name: 'admin-object' }
+                { path: 'create/object', component: CreateSportsObject, name: 'admin-object' },
+                { path: 'create-employee', component: CreateEmployee, name: 'create-employee'},
+                { path: 'sport-object', component: SportObjectInfo, name: 'sport-object'},
+                { path: 'add-offer', component: AddOffer, name: 'add-offer'},
+                { path: 'edit-offer', component: EditOffer, name: 'edit-offer'},
             ]
         },
     ]
