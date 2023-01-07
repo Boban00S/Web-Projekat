@@ -92,6 +92,16 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		serialize(trainingList, false);
 	}
 
+	public List<Training> findAllTrainingsInSportObject(int sportObjectId){
+		List<Training> output = new ArrayList<>();
+		for(Training t: trainings.values()){
+			if(t.getSportsObject().getId() == sportObjectId){
+				output.add(t);
+			}
+		}
+		return output;
+	}
+
 	public List<Training> findNonPersonalTrainingsByTrainerId(int trainerId){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){

@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/offers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/offers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/training.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/TrainingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Training.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Training.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/app/user_homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/user_homepage.js" afterDir="false" />
@@ -41,21 +37,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/stani/Desktop/FTN Projekti/Web-Projekat/ProjekatWeb/static/app",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stani/Desktop/FTN Projekti/Web-Projekat/ProjekatWeb/static/app&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\stani\Desktop\FTN Projekti\Web-Projekat\ProjekatWeb\static\app" />
@@ -126,6 +122,7 @@
       <workItem from="1673117146241" duration="347000" />
       <workItem from="1673117558951" duration="279000" />
       <workItem from="1673117855409" duration="3802000" />
+      <workItem from="1673122256270" duration="1017000" />
     </task>
     <servers />
   </component>
