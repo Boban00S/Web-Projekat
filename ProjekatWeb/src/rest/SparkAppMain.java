@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Key;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,14 +18,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import dao.CustomerDAO;
-import dao.ManagerDAO;
-import dao.SportsObjectDAO;
-import dao.TrainerDAO;
-import dao.UserDAO;
+import dao.*;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jsonparsing.LocalDateConverter;
+import jsonparsing.LocalDateTimeConverter;
 import model.*;
 import spark.Session;
 import ws.WsHandler;
@@ -37,12 +35,16 @@ public class SparkAppMain {
 	
 	private static Gson g = getGson();
 	private static UserDAO userDAO = new UserDAO("data/users.json");
-	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
+	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
+	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json", offerDAO);
 	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
 	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
 	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
-	
-	
+
+	private static TrainingDAO trainingDAO = new TrainingDAO("data/training.json", offerDAO, trainerDAO, sportsObjectDAO);
+
+	private static TrainingHistoryDAO trainingHistoryDAO = new TrainingHistoryDAO("data/training_history.json", trainingDAO, customerDAO, trainerDAO);
+
 	/**
 	 * Ključ za potpisivanje JWT tokena.
 	 * Biblioteka: https://github.com/jwtk/jjwt
@@ -222,6 +224,15 @@ public class SparkAppMain {
 			return g.toJson(sportsObject);
 		});
 
+		get("rest/trainings-month", (req, res) ->{
+			res.type("application/json");
+			int customerId = Integer.parseInt(req.queryMap("id").value());
+			Customer customer = customerDAO.findById(customerId);
+			List<Training30Days> training30DaysHistory = trainingHistoryDAO.findLast30DaysOfTrainings(customer);
+			res.status(200);
+			return g.toJson(training30DaysHistory);
+		});
+
 		delete("rest/sport-object/offer", (req, res) -> {
 			res.type("application/json");
 			int sportObjectId = Integer.parseInt(req.queryMap("objectId").value());
@@ -376,6 +387,7 @@ public class SparkAppMain {
 	private static Gson getGson() {
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
 		return gson;
 	}

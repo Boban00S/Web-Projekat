@@ -1,0 +1,46 @@
+[
+    {
+        "id": 3,
+        "name": "Body Combat",
+        "type": "Training",
+        "imagePath": "asd",
+        "description": "asdad",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        }
+    },
+    {
+        "id": 4,
+        "name": "Sauna Special",
+        "type": "Pool",
+        "imagePath": "https://example.com/pool-pass.jpg",
+        "description": "Unlimited access to the pool for one month",
+        "duration": 30,
+        "sportsObject": {
+            "id": 2
+        }
+    },
+    {
+        "id": 2,
+        "name": "Sauna Special",
+        "type": "Sauna",
+        "imagePath": "asfgg",
+        "description": "2 hours in the sauna for the price of 1!",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        }
+    },
+    {
+        "id": 1,
+        "name": "Pool Pass",
+        "type": "Pool",
+        "imagePath": "https://example.com/pool-pass.jpgfsdfds",
+        "description": "Unlimited access to the pool for one month",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        }
+    }
+]

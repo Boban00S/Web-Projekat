@@ -1,11 +1,17 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Calendar;
 
 public class OpeningHours {
+	@Expose
 	private Integer fromHours;
+	@Expose
 	private Integer fromMinutes;
+	@Expose
 	private Integer toHours;
+	@Expose
 	private Integer toMinutes;
 	
 	public OpeningHours(Integer fromHours, Integer fromMinutes, Integer toHours, Integer toMinutes) {

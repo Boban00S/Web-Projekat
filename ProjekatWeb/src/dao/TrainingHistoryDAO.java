@@ -1,26 +1,144 @@
 package dao;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import jsonparsing.LocalDateConverter;
+import jsonparsing.LocalDateTimeConverter;
+import model.*;
+
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import model.ISerializable;
-import model.TrainingHistory;
-
 public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory> {
-	//	private CustomerDAO customerDAO = new CustomerDAO("static/customers.json");
-		private TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
-	//	private TrainingDAO trainingDAO = new TrainingDAO("static/trainings.json");
-	
+
+	private TrainingDAO trainingDAO;
+	private CustomerDAO customerDAO;
+	private TrainerDAO trainerDAO;
+
+	private HashMap<String, TrainingHistory> trainingHistories;
+	private String fileName;
+
+	public TrainingHistoryDAO(){}
+
+	public TrainingHistoryDAO(String fileName, TrainingDAO trainingDAO, CustomerDAO customerDAO, TrainerDAO trainerDAO){
+		this.fileName = fileName;
+		this.trainingDAO = trainingDAO;
+		this.customerDAO = customerDAO;
+		this.trainerDAO = trainerDAO;
+		try{
+			trainingHistories = deserialize();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+
+	public int getNextId() {
+		int maxId = 0;
+		for(TrainingHistory t:trainingHistories.values()) {
+			if(t.getId()> maxId) {
+				maxId = t.getId();
+			}
+		}
+		return ++maxId;
+	}
+
+
+	public Collection<TrainingHistory> findAll(){ return trainingHistories.values(); }
+
+//	public List<TrainingHistory> findTrainingsByCustomerId(int customerId){
+//		List<TrainingHistory> output = new ArrayList<>();
+//		for(TrainingHistory t: trainingHistories.values()){
+//			if(t.getCustomer().getId() == customerId){
+//				output.add(t);
+//			}
+//		}
+//		return output;
+//	}
+
+	public List<Training> findTrainingsByCustomerId(int customerId){
+		HashMap<String, Training> output = new HashMap<>();
+		for(TrainingHistory t: trainingHistories.values()){
+			if(t.getCustomer().getId() == customerId){
+				output.put(t.getTraining().getImagePath(), t.getTraining());
+			}
+		}
+		List<Training> outputList = new ArrayList<>(output.values());
+		return outputList;
+	}
+
+
+	public void addTrainingHistory(TrainingHistory trainingHistory) throws IOException{
+		trainingHistory.setId(getNextId());
+		trainingHistories.put(trainingHistory.getId().toString(), trainingHistory);
+		List<TrainingHistory> trainingHistoryList = new ArrayList<>(findAll());
+		serialize(trainingHistoryList, false);
+	}
+
+
+	public List<Training30Days> findLast30DaysOfTrainings(Customer customer){
+		List<Training30Days> output = new ArrayList<>();
+		List<Training> uniqueTrainings = findTrainingsByCustomerId(customer.getId());
+		for(Training t: uniqueTrainings){
+			List<LocalDateTime> last30Days = new ArrayList<>();
+			for(TrainingHistory tH: trainingHistories.values()){
+				if(t.getId() == tH.getTraining().getId() && tH.getCustomer().getId() == customer.getId()){
+					System.out.println(tH.getStartDateAndTime().toLocalDate());
+					Period diff = Period.between(tH.getStartDateAndTime().toLocalDate(), LocalDateTime.now().toLocalDate());
+					if(diff.getDays() < 30){
+						last30Days.add(tH.getStartDateAndTime());
+					}
+				}
+			}
+			Training30Days tD = new Training30Days(t.getId(), customer, t.getTrainer(), t, last30Days);
+			output.add(tD);
+		}
+		return output;
+	}
+
 	@Override
 	public void serialize(List<TrainingHistory> objectList, boolean append) throws IOException {
-		// TODO Auto-generated method stub
-		
+		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		Gson gson = builder.create();
+		Writer writer = new FileWriter(fileName, append);
+		gson.toJson(objectList, writer);
+		writer.flush();
+		writer.close();
 	}
 	
 	@Override
 	public HashMap<String, TrainingHistory> deserialize() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		Reader reader = Files.newBufferedReader(Paths.get(fileName));
+		GsonBuilder builder = new GsonBuilder();
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		Gson gson = builder.create();
+		TrainingHistory[] trainingHistories1 = gson.fromJson(reader, TrainingHistory[].class);
+		HashMap<String, TrainingHistory> output = new HashMap<>();
+		if(trainingHistories1 != null){
+			for(TrainingHistory t: trainingHistories1){
+				Trainer trainer = trainerDAO.findById(t.getTrainer().getId());
+				Customer customer = customerDAO.findById(t.getCustomer().getId());
+				Training training = trainingDAO.findById(t.getTraining().getId());
+				t.setTrainer(trainer);
+				t.setCustomer(customer);
+				t.setTraining(training);
+				output.put(t.getId().toString(), t);
+			}
+		}
+		return output;
 	}
 }

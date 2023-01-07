@@ -39,7 +39,16 @@ public class TrainerDAO implements ISerializable<String, Trainer>{
 			ex.printStackTrace();
 		}
 	}
-	
+
+	public Trainer findById(int trainerId){
+		for(Trainer t: trainers.values()){
+			if(t.getId() == trainerId){
+				return t;
+			}
+		}
+		return null;
+	}
+
 	public Collection<Trainer> findAll() {
 		return trainers.values();
 	}

@@ -21,13 +21,15 @@ import model.ISerializable;
 
 public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 	private HashMap<String, SportsObject> sportsObjects;
+	private OfferDAO offerDAO;
 	private String fileName;
 	
 	public SportsObjectDAO() {
 		
 	}
 	
-	public SportsObjectDAO(String fileName) {
+	public SportsObjectDAO(String fileName, OfferDAO offerDAO) {
+		this.offerDAO = offerDAO;
 		this.fileName = fileName;
 		try {
 			sportsObjects = deserialize();
@@ -61,6 +63,7 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 		oldObject.setDescription(sportsObject.getDescription());
 		oldObject.setLocation(sportsObject.getLocation());
 		oldObject.setAverageGrade(sportsObject.getAverageGrade());
+		offerDAO.editOffers(sportsObject.getOffers());
 		oldObject.setOffers(sportsObject.getOffers());
 		oldObject.setType(sportsObject.getType());
 		oldObject.setManagerUsername(sportsObject.getManagerUsername());
@@ -70,7 +73,7 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 		return oldObject;
 	}
 	
-	public SportsObject deleteOfferById(int sportObjectId, int offerId){
+	public SportsObject deleteOfferById(int sportObjectId, int offerId) throws IOException{
 		SportsObject sportsObject = findById(sportObjectId);
 		for(Offer o: sportsObject.getOffers()){
 			if(o.getId() == offerId){
@@ -78,6 +81,8 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 				break;
 			}
 		}
+		offerDAO.deleteOfferById(offerId);
+
 		return sportsObject;
 	}
 
@@ -118,7 +123,7 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 	
 	@Override
 	public void serialize(List<SportsObject> SportsObjectList, boolean append) throws IOException{
-		GsonBuilder builder = new GsonBuilder();
+		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);
@@ -138,6 +143,10 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 		output = new HashMap<String, SportsObject>();
 		if(SportsObjectsA != null) { 
 			for(SportsObject b: SportsObjectsA) {
+				if(b.getOffers() != null) {
+					List<Offer> offers = offerDAO.getOffersByIds(b.getOffers());
+					b.setOffers(offers);
+				}
 				output.put(b.getName(), b);
 			}
 		}

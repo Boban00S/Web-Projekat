@@ -1,10 +1,17 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 public class Location {
+	@Expose
 	private String longitude;
+	@Expose
 	private String latitude;
+	@Expose
 	private String street;
+	@Expose
 	private String place;
+	@Expose
 	private String country;
 	
 	public Location(String longitude, String latitude, String street, String place, String country) {

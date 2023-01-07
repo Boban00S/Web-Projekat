@@ -146,13 +146,11 @@ Vue.component("edit-offer", {
                                 this.$router.push({path: '/user/' + this.user.id});
                             })
                     })
-                // this.sportsObject.offers.push(this.newOffer);
-                // axios
-                //     .put('rest/sport-object', this.sportsObject)
-                //     .then(response => {
-                //         this.$router.push({path: '/user/' + this.user.id});
-                //     })
             }
         }
     }
 })
+
+// Kupci imaju opciju pregleda svih svojih treninga u okviru svog korisničkog profila. Kod
+// pregleda svih treninga omogućiti prikaz naziva treninga, sportskog objekta i datuma
+// treniranja u proteklih mesec dana.

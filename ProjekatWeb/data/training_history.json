@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "startDateAndTime": "2023-01-07T15:32:35.2342852",
+        "customer": {
+            "id": 3
+        },
+        "trainer": {
+            "id": 18
+        },
+        "training": {
+            "trainer": {
+                "id": 18
+            },
+            "id": 3
+        }
+    }
+]

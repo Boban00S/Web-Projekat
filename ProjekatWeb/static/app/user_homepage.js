@@ -32,7 +32,10 @@ Vue.component("user-homepage", {
                         </li> 
                         <li class="nav-item" v-if="userRole=='manager'">
                             <router-link :to="{name:'add-offer', params:{id:user.id}}" class="nav-link active" aria-current="page">Add Offer</router-link>
-                        </li>                                                   
+                        </li>        
+                        <li class="nav-item" v-if="userRole=='customer'">
+                            <router-link :to="{name:'show-customer-trainings', params:{id:user.id}}" class="nav-link active" aria-current="page">Trainings</router-link>
+                        </li>                                             
                     </ul>
                     <form class="d-flex" v-if="mode=='Browse'">
                         <button class="btn btn-primary me-2" type="submit" v-on:click="registrateUser()">Sign

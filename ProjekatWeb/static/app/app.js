@@ -12,6 +12,7 @@ const CreateSportsObject = { template: '<admin-object></admin-object>' }
 const CreateEmployee = { template: '<create-employee></create-employee>' }
 const AddOffer = {template: '<add-offer></add-offer>'}
 const EditOffer = { template: '<edit-offer></edit-offer>'}
+const CustomerTrainings = { template: '<show-customer-trainings></show-customer-trainings>'}
 
 
 const router = new VueRouter({
@@ -39,6 +40,7 @@ const router = new VueRouter({
                 { path: 'sport-object', component: SportObjectInfo, name: 'sport-object'},
                 { path: 'add-offer', component: AddOffer, name: 'add-offer'},
                 { path: 'edit-offer', component: EditOffer, name: 'edit-offer'},
+                { path: 'show-customer-trainings', component: CustomerTrainings, name: 'show-customer-trainings'},
             ]
         },
     ]

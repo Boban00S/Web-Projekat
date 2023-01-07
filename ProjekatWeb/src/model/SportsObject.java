@@ -1,19 +1,33 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.List;
 
 public class SportsObject {
+	@Expose
 	private int id;
+	@Expose
 	private String name;
+	@Expose
 	private SportsObjectType objectType;
+	@Expose
 	private List<Offer> offers;
+	@Expose
 	private boolean opened;
+	@Expose
 	private Location location;
+	@Expose
 	private String imagePath;
+	@Expose
 	private Double averageGrade;
+	@Expose
 	private String workingHours;
+	@Expose
 	private OpeningHours openingHours;
+	@Expose
 	private String description;
+	@Expose
 	private String managerUsername;
 	
 	public SportsObject() {

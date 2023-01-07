@@ -1,20 +1,12 @@
 package rest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.AdminDAO;
-import dao.CustomerDAO;
-import dao.ManagerDAO;
-import dao.TrainerDAO;
-import dao.UserDAO;
-import model.Administrator;
-import model.Customer;
-import model.Gender;
-import model.Manager;
-import model.Role;
-import model.Trainer;
+import dao.*;
+import model.*;
 
 public class Test {
 	private static UserDAO userDAO = new UserDAO("data/users.json");
@@ -22,6 +14,13 @@ public class Test {
 	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
 	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
 	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
+	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
+
+//	private static TrainingDAO trainingDAO = new TrainingDAO("data/training.json", offerDAO, trainerDAO, sportObjectDAO);
+
+//	private static TrainingHistoryDAO trainingHistoryDAO = new TrainingHistoryDAO("data/training_history.json", trainingDAO, customerDAO, trainerDAO);
+
+
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -42,7 +41,9 @@ public class Test {
 //		SportsObjectDAO bd = new SportsObjectDAO("D:\\web-work-space\\Web-Projekat\\ProjekatWeb\\static\\sports_objects.json");
 //		bd.serialize(SportsObjects, false);
 		
-		createManagers();
+//		createManagers();
+//		createOffers();
+//		createTrainingHistories();
 	}
 
 	
@@ -74,4 +75,28 @@ public class Test {
 		c1.setSportsObjectAttended(sOA);
 		customerDAO.addCustomer(c1);
 	}
+
+//	private static void createOffers() throws Exception{
+//		Offer o1 = new Offer(1, "Pool Pass", "Pool", "https://example.com/pool-pass.jpg",
+//				"Unlimited access to the pool for one month",
+//				30,
+//				2);
+//		Offer o2 = new Offer(2, "Sauna Special", "Sauna", "asfgg",
+//				"2 hours in the sauna for the price of 1!", 30, 1);
+//		Offer o3 = new Offer(3, "Gym Membership", "Gym", "asd",
+//				"Unlimited access to the gym for one month", 30, 1);
+//		offerDAO.addOffer(o1);
+//		offerDAO.addOffer(o2);
+//		offerDAO.addOffer(o3);
+//	}
+
+//	private static void createTrainingHistories() throws Exception{
+//		Customer customer = customerDAO.findById(3);
+//		Trainer trainer = trainerDAO.findById(18);
+//		Training training = trainingDAO.findById(3);
+//		TrainingHistory trainingHistory = new TrainingHistory(-1, LocalDateTime.now(), customer, trainer, training);
+//
+//		trainingHistoryDAO.addTrainingHistory(trainingHistory);
+//	}
+
 }

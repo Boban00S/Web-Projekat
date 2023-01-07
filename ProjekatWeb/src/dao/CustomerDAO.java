@@ -17,11 +17,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
-import model.Customer;
-import model.ISerializable;
-import model.Role;
-import model.User;
-import model.UserExcludingStrategy;
+import model.*;
 
 public class CustomerDAO implements ISerializable<String, Customer> {
 	private UserDAO userDAO = new UserDAO("data/users.json");
@@ -40,14 +36,24 @@ public class CustomerDAO implements ISerializable<String, Customer> {
 		}
 	}
 	
-	
+	public Customer findById(int customerId){
+		for(Customer c: customers.values()){
+			if(c.getId() == customerId){
+				return c;
+			}
+		}
+		return null;
+	}
+
 	public List<Customer> findCustomersBySportsObjectId(int sportsObjectId){
 		List<Customer> output = new ArrayList<>();
 		for(Customer c: customers.values()) {
-			for(int i: c.getSportsObjectAttended()) {
-				if(i == sportsObjectId) {
-					output.add(c);
-					break;
+			if(c.getSportsObjectAttended() != null){
+				for(int i: c.getSportsObjectAttended()) {
+					if(i == sportsObjectId) {
+						output.add(c);
+						break;
+					}
 				}
 			}
 		}

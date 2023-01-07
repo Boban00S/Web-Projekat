@@ -45,7 +45,6 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 	
 	public void addSportsObjectToManager(SportsObject s) throws IOException{
 		for(Manager m: managers.values()) {
-			System.out.println(m.getUsername());
 			if(m.getUsername().equals(s.getManagerUsername())) {
 				m.setSportsObject(s.getId());
 				List<Manager> managersList = new ArrayList<>(managers.values());

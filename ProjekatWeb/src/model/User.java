@@ -6,19 +6,12 @@ import com.google.gson.annotations.Expose;
 public class User {
 	@Expose
 	private int id;
-	@Expose
 	private String username;
-	@Expose
-	private String password;	
-	@Expose
+	private String password;
 	private String name;
-	@Expose
 	private String lastName;
-	@Expose
 	private Gender gender;
-	@Expose
 	private LocalDate birthdate;
-	@Expose
 	private Role role;
 	
 	public User() {

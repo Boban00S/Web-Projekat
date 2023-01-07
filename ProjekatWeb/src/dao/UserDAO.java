@@ -96,7 +96,6 @@ public class UserDAO implements ISerializable<String, User> {
 	public void addUser(User user, Role role) throws IOException{
 		user.setId(getNextId());
 		user.setRole(role);
-		System.out.println(user.getBirthdate());
 		users.put(user.getUsername(), user);
 		List<User> usersList = new ArrayList<>(findAll());
 		serialize(usersList, false);
