@@ -204,7 +204,38 @@ public class SparkAppMain {
 			res.status(200);
 			return ("Yes");
 		});
-		
+
+		get("/rest/personal-trainings", (req, res) ->{
+			res.type("application/json");
+			int trainerId = Integer.parseInt(req.queryMap("id").value());
+			Trainer t = trainerDAO.findById(trainerId);
+			List<Training> personalTrainings = trainingDAO.findPersonalTrainingsByTrainerId(trainerId);
+			res.status(200);
+			return g.toJson(personalTrainings);
+		});
+
+		delete("/rest/personal-training", (req, res) ->{
+			res.type("application/json");
+			int trainerId = Integer.parseInt(req.queryMap("trainerId").value());
+			int trainingId = Integer.parseInt(req.queryMap("trainingId").value());
+			trainingDAO.deleteById(trainingId);
+			List<Training> personalTrainings = trainingDAO.findPersonalTrainingsByTrainerId(trainerId);
+			res.status(200);
+			return g.toJson(personalTrainings);
+		});
+
+
+		get("/rest/non-personal-trainings", (req, res) ->{
+			res.type("application/json");
+			int trainerId = Integer.parseInt(req.queryMap("id").value());
+			Trainer t = trainerDAO.findById(trainerId);
+			List<Training> personalTrainings = trainingDAO.findNonPersonalTrainingsByTrainerId(trainerId);
+			res.status(200);
+			return g.toJson(personalTrainings);
+		});
+
+
+
 		get("rest/manager-object", (req, res) ->{
 			res.type("application/json");
 			int userId = Integer.parseInt(req.queryMap("id").value());

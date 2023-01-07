@@ -13,7 +13,8 @@ const CreateEmployee = { template: '<create-employee></create-employee>' }
 const AddOffer = {template: '<add-offer></add-offer>'}
 const EditOffer = { template: '<edit-offer></edit-offer>'}
 const CustomerTrainings = { template: '<show-customer-trainings></show-customer-trainings>'}
-
+const PersonalTrainings = { template: '<personal-trainings></personal-trainings>' }
+const NonPersonalTrainings = {template: '<non-personal-trainings></non-personal-trainings>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -41,6 +42,8 @@ const router = new VueRouter({
                 { path: 'add-offer', component: AddOffer, name: 'add-offer'},
                 { path: 'edit-offer', component: EditOffer, name: 'edit-offer'},
                 { path: 'show-customer-trainings', component: CustomerTrainings, name: 'show-customer-trainings'},
+                { path: 'personal-trainings', component: PersonalTrainings, name: 'personal-trainings'},
+                {path: 'non-personal-trainings', component: NonPersonalTrainings, name: 'non-personal-trainings'}
             ]
         },
     ]

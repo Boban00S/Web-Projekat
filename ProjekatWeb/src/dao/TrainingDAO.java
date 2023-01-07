@@ -7,6 +7,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import jsonparsing.LocalDateConverter;
+import jsonparsing.LocalDateTimeConverter;
 import model.*;
 
 public class TrainingDAO implements ISerializable<String, Training> {
@@ -68,10 +70,43 @@ public class TrainingDAO implements ISerializable<String, Training> {
 
 	public Collection<Training> findAll(){ return trainings.values(); }
 
+	public List<Training> findPersonalTrainingsByTrainerId(int trainerId){
+		List<Training> output = new ArrayList<>();
+		for(Training t: trainings.values()){
+			if(t.getTrainer().getId() == trainerId && t.isPersonal()){
+				output.add(t);
+			}
+		}
+		return output;
+	}
+
+	public void deleteById(int trainingId) throws IOException{
+		for(Training t: trainings.values()){
+			if(t.getId() == trainingId){
+				offerDAO.deleteOfferById(trainingId);
+				trainings.remove(t.getImagePath());
+				break;
+			}
+		}
+		List<Training> trainingList = new ArrayList<>(findAll());
+		serialize(trainingList, false);
+	}
+
+	public List<Training> findNonPersonalTrainingsByTrainerId(int trainerId){
+		List<Training> output = new ArrayList<>();
+		for(Training t: trainings.values()){
+			if(t.getTrainer().getId() == trainerId && !t.isPersonal()){
+				output.add(t);
+			}
+		}
+		return output;
+	}
+
 	@Override
 	public void serialize(List<Training> objectList, boolean append) throws IOException {
 		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);
 		gson.toJson(objectList, writer);
@@ -84,12 +119,13 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		Reader reader = Files.newBufferedReader(Paths.get(fileName));
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
 		Training[] trainings1 = gson.fromJson(reader, Training[].class);
 		HashMap<String, Training> output = new HashMap<>();
 		if(trainings1 != null){
 			for(Training t: trainings1){
-				Training t1 = new Training(offerDAO.findById(t.getId()), t.getTrainer());
+				Training t1 = new Training(offerDAO.findById(t.getId()), t.getTrainer(), t.getTrainingDate(), t.isPersonal());
 				t1.setTrainer(trainerDAO.findById(t1.getTrainer().getId()));
 				t1.setSportsObject(sportsObjectDAO.findById(t1.getSportsObject().getId()));
 				output.put(t1.getImagePath(), t1);

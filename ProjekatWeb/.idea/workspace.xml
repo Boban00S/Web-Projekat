@@ -2,29 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dao/TrainingDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/customers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sports_objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/sports_objects.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/ManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ManagerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/SportsObjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/SportsObjectDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/TrainerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/TrainingHistoryDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/OpeningHours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/OpeningHours.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SportsObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SportsObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SportsObjectType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SportsObjectType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/offers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/offers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TrainingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainingDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Training.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Training.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/TrainingHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TrainingHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/app/edit_offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/edit_offer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/app/user_homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/user_homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
     </list>
@@ -56,19 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/stani/Desktop/FTN Projekti/Web-Projekat/ProjekatWeb/data&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/stani/Desktop/FTN Projekti/Web-Projekat/ProjekatWeb/static/app",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\stani\Desktop\FTN Projekti\Web-Projekat\ProjekatWeb\static\app" />
       <recent name="C:\Users\stani\Desktop\FTN Projekti\Web-Projekat\ProjekatWeb\data" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -104,6 +94,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.SparkAppMain" />
+      <item itemvalue="Application.Test" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
@@ -129,6 +123,9 @@
       <workItem from="1672854327673" duration="8729000" />
       <workItem from="1672941141958" duration="9003000" />
       <workItem from="1673098918930" duration="11769000" />
+      <workItem from="1673117146241" duration="347000" />
+      <workItem from="1673117558951" duration="279000" />
+      <workItem from="1673117855409" duration="3802000" />
     </task>
     <servers />
   </component>

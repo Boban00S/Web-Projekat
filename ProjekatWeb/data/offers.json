@@ -23,8 +23,8 @@
     },
     {
         "id": 2,
-        "name": "Sauna Special",
-        "type": "Sauna",
+        "name": "Box",
+        "type": "Training",
         "imagePath": "asfgg",
         "description": "2 hours in the sauna for the price of 1!",
         "duration": 30,

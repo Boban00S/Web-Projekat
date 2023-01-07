@@ -2,7 +2,17 @@
     {
         "id": 3,
         "trainer": {
-            "id" : 18
-        }
+            "id": 18
+        },
+        "trainingDate": "2023-01-11T15:32:35.2342852",
+        "isPersonal": true
+    },
+    {
+        "id": 2,
+        "trainer": {
+            "id": 18
+        },
+        "trainingDate": "2023-01-07T15:32:35.2342852",
+        "isPersonal": false
     }
 ]
