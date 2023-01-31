@@ -16,10 +16,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory> {
 
@@ -86,7 +83,13 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 		serialize(trainingHistoryList, false);
 	}
 
-
+	public List<Training30Days> sortyBy(String sortColumn, boolean isAscending, Customer customer){
+		List<Training30Days> training30DaysHistory = findLast30DaysOfTrainings(customer);
+		FlexibleTrainingsComparator comparator = new FlexibleTrainingsComparator(isAscending);
+		comparator.setSortingBy(sortColumn);
+		Collections.sort(training30DaysHistory, comparator);
+		return training30DaysHistory;
+	}
 	public List<Training30Days> findLast30DaysOfTrainings(Customer customer){
 		List<Training30Days> output = new ArrayList<>();
 		List<Training> uniqueTrainings = findTrainingsByCustomerId(customer.getId());
@@ -94,7 +97,6 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 			List<LocalDateTime> last30Days = new ArrayList<>();
 			for(TrainingHistory tH: trainingHistories.values()){
 				if(t.getId() == tH.getTraining().getId() && tH.getCustomer().getId() == customer.getId()){
-					System.out.println(tH.getStartDateAndTime().toLocalDate());
 					Period diff = Period.between(tH.getStartDateAndTime().toLocalDate(), LocalDateTime.now().toLocalDate());
 					if(diff.getDays() < 30){
 						last30Days.add(tH.getStartDateAndTime());

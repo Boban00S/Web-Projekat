@@ -5,6 +5,7 @@ Vue.component("managers-object", {
       sportsObject: null,
       customers: null,
       trainers: null,
+      trainings: null,
     }
   },
   template:
@@ -21,8 +22,8 @@ Vue.component("managers-object", {
         </p>
         <h4 clas="col-md-8">Offers</h4>
         <p>
-        <li v-for="offer in sportsObject.offers">
-            <router-link :to="{name:'edit-offer', params:{userId:user.id, oldOffer:offer}}">{{offer.name}}</router-link>
+        <li v-for="training in trainings">
+            <router-link :to="{name:'edit-offer', params:{userId:user.id, oldTraining:training}}">{{training.name}}</router-link>
         </li>
         </p>
       </div>
@@ -95,6 +96,11 @@ Vue.component("managers-object", {
       .then(response => {
         this.trainers = response.data;
       })
+    axios
+        .get('rest/sport-object/trainings', { params: { id: this.$route.params.id } })
+        .then(response => {
+          this.trainings = response.data;
+        })
   },
   methods:{
   }

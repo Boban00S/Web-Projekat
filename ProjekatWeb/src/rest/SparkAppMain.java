@@ -35,13 +35,15 @@ public class SparkAppMain {
 	
 	private static Gson g = getGson();
 	private static UserDAO userDAO = new UserDAO("data/users.json");
-	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
-	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json", offerDAO);
+//	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
 	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
 	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
 	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
 
-	private static TrainingDAO trainingDAO = new TrainingDAO("data/training.json", offerDAO, trainerDAO, sportsObjectDAO);
+	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
+
+	private static TrainingDAO trainingDAO = new TrainingDAO("data/training.json", trainerDAO, sportsObjectDAO);
+
 
 	private static TrainingHistoryDAO trainingHistoryDAO = new TrainingHistoryDAO("data/training_history.json", trainingDAO, customerDAO, trainerDAO);
 
@@ -52,6 +54,7 @@ public class SparkAppMain {
 	static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
 	public static void main(String[] args) throws Exception {
+
 		port(8080);
 
 		webSocket("/ws", WsHandler.class);
@@ -86,7 +89,17 @@ public class SparkAppMain {
 			
 			return g.toJson(sportsObjectDAO.findAll());
 		});
-		
+
+		get("rest/sport-object/trainings", (req, res) ->{
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			Manager m = managerDAO.findManagerById(userId);
+			SportsObject sportsObject = sportsObjectDAO.findById(m.getSportsObject());
+			res.status(200);
+			List<Training> trainings = trainingDAO.findAllTrainingsInSportObject(sportsObject.getId());
+
+			return g.toJson(trainings);
+		});
+
 		get("/rest/user", (req, res) -> {
 			res.type("application/json");
 			int userId = Integer.parseInt(req.queryMap("id").value());
@@ -271,13 +284,23 @@ public class SparkAppMain {
 			return g.toJson(training30DaysHistory);
 		});
 
-		delete("rest/sport-object/offer", (req, res) -> {
+		delete("rest/sport-object/training", (req, res) -> {
 			res.type("application/json");
 			int sportObjectId = Integer.parseInt(req.queryMap("objectId").value());
-			int offerId = Integer.parseInt(req.queryMap("offerId").value());
-			SportsObject sportsObject = sportsObjectDAO.deleteOfferById(sportObjectId, offerId);
+			int trainingId = Integer.parseInt(req.queryMap("trainingId").value());
+			trainingDAO.deleteById(trainingId);
+			List<Training> trainings = trainingDAO.findBySportsObjectId(sportObjectId);
 			res.status(200);
-			return g.toJson(sportsObject);
+			return g.toJson(trainings);
+		});
+
+		post("rest/sport-object/training", (req, res) -> {
+			res.type("application/json");
+			String training = req.body();
+			Training t = g.fromJson(training, Training.class);
+			trainingDAO.addTraining(t);
+			res.status(200);
+			return ("Yes");
 		});
 
 		get("rest/sport-object/trainers", (req, res) ->{
@@ -391,6 +414,42 @@ public class SparkAppMain {
 			return g.toJson(sportsObjectDAO.sortBy(sortColumn));
 		});
 
+		get("rest/sort/customer-trainings", (req, res) ->{
+			res.type("application/json");
+			int customerId = Integer.parseInt(req.queryMap("id").value());
+			String sortColumn = req.queryMap("sortColumn").value();
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("ascending");
+			Customer customer = customerDAO.findById(customerId);
+			return g.toJson(trainingHistoryDAO.sortyBy(sortColumn, isAscending, customer));
+		});
+
+		get("rest/sort/trainer-trainings/personal", (req, res) ->{
+			res.type("application/json");
+			int trainerId = Integer.parseInt(req.queryMap("id").value());
+			String sortColumn = req.queryMap("sortColumn").value();
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("true");
+			return g.toJson(trainingDAO.sortPersonalTrainingsBy(sortColumn, isAscending, trainerId));
+		});
+
+		get("rest/sort/trainer-trainings/group", (req, res) ->{
+			res.type("application/json");
+			int trainerId = Integer.parseInt(req.queryMap("id").value());
+			String sortColumn = req.queryMap("sortColumn").value();
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("true");
+			return g.toJson(trainingDAO.sortNonPersonalTrainingsBy(sortColumn, isAscending, trainerId));
+		});
+
+		get("rest/sort/sport-object-trainings", (req, res) ->{
+			res.type("application/json");
+			int sportObjectId = Integer.parseInt(req.queryMap("id").value());
+			String sortColumn = req.queryMap("sortColumn").value();
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("ascending");
+			return g.toJson(trainingDAO.sortSportObjectTrainingsBy(sortColumn, isAscending, sportObjectId));
+		});
 		
 /*
  * 

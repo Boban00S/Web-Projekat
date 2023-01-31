@@ -8,10 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,16 +20,14 @@ import model.*;
 public class TrainingDAO implements ISerializable<String, Training> {
 
 	private SportsObjectDAO sportsObjectDAO;
-	private OfferDAO offerDAO;
 	private TrainerDAO trainerDAO;
 	private HashMap<String, Training> trainings;
 	private String fileName;
 
 	public TrainingDAO(){}
 
-	public TrainingDAO(String fileName, OfferDAO offerDAO, TrainerDAO trainerDAO, SportsObjectDAO sportsObjectDAO){
+	public TrainingDAO(String fileName, TrainerDAO trainerDAO, SportsObjectDAO sportsObjectDAO){
 		this.fileName = fileName;
-		this.offerDAO = offerDAO;
 		this.trainerDAO = trainerDAO;
 		this.sportsObjectDAO = sportsObjectDAO;
 		try{
@@ -73,23 +68,88 @@ public class TrainingDAO implements ISerializable<String, Training> {
 	public List<Training> findPersonalTrainingsByTrainerId(int trainerId){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
-			if(t.getTrainer().getId() == trainerId && t.isPersonal()){
-				output.add(t);
+			if(t.getTrainer() != null){
+				if(t.getTrainer().getId() == trainerId && this.isPersonal(t)){
+					output.add(t);
+				}
 			}
 		}
 		return output;
 	}
 
+	public List<Training> getTrainingsByIds(List<Training> trainingsIds){
+		List<Training> trainings1 = new ArrayList<>();
+		for(Training t: trainingsIds){
+			Training t1 = findById(t.getId());
+			trainings1.add(t1);
+		}
+		return trainings1;
+	}
+
+	public boolean isPersonal(Training t){
+		return t.getType().equals("Personal");
+	}
+
+	public void editTrainings(Training t) throws IOException{
+		boolean found = false;
+		for(Training t1: trainings.values()){
+			if(t1.getId() == t.getId()){
+				found = true;
+				t1.setName(t.getName());
+				t1.setDescription(t.getDescription());
+				t1.setDuration(t.getDuration());
+				t1.setType(t.getType());
+				t1.setImagePath(t.getImagePath());
+				t1.setPrice(t.getPrice());
+				t1.setDate(t.getDate());
+				t1.setTrainer(t.getTrainer());
+			}
+		}
+		if(!found){
+			trainings.put(t.getImagePath(), t);
+		}
+		serialize(new ArrayList<>(findAll()), false);
+	}
+
+	public void editTrainings(List<Training> newTrainings) throws IOException{
+		for(Training t1: newTrainings){
+			editTrainings(t1);
+		}
+	}
+
 	public void deleteById(int trainingId) throws IOException{
 		for(Training t: trainings.values()){
 			if(t.getId() == trainingId){
-				offerDAO.deleteOfferById(trainingId);
 				trainings.remove(t.getImagePath());
 				break;
 			}
 		}
 		List<Training> trainingList = new ArrayList<>(findAll());
 		serialize(trainingList, false);
+	}
+
+	public List<Training> sortPersonalTrainingsBy(String sortColumn, boolean isAscending, int trainerId){
+		List<Training> personalTrainings = findPersonalTrainingsByTrainerId(trainerId);
+		FlexibleTrainerTrainingsComparator comparator = new FlexibleTrainerTrainingsComparator(isAscending);
+		comparator.setSortingBy(sortColumn);
+		Collections.sort(personalTrainings, comparator);
+		return personalTrainings;
+	}
+
+	public List<Training> sortNonPersonalTrainingsBy(String sortColumn, boolean isAscending, int trainerId){
+		List<Training> nonPersonalTrainings = findNonPersonalTrainingsByTrainerId(trainerId);
+		FlexibleTrainerTrainingsComparator comparator = new FlexibleTrainerTrainingsComparator(isAscending);
+		comparator.setSortingBy(sortColumn);
+		Collections.sort(nonPersonalTrainings, comparator);
+		return nonPersonalTrainings;
+	}
+
+	public List<Training> sortSportObjectTrainingsBy(String sortColumn, boolean isAscending, int sportObjectId){
+		List<Training> sportObjectTrainings = findAllTrainingsInSportObject(sportObjectId);
+		FlexibleTrainerTrainingsComparator comparator = new FlexibleTrainerTrainingsComparator(isAscending);
+		comparator.setSortingBy(sortColumn);
+		Collections.sort(sportObjectTrainings, comparator);
+		return sportObjectTrainings;
 	}
 
 	public List<Training> findAllTrainingsInSportObject(int sportObjectId){
@@ -105,16 +165,32 @@ public class TrainingDAO implements ISerializable<String, Training> {
 	public List<Training> findNonPersonalTrainingsByTrainerId(int trainerId){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
-			if(t.getTrainer().getId() == trainerId && !t.isPersonal()){
+			if(t.getTrainer() != null){
+				if(t.getTrainer().getId() == trainerId && this.isNonPersonal(t)){
+					output.add(t);
+				}
+			}
+		}
+		return output;
+	}
+
+	public List<Training> findBySportsObjectId(int sportsObjectId){
+		List<Training> output = new ArrayList<>();
+		for(Training t: trainings.values()){
+			if(t.getSportsObject().getId() == sportsObjectId){
 				output.add(t);
 			}
 		}
 		return output;
 	}
 
+	public boolean isNonPersonal(Training t){
+		return t.getType().equals("Group");
+	}
+
 	@Override
 	public void serialize(List<Training> objectList, boolean append) throws IOException {
-		GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
@@ -135,10 +211,10 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		HashMap<String, Training> output = new HashMap<>();
 		if(trainings1 != null){
 			for(Training t: trainings1){
-				Training t1 = new Training(offerDAO.findById(t.getId()), t.getTrainer(), t.getTrainingDate(), t.isPersonal());
-				t1.setTrainer(trainerDAO.findById(t1.getTrainer().getId()));
-				t1.setSportsObject(sportsObjectDAO.findById(t1.getSportsObject().getId()));
-				output.put(t1.getImagePath(), t1);
+				if(t.getTrainer() != null)
+					t.setTrainer(trainerDAO.findById(t.getTrainer().getId()));
+				t.setSportsObject(sportsObjectDAO.findById(t.getSportsObject().getId()));
+				output.put(t.getImagePath(), t);
 			}
 		}
 		return output;

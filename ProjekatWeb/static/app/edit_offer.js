@@ -4,9 +4,10 @@ Vue.component("edit-offer", {
             user: null,
             sportsObject: null,
             file: null,
-            oldOffer:null,
-            newOffer:null,
-            trainers: null
+            oldTraining:null,
+            newTraining:null,
+            trainers: null,
+            trainings: null
         }
     },
     template:
@@ -26,14 +27,14 @@ Vue.component("edit-offer", {
                                     <label class="form-label" for="form3Example1cg">
                                         Name</label>
                                     <input type="text" id="form3Example1cg" class="form-control border border-dark form-control-lg"
-                                        name="objectName" v-model="newOffer.name" />
+                                        name="objectName" v-model="newTraining.name" />
                                 </div>
 
                                 <div class="form-outline mb-4">
                                   <label class="form-label" for="form3Example1cg">
                                     Type
                                   </label>
-                                  <input type="text" v-model="newOffer.type" class="form-control border border-dark form-control-lg" aria-label="Default select example">
+                                  <input type="text" v-model="newTraining.type" class="form-control border border-dark form-control-lg" aria-label="Default select example">
                                 </div>
 
                                 <div class="form-group form-outline mb-4">
@@ -45,21 +46,21 @@ Vue.component("edit-offer", {
                                   <label class="form-label" for="form3Example1cg">
                                     Description
                                   </label>
-                                      <textarea class="form-control border border-dark form-control-lg" v-model="newOffer.description" id="newOffer.description" rows="3" placeholder="Enter a description of the offer (optional)"></textarea>
+                                      <textarea class="form-control border border-dark form-control-lg" v-model="newTraining.description" id="newOffer.description" rows="3" placeholder="Enter a description of the offer (optional)"></textarea>
                                 </div>
                                 
                                 <div class="form-outline mb-4">
                                   <label class="form-label" for="form3Example1cg">
                                     Duration
                                   </label>
-                                  <input type="number" v-model="newOffer.duration" class="form-control border border-dark form-control-lg" aria-label="Default select example">
+                                  <input type="number" v-model="newTraining.duration" class="form-control border border-dark form-control-lg" aria-label="Default select example">
                                 </div>
                                 
                                 <div class="form-outline mb-4">
                                   <label class="form-label" for="form3Example1cg">
                                     Trainers
                                   </label>
-                                  <select v-model="newOffer.trainer" class="form-select border border-dark from-select-lg" aria-label="Default select example">
+                                  <select v-model="newTraining.trainer" class="form-select border border-dark from-select-lg" aria-label="Default select example">
                                   <option :value="trainers.username" v-for="trainer in trainers">
                                     @{{trainer.username}}
                                   </option>
@@ -67,7 +68,7 @@ Vue.component("edit-offer", {
                                 </div>
                                 
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-primary" @click.prevent="addOffer">Submit</button>
+                                    <button type="submit" class="btn btn-primary" @click.prevent="addTraining">Submit</button>
                                 </div>
 
                             </form>
@@ -97,51 +98,55 @@ Vue.component("edit-offer", {
             .then(response => {
                 this.trainers = response.data;
             });
-        this.oldOffer = this.$route.params.oldOffer;
-        this.newOffer = this.$route.params.oldOffer;
+        axios
+            .get('rest/sport-object/trainings', {params: {id: this.$route.params.userId}})
+            .then(response => {
+                this.trainings = response.data;
+            });
+        this.oldTraining = this.$route.params.oldTraining;
+        this.newTraining = this.$route.params.oldTraining;
     },
     methods:{
         uploadFile(){
-            this.OfferFile = this.$refs.myFile.files[0];
+            this.TrainingFile = this.$refs.myFile.files[0];
         },
         submitFile(){
             const formData = new FormData();
-            formData.append('file', this.OfferFile);
-            formData.append('fileName', this.newOffer.name+"_"+this.sportsObject.name);
+            formData.append('file', this.TrainingFile);
+            formData.append('fileName', this.newTraining.name+"_"+this.sportsObject.name);
             const headers = { 'Content-Type': 'multipart/form-data'};
             axios.post('rest/offer/image', formData, {headers})
-            this.newOffer.imagePath = "../images/"+this.newOffer.name+"_"+this.sportsObject.name+".jpg";
+            this.newTraining.imagePath = "../images/"+this.newTraining.name+"_"+this.sportsObject.name+".jpg";
 
         },
-        containsOffer(){
-            for(const item of this.sportsObject.offers){
-                if(this.newOffer.name === item.name && this.newOffer.id !== item.id){
+        containsTraining(){
+            for(const item of this.trainings){
+                if(this.newTraining.name === item.name && this.newTraining.id !== item.id){
                     return true
                 }
             }
             return false;
         },
-        deleteOldOffer(){
+        deleteOldTraining(){
             return axios
-                .delete('rest/sport-object/offer', {params: {objectId: this.sportsObject.id, offerId: this.oldOffer.id}});
+                .delete('rest/sport-object/training', {params: {objectId: this.sportsObject.id, trainingId: this.oldTraining.id}});
         },
-        addOffer(){
-            if(this.newOffer.name !== ""){
-                this.contains = this.containsOffer()
+        addTraining(){
+            if(this.newTraining.name !== ""){
+                this.contains = this.containsTraining()
                 if(this.contains){
-                    alert("Offer is already added!");
+                    alert("Training is already added!");
                     return;
                 }
-                if(this.OfferFile != null){
+                if(this.TrainingFile != null){
                     this.submitFile();
                 }
                 axios
-                    .delete('rest/sport-object/offer', {params: {objectId: this.sportsObject.id, offerId: this.oldOffer.id}})
+                    .delete('rest/sport-object/training', {params: {objectId: this.sportsObject.id, trainingId: this.oldTraining.id}})
                     .then(response =>{
-                        this.sportsObject = response.data;
-                        this.sportsObject.offers.push(this.newOffer);
+                        this.trainings = response.data;
                         axios
-                            .put('rest/sport-object', this.sportsObject)
+                            .post('rest/sport-object/training', this.newTraining)
                             .then(response => {
                                 this.$router.push({path: '/user/' + this.user.id});
                             })
@@ -150,7 +155,3 @@ Vue.component("edit-offer", {
         }
     }
 })
-
-// Kupci imaju opciju pregleda svih svojih treninga u okviru svog korisničkog profila. Kod
-// pregleda svih treninga omogućiti prikaz naziva treninga, sportskog objekta i datuma
-// treniranja u proteklih mesec dana.

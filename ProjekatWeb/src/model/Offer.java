@@ -2,6 +2,8 @@ package model;
 
 import com.google.gson.annotations.Expose;
 
+import java.time.LocalDateTime;
+
 public class Offer {
     @Expose
     private int id;
@@ -11,12 +13,15 @@ public class Offer {
     private String description;
     private int duration;
     private SportsObject sportsObject;
+    private Float price;
+    private LocalDateTime date;
 
     public Offer(int id){
         this.id = id;
     }
 
-    public Offer(int id, String name, String type, String imagePath, String description, int duration, SportsObject sportsObject) {
+    public Offer(int id, String name, String type, String imagePath, String description, int duration, SportsObject sportsObject,
+                 Float price, LocalDateTime date) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -24,6 +29,8 @@ public class Offer {
         this.description = description;
         this.duration = duration;
         this.sportsObject = sportsObject;
+        this.price = price;
+        this.date = date;
     }
 
     public Offer(Offer o1){
@@ -34,6 +41,24 @@ public class Offer {
         this.description = o1.getDescription();
         this.duration = o1.getDuration();
         this.sportsObject = o1.getSportsObject();
+        this.price = o1.getPrice();
+        this.date = o1.getDate();
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public int getId() {

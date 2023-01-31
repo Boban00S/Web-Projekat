@@ -5,17 +5,6 @@
         "objectType": {
             "name": "gym"
         },
-        "offers": [
-            {
-                "id": 1
-            },
-            {
-                "id": 3
-            },
-            {
-                "id": 2
-            }
-        ],
         "opened": false,
         "location": {
             "longitude": "45.243525",
@@ -67,11 +56,6 @@
         "objectType": {
             "name": "gym"
         },
-        "offers": [
-            {
-                "id": 1
-            }
-        ],
         "opened": false,
         "location": {
             "longitude": "45.243525",

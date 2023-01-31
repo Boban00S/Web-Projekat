@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import jsonparsing.LocalDateConverter;
+import jsonparsing.LocalDateTimeConverter;
 import model.ISerializable;
 import model.Offer;
 import model.SportsObject;
@@ -15,6 +16,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -116,6 +118,7 @@ public class OfferDAO implements ISerializable<String, Offer> {
     public void serialize(List<Offer> objectList, boolean append) throws IOException {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+        builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
         Gson gson = builder.create();
         Writer writer = new FileWriter(fileName, append);
         gson.toJson(objectList, writer);
@@ -128,6 +131,7 @@ public class OfferDAO implements ISerializable<String, Offer> {
         Reader reader = Files.newBufferedReader(Paths.get(fileName));
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+        builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
         Gson gson = builder.create();
         Offer[] offers1 = gson.fromJson(reader, Offer[].class);
         HashMap<String, Offer> output;

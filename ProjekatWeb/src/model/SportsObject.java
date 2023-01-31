@@ -12,7 +12,7 @@ public class SportsObject {
 	@Expose
 	private SportsObjectType objectType;
 	@Expose
-	private List<Offer> offers;
+	private List<Training> trainings;
 	@Expose
 	private boolean opened;
 	@Expose
@@ -36,13 +36,13 @@ public class SportsObject {
 	
 	
 	
-	public SportsObject(int id, String name, SportsObjectType objectType, List<Offer> offers, boolean opened, Location location, String imagePath,
+	public SportsObject(int id, String name, SportsObjectType objectType, List<Training> trainings, boolean opened, Location location, String imagePath,
 			Double averageGrade, String workingHours, OpeningHours openingHours, String description, String managerUsername) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.objectType = objectType;
-		this.offers = offers;
+		this.trainings = trainings;
 		this.opened = opened;
 		this.location = location;
 		this.imagePath = imagePath;
@@ -55,13 +55,13 @@ public class SportsObject {
 
 
 
-	public SportsObject(int id, String name, SportsObjectType objectType, List<Offer> offers, boolean opened, Location location, String imagePath,
+	public SportsObject(int id, String name, SportsObjectType objectType, List<Training> trainings, boolean opened, Location location, String imagePath,
 			Double averageGrade, String workingHours) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.objectType = objectType;
-		this.offers = offers;
+		this.trainings = trainings;
 		this.opened = opened;
 		this.location = location;
 		this.imagePath = imagePath;
@@ -107,17 +107,13 @@ public class SportsObject {
 	}
 
 
-
-	public List<Offer> getOffers() {
-		return offers;
+	public List<Training> getTrainings() {
+		return trainings;
 	}
 
-
-	public void setOffers(List<Offer> offers) {
-		this.offers = offers;
+	public void setTrainings(List<Training> trainings) {
+		this.trainings = trainings;
 	}
-
-
 
 	public Location getLocation() {
 		return location;

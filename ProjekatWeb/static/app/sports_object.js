@@ -36,8 +36,8 @@ Vue.component("sports-object", {
             </div>
             
             <div class="float-right">
-            
-              <select name="sel2" @change="sortTable($event)">
+              <h5>Sort By:</h5>
+              <select class="form-select" name="sel2" @change="sortTable($event)">
                 <option :value="col.name" v-for="col in sortColumns">{{col.name}}</option>
               </select>
             </div>
