@@ -85,6 +85,19 @@ public class CustomerDAO implements ISerializable<String, Customer> {
 		serialize(customerList, false);
 	}
 
+
+	public Float findPointsById(int id){
+		return findById(id).getPoints();
+	}
+
+	public String getCustomerType(User user){
+		if(user.getRole() == Role.customer){
+			Customer customer = findById(user.getId());
+			return customer.getCustomerType().getName();
+		}else{
+			return "No";
+		}
+	}
 	public Customer addMembership(Customer c) throws IOException{
 		Customer output = null;
 		for(Customer c1: customers.values()){

@@ -476,9 +476,25 @@ public class SparkAppMain {
 			int customerId = Integer.parseInt(req.queryMap("id").value());
 			String sortColumn = req.queryMap("sortColumn").value();
 			String ascending = req.queryMap("ascending").value();
-			boolean isAscending = ascending.equals("ascending");
+			boolean isAscending = ascending.equals("true");
 			Customer customer = customerDAO.findById(customerId);
 			return g.toJson(trainingHistoryDAO.sortyBy(sortColumn, isAscending, customer));
+		});
+
+		get("rest/customer-type", (req, res) ->{
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			User user = userDAO.findUserById(userId);
+
+			return customerDAO.getCustomerType(user);
+		});
+
+		get("rest/sort/users", (req, res) ->{
+			res.type("application/json");
+			String sortColumn = req.queryMap("sortColumn").value();
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("true");
+			return g.toJson(userDAO.sortBy(sortColumn, isAscending, customerDAO));
 		});
 
 		get("rest/sort/trainer-trainings/personal", (req, res) ->{

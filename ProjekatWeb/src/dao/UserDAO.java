@@ -7,21 +7,14 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
-import model.Administrator;
-import model.ISerializable;
-import model.LoginUser;
-import model.Role;
-import model.User;
+import model.*;
 
 
 // ubaciti novu listu bez obzira na velicinu fajla
@@ -91,6 +84,14 @@ public class UserDAO implements ISerializable<String, User> {
 		users.put(user.getUsername(), user);
 		List<User> usersList = new ArrayList<>(findAll());
 		serialize(usersList, false);
+	}
+
+	public List<User> sortBy(String sortColumn, boolean isAscending, CustomerDAO customerDAO){
+		FlexibleUsersComparator comparator = new FlexibleUsersComparator(isAscending, customerDAO);
+		comparator.setSortingBy(sortColumn);
+		List<User> usersList = new ArrayList<>(findAll());
+		Collections.sort(usersList, comparator);
+		return usersList;
 	}
 	
 	public void addUser(User user, Role role) throws IOException{
