@@ -1,6 +1,7 @@
 package rest;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +11,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.Part;
@@ -56,6 +60,7 @@ public class SparkAppMain {
 	static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
 	public static void main(String[] args) throws Exception {
+		runThread();
 
 		port(8080);
 
@@ -224,6 +229,7 @@ public class SparkAppMain {
 			String customer = req.body();
 			Customer c = g.fromJson(customer, Customer.class);
 			membershipDAO.setExpireAndBuyingDate(c.getMembership());
+			c.setDailyUsageLeft(c.getMembership().getDailyUsage());
 			Customer c1 = customerDAO.addMembership(c);
 			res.status(201);
 
@@ -341,6 +347,14 @@ public class SparkAppMain {
 			return g.toJson(trainers);
 		});
 
+		get("rest/sports-object/available-trainings", (req, res) ->{
+			res.type("application/json");
+			int sportsObjectId = Integer.parseInt(req.queryMap("id").value());
+			List<Training> availableTrainings = trainingDAO.findAvailableTrainings(sportsObjectId);
+
+			return g.toJson(availableTrainings);
+		});
+
 		get("rest/sport-object", (req, res) ->{
 			res.type("application/json");
 			int objectId = Integer.parseInt(req.queryMap("id").value());
@@ -404,7 +418,22 @@ public class SparkAppMain {
 			managerDAO.addSportsObjectToManager(s);
 			return ("Yes");
 		});
-		
+
+		post("rest/training-history", (req, res) ->{
+			String trainingHistoryString = req.body();
+			TrainingHistory trainingHistory = g.fromJson(trainingHistoryString, TrainingHistory.class);
+			if(trainingHistory.getCustomer().getDailyUsageLeft() == 0 && trainingHistory.getCustomer().getMembership().isActive()){
+				res.status(400);
+				return ("No");
+			}
+			trainingHistory.getCustomer().setDailyUsageLeft(trainingHistory.getCustomer().getDailyUsageLeft()-1);
+			customerDAO.editCustomer(trainingHistory.getCustomer());
+			trainingHistoryDAO.addTrainingHistory(trainingHistory);
+
+			res.status(200);
+			return ("Yes");
+		});
+
 		post("rest/object/image", (req, res) -> {
 			MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/tmp");
 			req.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
@@ -515,6 +544,20 @@ public class SparkAppMain {
 		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
 		return gson;
+	}
+
+	private static void runThread(){
+		ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+		exec.scheduleAtFixedRate(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					customerDAO.checkMembershipsDate();
+				}catch (IOException ex){
+					ex.printStackTrace();
+				}
+			}
+		}, 0, 1, TimeUnit.DAYS);
 	}
 	
 }

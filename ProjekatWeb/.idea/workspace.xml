@@ -3,14 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/customers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training_history.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training_history.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Membership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Membership.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TrainingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TrainingHistoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainingHistoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/app/user_homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/user_homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/sport_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/sport_object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/sports_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/sports_object.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +138,7 @@
       <workItem from="1675021873124" duration="1889000" />
       <workItem from="1675110267530" duration="5799000" />
       <workItem from="1675175432751" duration="7676000" />
-      <workItem from="1675270997789" duration="2967000" />
+      <workItem from="1675270997789" duration="8576000" />
     </task>
     <servers />
   </component>

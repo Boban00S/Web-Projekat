@@ -71,6 +71,20 @@ public class CustomerDAO implements ISerializable<String, Customer> {
 		serialize(customersList, false);
 	}
 
+	public void checkMembershipsDate() throws IOException{
+		for(Customer customer: customers.values()){
+			if(customer.getMembership().getExpireDate().isBefore(customer.getMembership().getPayingDate())){
+				Float points = customer.getMembership().getPrice()/1000 * customer.getDailyUsageLeft();
+				if(customer.getDailyUsageLeft() < customer.getMembership().getDailyUsage()/3){
+					points -= customer.getMembership().getPrice()/1000 * 133 * 4;
+				}
+				customer.setPoints(customer.getPoints() + points);
+			}
+		}
+		List<Customer> customerList = new ArrayList<>(findAll());
+		serialize(customerList, false);
+	}
+
 	public Customer addMembership(Customer c) throws IOException{
 		Customer output = null;
 		for(Customer c1: customers.values()){
@@ -83,6 +97,16 @@ public class CustomerDAO implements ISerializable<String, Customer> {
 		serialize(customerList, false);
 
 		return output;
+	}
+
+	public void editCustomer(Customer c) throws IOException{
+		for(Customer c1: customers.values()){
+			if(c1.getId() == c.getId()){
+				customers.put(c1.getUsername(), c);
+			}
+		}
+		List<Customer> customerList = new ArrayList<>(findAll());
+		serialize(customerList, false);
 	}
 
 	@Override

@@ -174,6 +174,17 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		return output;
 	}
 
+	public List<Training> findAvailableTrainings(int sportsObjectId){
+		List<Training> output = new ArrayList<>();
+		for(Training t: trainings.values()){
+			if(t.getDate().isAfter(LocalDateTime.now()) && t.getDate().isBefore(LocalDateTime.now().plusDays(1))
+			&& t.getSportsObject().getId() == sportsObjectId){
+				output.add(t);
+			}
+		}
+		return output;
+	}
+
 	public List<Training> findBySportsObjectId(int sportsObjectId){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){

@@ -78,6 +78,7 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 
 	public void addTrainingHistory(TrainingHistory trainingHistory) throws IOException{
 		trainingHistory.setId(getNextId());
+		trainingHistory.setStartDateAndTime(LocalDateTime.now());
 		trainingHistories.put(trainingHistory.getId().toString(), trainingHistory);
 		List<TrainingHistory> trainingHistoryList = new ArrayList<>(findAll());
 		serialize(trainingHistoryList, false);

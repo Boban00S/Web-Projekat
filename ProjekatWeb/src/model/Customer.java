@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Customer extends User{
-	private int points;
+	private Float points;
 	private Membership membership;
 	private List<Integer> sportsObjectAttended;
 	private CustomerType customerType;
-	
+	private int dailyUsageLeft;
+
 	
 	
 	public Customer() {
@@ -20,17 +21,17 @@ public class Customer extends User{
 		super(id, username, password, name, lastName, gender, birthdate, role);
 		// TODO Auto-generated constructor stub
 	}
-	public Customer(int points, Membership membership, List<Integer> sportsObjectAttended, CustomerType customerType) {
+	public Customer(Float points, Membership membership, List<Integer> sportsObjectAttended, CustomerType customerType) {
 		super();
 		this.points = points;
 		this.membership = membership;
 		this.sportsObjectAttended = sportsObjectAttended;
 		this.customerType = customerType;
 	}
-	public int getPoints() {
+	public Float getPoints() {
 		return points;
 	}
-	public void setPoints(int points) {
+	public void setPoints(Float points) {
 		this.points = points;
 	}
 	public Membership getMembership() {
@@ -50,5 +51,13 @@ public class Customer extends User{
 	}
 	public void setCustomerType(CustomerType customerType) {
 		this.customerType = customerType;
+	}
+
+	public int getDailyUsageLeft() {
+		return dailyUsageLeft;
+	}
+
+	public void setDailyUsageLeft(int dailyUsageLeft) {
+		this.dailyUsageLeft = dailyUsageLeft;
 	}
 }

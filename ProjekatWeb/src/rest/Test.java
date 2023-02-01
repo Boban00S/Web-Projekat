@@ -86,7 +86,7 @@ public class Test {
 	
 	private static void createCustomers() throws Exception{
 		Customer c1 = new Customer(-1, "nikolaN", "123", "Nikola", "Nikolic", Gender.male, LocalDate.of(1988, 2, 12), Role.customer);
-		c1.setPoints(0);
+		c1.setPoints(0f);
 		c1.setMembership(null);
 		List<Integer> sOA = new ArrayList<>();
 		sOA.add(1);

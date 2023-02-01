@@ -219,6 +219,96 @@
         }
     },
     {
+        "id": 7,
+        "name": "Novi trening",
+        "type": "Group",
+        "imagePath": "../images/Novi trening_Tajs.jpg",
+        "description": "nesto",
+        "duration": 100,
+        "sportsObject": {
+            "id": 1,
+            "name": "Tajs",
+            "objectType": {
+                "name": "gym"
+            },
+            "opened": false,
+            "location": {
+                "longitude": "45.243525",
+                "latitude": "24.234152",
+                "street": "Filipa Visnjica 5",
+                "place": "Novi Sad 21000",
+                "country": "Serbia"
+            },
+            "imagePath": "../images/tajs.jpg",
+            "averageGrade": 7.1,
+            "workingHours": "16-24",
+            "openingHours": {
+                "fromHours": 16,
+                "fromMinutes": 0,
+                "toHours": 24,
+                "toMinutes": 0
+            },
+            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+        },
+        "date": "2023-02-02T15:32:35.2342852",
+        "trainer": {
+            "sportsObjectId": 1,
+            "id": 18,
+            "username": "nikolaN",
+            "password": "123",
+            "name": "Nikola",
+            "lastName": "Nikolic",
+            "gender": "male",
+            "birthdate": "2012-12-31",
+            "role": "trainer"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Jos jedan",
+        "type": "Group",
+        "imagePath": "../images/Jos jedan_Tajs.jpg",
+        "description": "aj",
+        "duration": 150,
+        "sportsObject": {
+            "id": 1,
+            "name": "Tajs",
+            "objectType": {
+                "name": "gym"
+            },
+            "opened": false,
+            "location": {
+                "longitude": "45.243525",
+                "latitude": "24.234152",
+                "street": "Filipa Visnjica 5",
+                "place": "Novi Sad 21000",
+                "country": "Serbia"
+            },
+            "imagePath": "../images/tajs.jpg",
+            "averageGrade": 7.1,
+            "workingHours": "16-24",
+            "openingHours": {
+                "fromHours": 16,
+                "fromMinutes": 0,
+                "toHours": 24,
+                "toMinutes": 0
+            },
+            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+        },
+        "date": "2023-02-02T15:32:35.2342852",
+        "trainer": {
+            "sportsObjectId": 1,
+            "id": 18,
+            "username": "nikolaN",
+            "password": "123",
+            "name": "Nikola",
+            "lastName": "Nikolic",
+            "gender": "male",
+            "birthdate": "2012-12-31",
+            "role": "trainer"
+        }
+    },
+    {
         "id": 1,
         "name": "Pool Pass",
         "type": "Pool",
