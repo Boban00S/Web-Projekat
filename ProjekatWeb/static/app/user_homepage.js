@@ -45,6 +45,9 @@ Vue.component("user-homepage", {
                         <li class="nav-item" v-if="userRole=='manager'">
                             <router-link :to="{name:'manager-trainings', params:{id:user.id}}" class="nav-link active" aria-current="page">Trainings</router-link>
                         </li>  
+                        <li class="nav-item" v-if="userRole=='customer'">
+                            <router-link :to="{name:'membership', params:{id:user.id}}" class="nav-link active" aria-current="page">Buy Membership</router-link>
+                        </li>  
                                                                     
                     </ul>
                     <form class="d-flex" v-if="mode=='Browse'">

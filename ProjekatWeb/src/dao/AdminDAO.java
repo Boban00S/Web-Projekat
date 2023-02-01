@@ -77,7 +77,6 @@ public class AdminDAO implements ISerializable<String, Administrator>{
 		if(adminsA != null) {
 			for(Administrator a: adminsA) {
 				User user = userDAO.findUserByUsername(a.getUsername());
-				System.out.println(a.getUsername());
 				a.setId(user.getId());
 				a.setBirthdate(user.getBirthdate());
 				a.setGender(user.getGender());

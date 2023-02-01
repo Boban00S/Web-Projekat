@@ -16,6 +16,8 @@ public class Test {
 	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
 	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
 
+	private static MembershipDAO membershipDAO = new MembershipDAO("data/memberships.json");
+
 //	private static TrainingDAO trainingDAO = new TrainingDAO("data/training.json", offerDAO, trainerDAO, sportObjectDAO);
 
 //	private static TrainingHistoryDAO trainingHistoryDAO = new TrainingHistoryDAO("data/training_history.json", trainingDAO, customerDAO, trainerDAO);
@@ -44,12 +46,29 @@ public class Test {
 //		createManagers();
 //		createOffers();
 //		createTrainingHistories();
+		createMemberships();
 	}
 
 	
 	private static void createAdministrators() throws Exception{
 		Administrator admin1 = new Administrator(-1, "andrejA", "123", "Andrej", "Andric", Gender.male, LocalDate.of(1980, 12, 5), Role.administrator);
 		adminDAO.addAdministrator(admin1);
+	}
+
+	private static void createMemberships() throws Exception{
+		Membership m1 = new Membership("M123456789", "Month", 2000, 14);
+		Membership m2 = new Membership("M123456782", "Month", 4000, 20);
+		Membership m3 = new Membership("M123456786", "Year", 20000, 140);
+		Membership m4 = new Membership("M123456689", "Year", 40000, 250);
+		Membership m5 = new Membership("M123456589", "Year", 50000, -1);
+		Membership m6 = new Membership("M123426589", "Month", 5000, -1);
+		membershipDAO.addMembership(m1);
+		membershipDAO.addMembership(m2);
+		membershipDAO.addMembership(m3);
+		membershipDAO.addMembership(m4);
+		membershipDAO.addMembership(m5);
+		membershipDAO.addMembership(m6);
+
 	}
 	
 	private static void createTrainers() throws Exception{

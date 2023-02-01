@@ -35,7 +35,6 @@ public class SparkAppMain {
 	
 	private static Gson g = getGson();
 	private static UserDAO userDAO = new UserDAO("data/users.json");
-//	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
 	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
 	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
 	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
@@ -46,6 +45,9 @@ public class SparkAppMain {
 
 
 	private static TrainingHistoryDAO trainingHistoryDAO = new TrainingHistoryDAO("data/training_history.json", trainingDAO, customerDAO, trainerDAO);
+
+	private static MembershipDAO membershipDAO = new MembershipDAO("data/memberships.json");
+//	private static CustomerMembershipDAO customerMembershipDAO = new CustomerMembershipDAO("data/customer_memberships.json");
 
 	/**
 	 * Ključ za potpisivanje JWT tokena.
@@ -83,7 +85,13 @@ public class SparkAppMain {
 			
 			return g.toJson(userDAO.findAll());
 		});
-		
+
+		get("/rest/memberships", (req, res) -> {
+			res.status(200);
+
+			return g.toJson(membershipDAO.findAll());
+		});
+
 		get("/rest/homepage", (req, res) -> {
 			res.status(200);
 			
@@ -107,7 +115,16 @@ public class SparkAppMain {
 			res.status(200);
 			return g.toJson(u);
 		});
-		
+
+		get("/rest/customer", (req, res) -> {
+			res.type("application/json");
+			int userId = Integer.parseInt(req.queryMap("id").value());
+			Customer c = customerDAO.findById(userId);
+			res.status(200);
+			return g.toJson(c);
+		});
+
+
 		get("rest/testlogin", (req, res) ->{
 			Session ss = req.session(true);
 			User user = ss.attribute("user");
@@ -201,7 +218,18 @@ public class SparkAppMain {
 			
 			return ("Yes");
 		});
-	
+
+		post("rest/customer/membership", (req, res)->{
+			res.type("application/json");
+			String customer = req.body();
+			Customer c = g.fromJson(customer, Customer.class);
+			membershipDAO.setExpireAndBuyingDate(c.getMembership());
+			Customer c1 = customerDAO.addMembership(c);
+			res.status(201);
+
+			return g.toJson(c1);
+		});
+
 		post("/rest/registration", (req, res) ->{
 			res.type("application/json");
 			String user = req.body();

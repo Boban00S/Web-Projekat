@@ -16,6 +16,8 @@ const CustomerTrainings = { template: '<show-customer-trainings></show-customer-
 const PersonalTrainings = { template: '<personal-trainings></personal-trainings>' }
 const NonPersonalTrainings = {template: '<non-personal-trainings></non-personal-trainings>'}
 const ManagerTrainings = {template: '<manager-trainings></manager-trainings>'}
+const Membership = {template: '<membership></membership>'}
+const ShowMembership = {template: '<show-membership></show-membership>'}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -29,6 +31,8 @@ const router = new VueRouter({
             ]},
         { path: '/login', name: 'login', component: Login },
         { path: '/registration', name: 'registration', component: Registration },
+        {path: 'show-membership', component: ShowMembership, name: 'show-membership'},
+
         {
             path: '/user/:id',
             component: UserHomepage,
@@ -45,7 +49,8 @@ const router = new VueRouter({
                 { path: 'show-customer-trainings', component: CustomerTrainings, name: 'show-customer-trainings'},
                 { path: 'personal-trainings', component: PersonalTrainings, name: 'personal-trainings'},
                 {path: 'non-personal-trainings', component: NonPersonalTrainings, name: 'non-personal-trainings'},
-                {path: 'manager-trainings', component: ManagerTrainings, name: 'manager-trainings'}
+                {path: 'manager-trainings', component: ManagerTrainings, name: 'manager-trainings'},
+                {path: 'membership', component: Membership, name: 'membership'},
             ]
         },
     ]

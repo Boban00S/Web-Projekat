@@ -1,0 +1,50 @@
+[
+    {
+        "code": "M123456789",
+        "membershipType": "Month",
+        "price": 2000.0,
+        "active": false,
+        "dailyUsage": 14,
+        "description": "Gym access"
+    },
+    {
+        "code": "M123456782",
+        "membershipType": "Month",
+        "price": 4000.0,
+        "active": false,
+        "dailyUsage": 20,
+        "description": "Gym access"
+    },
+    {
+        "code": "M123456786",
+        "membershipType": "Year",
+        "price": 20000.0,
+        "active": false,
+        "dailyUsage": 140,
+        "description": "Gym access"
+    },
+    {
+        "code": "M123426589",
+        "membershipType": "Month",
+        "price": 5000.0,
+        "active": false,
+        "dailyUsage": -1,
+        "description": "Gym, group and personal trainings"
+    },
+    {
+        "code": "M123456689",
+        "membershipType": "Year",
+        "price": 40000.0,
+        "active": false,
+        "dailyUsage": 250,
+        "description": "Gym access"
+    },
+    {
+        "code": "M123456589",
+        "membershipType": "Year",
+        "price": 50000.0,
+        "active": false,
+        "dailyUsage": -1,
+        "description": "Gym, group and personal trainings"
+    }
+]

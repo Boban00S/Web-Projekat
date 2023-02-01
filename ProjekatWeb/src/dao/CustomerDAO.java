@@ -70,7 +70,21 @@ public class CustomerDAO implements ISerializable<String, Customer> {
 		List<Customer> customersList = new ArrayList<>(findAll());
 		serialize(customersList, false);
 	}
-	
+
+	public Customer addMembership(Customer c) throws IOException{
+		Customer output = null;
+		for(Customer c1: customers.values()){
+			if(c1.getId() == c.getId()){
+				c1.setMembership(c.getMembership());
+				output = c1;
+			}
+		}
+		List<Customer> customerList = new ArrayList<>(findAll());
+		serialize(customerList, false);
+
+		return output;
+	}
+
 	@Override
 	public void serialize(List<Customer> objectList, boolean append) throws IOException {
 		GsonBuilder builder = new GsonBuilder()

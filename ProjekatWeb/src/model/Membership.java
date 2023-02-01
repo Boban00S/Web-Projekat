@@ -3,18 +3,30 @@ package model;
 import java.time.LocalDate;
 
 public class Membership {
-	private String id;
+	private Integer id;
+	private String code;
 	private String membershipType;
 	private LocalDate payingDate;
 	private LocalDate expireDate;
 	private float price;
 	private boolean active;
 	private int dailyUsage;
-	
-	public Membership(String id, String membershipType, LocalDate payingDate, LocalDate expireDate, float price,
+
+	private String description;
+
+	public Membership(String code, String membershipType, float price,
+					  int dailyUsage) {
+		super();
+		this.code = code;
+		this.membershipType = membershipType;
+		this.price = price;
+		this.dailyUsage = dailyUsage;
+	}
+
+	public Membership(String code, String membershipType, LocalDate payingDate, LocalDate expireDate, float price,
 			boolean active, int dailyUsage) {
 		super();
-		this.id = id;
+		this.code = code;
 		this.membershipType = membershipType;
 		this.payingDate = payingDate;
 		this.expireDate = expireDate;
@@ -23,12 +35,12 @@ public class Membership {
 		this.dailyUsage = dailyUsage;
 	}
 
-	public String getId() {
-		return id;
+	public String getCode() {
+		return code;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getMembershipType() {
@@ -78,6 +90,20 @@ public class Membership {
 	public void setDailyUsage(int dailyUsage) {
 		this.dailyUsage = dailyUsage;
 	}
-	
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }
