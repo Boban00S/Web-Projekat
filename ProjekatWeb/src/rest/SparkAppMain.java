@@ -506,6 +506,16 @@ public class SparkAppMain {
 			return g.toJson(trainingDAO.sortPersonalTrainingsBy(sortColumn, isAscending, trainerId));
 		});
 
+		get("rest/sport-object/trainings/date", (req, res) ->{
+			res.type("application/json");
+			int sportObjectId = Integer.parseInt(req.queryMap("id").value());
+			LocalDate trainingDate = LocalDate.parse(req.queryMap("date").value());
+
+			List<Training> trainings = trainingDAO.findAllTrainingsInSportObjectForDate(sportObjectId, trainingDate);
+
+			return g.toJson(trainings);
+		});
+
 		get("rest/sort/trainer-trainings/group", (req, res) ->{
 			res.type("application/json");
 			int trainerId = Integer.parseInt(req.queryMap("id").value());

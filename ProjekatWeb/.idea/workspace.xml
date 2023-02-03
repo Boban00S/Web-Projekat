@@ -4,10 +4,11 @@
     <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/customers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training_history.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training_history.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TrainingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainingDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/app/show_users.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/show_users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/sport_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/sport_object.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

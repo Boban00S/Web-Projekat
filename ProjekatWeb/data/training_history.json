@@ -1,1 +1,1 @@
-[{"id":1,"startDateAndTime":"2023-01-07T15:32:35.2342852","customer":{"id":3},"trainer":{"id":18},"training":{}},{"id":2,"startDateAndTime":"2023-02-01T21:02:08.515225","customer":{"id":3},"trainer":{"id":18},"training":{}}]
+[{"id":1,"startDateAndTime":"2023-01-07T15:32:35.2342852","customer":{"id":3},"trainer":{"id":18}},{"id":2,"startDateAndTime":"2023-02-01T21:02:08.515225","customer":{"id":3},"trainer":{"id":18}},{"id":3,"startDateAndTime":"2023-02-03T20:32:55.9915318","customer":{"id":3},"trainer":{"id":18},"training":{}}]
