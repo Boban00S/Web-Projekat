@@ -1,13 +1,23 @@
 Vue.component("admin-object", {
   data: function () {
     return {
-      sportsObject: {},
+      sportsObject: {
+        "averageGrade": 0.0,
+        "workingHours": "16-24",
+        "openingHours": {
+          "fromHours": 16,
+          "fromMinutes": 0,
+          "toHours": 24,
+          "toMinutes": 0
+        }},
       location: {},
+      objectType: {},
       file: null,
       availableManagers: null,
       showAddManager: false,
       manager: { gender: "female" },
       validInput: true,
+      user: null
     }
   },
   template:
@@ -97,7 +107,7 @@ Vue.component("admin-object", {
                                   <label class="form-label" for="form3Example1cg">
                                     Type
                                   </label>
-                                  <select v-model="sportsObject.type" class="form-select border border-dark form-select-lg" aria-label="Default select example">
+                                  <select v-model="objectType.name" class="form-select border border-dark form-select-lg" aria-label="Default select example">
                                     <option selected value="Gym">Gym</option>
                                     <option value="Sauna">Sauna</option>
                                     <option value="Pool">Pool</option>
@@ -147,7 +157,7 @@ Vue.component("admin-object", {
 
                                 <div class="d-flex justify-content-center">
                                     <button type="button" v-on:click="createSportsObject()"
-                                        class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                        class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">Create</button>
                                 </div>
 
                             </form>
@@ -168,6 +178,11 @@ Vue.component("admin-object", {
       .then(response => {
         this.availableManagers = response.data;
       });
+    axios
+        .get('rest/user', { params: { id: this.$route.params.id } })
+        .then(response => {
+          this.user = response.data;
+        });
   },
   methods: {
     uploadFile() {
@@ -187,6 +202,7 @@ Vue.component("admin-object", {
       axios.post('rest/manager/registration', this.manager)
         .then((response) => {
           alert("Novi menadžer je uspešno kreiran")
+
         })
         .catch(error => {
           alert("Username is not available!");
@@ -220,10 +236,18 @@ Vue.component("admin-object", {
       if (this.manager.username == null && this.showAddManager) {
         return;
       }
+      this.sportsObject.location = this.location;
+      this.sportsObject.objectType = this.objectType;
 
       axios.post('rest/create/object', this.sportsObject)
         .then((response) => {
           alert("Novi sportski objekat je kreiran")
+          this.$router.push({
+            name: 'sports-object',
+            params: {
+              id: this.user.id
+            }
+          })
         })
       this.submitFile();
     },

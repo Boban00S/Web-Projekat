@@ -88,33 +88,26 @@ Vue.component("show-users", {
       .then(response => {
         this.users = response.data;
         this.oldUsers = response.data;
-        let promises = [];
-        for(user of this.oldUsers){
-          promises.push(
-          this.getCustomerType(user)
-        )
-        }
-        Promise.all(promises).then(() => console.log(this.oldUsers))
-      })
+        })
   },
   methods:{
     getCustomerType: function(user){
-      axios
-          .get('rest/customer-type', {params:{id: user.id}})
-          .then(response =>{
-            user.customerType = response.data;
-          })
+      if(user.customerType == null)
+          return "No";
+      else
+          return user.customerType.name;
     },
     searchBy: function (event){
       this.searchByCol = event.target.value;
     },
     searchTable: function (){
+        console.log("asd")
       if(this.searchByCol === "FirstName"){
         this.users = this.oldUsers.filter(u =>{
             const nameUser = u.name.toString().toLowerCase();
             const searchTerm = this.searchText.toLowerCase();
             const roleUser = u.role.toString().toLowerCase();
-            const customerType = u.customerType.toString().toLowerCase();
+            const customerType = this.getCustomerType(u).toString().toLowerCase();
             const filterTerm = this.filterBy.toLowerCase();
 
           return nameUser.includes(searchTerm) && (roleUser.includes(filterTerm) || customerType.includes(filterTerm));
@@ -124,7 +117,7 @@ Vue.component("show-users", {
           const lastNameUser = u.lastName.toString().toLowerCase();
           const searchTerm = this.searchText.toLowerCase();
           const roleUser = u.role.toString().toLowerCase();
-          const customerType = u.customerType.toString().toLowerCase();
+          const customerType = this.getCustomerType(u).toString().toLowerCase();
           const filterTerm = this.filterBy.toLowerCase();
 
           return lastNameUser.includes(searchTerm) && (roleUser.includes(filterTerm) || customerType.includes(filterTerm));
@@ -134,7 +127,7 @@ Vue.component("show-users", {
           const usernameUser = u.username.toString().toLowerCase();
           const searchTerm = this.searchText.toLowerCase();
           const roleUser = u.role.toString().toLowerCase();
-          const customerType = u.customerType.toString().toLowerCase();
+          const customerType = this.getCustomerType(u).toString().toLowerCase();
           const filterTerm = this.filterBy.toLowerCase();
 
           return usernameUser.includes(searchTerm) && (roleUser.includes(filterTerm) || customerType.includes(filterTerm));

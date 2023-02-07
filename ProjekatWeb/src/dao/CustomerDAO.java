@@ -103,6 +103,7 @@ public class CustomerDAO implements ISerializable<String, Customer> {
 		for(Customer c1: customers.values()){
 			if(c1.getId() == c.getId()){
 				c1.setMembership(c.getMembership());
+				c1.setDailyUsageLeft(c.getDailyUsageLeft());
 				output = c1;
 			}
 		}

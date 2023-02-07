@@ -1,10 +1,8 @@
-Vue.component("sports-object", {
+Vue.component("br-sports-object", {
     data: function () {
         return {
             sportsObjects: null,
-            user: null,
             error: '',
-            mode: 'Browse',
             searchText: '',
             filterText: '',
             sortColumns:[{name: "Name"},
@@ -17,7 +15,7 @@ Vue.component("sports-object", {
         }
     },
     template: `
-    <div v-if="user">
+    <div>
 
         <div class="container mt-5 px-2">
 
@@ -48,7 +46,6 @@ Vue.component("sports-object", {
               </select>   
             </div>
             
-            
             <div class="row">
                 <div v-if="b.isOpen" v-for="(b, i) in sortedSportsObjects" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <img :src="b.imagePath" class="card-img-top" alt="..."></img>
@@ -71,7 +68,7 @@ Vue.component("sports-object", {
                         </div>
                     </div>
                     <div class="row align-text-bottom justify-content-end">
-                        <router-link :to="{name:'sport-object', params:{object:b, userId:user.id}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
+                        <router-link :to="{name:'br-sport-object', params:{object:b}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
                         <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
@@ -98,7 +95,7 @@ Vue.component("sports-object", {
                         </div>
                     </div>
                     <div class="row align-text-bottom justify-content-end">
-                        <router-link :to="{name:'sport-object', params:{object:b, userId:user.id}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
+                        <router-link :to="{name:'br-sport-object', params:{object:b}}" tag="button" class="btn btn-primary stretched-link">Show Sport Object</router-link>
                         <div class="fs-2 col-3">{{b.averageGrade}}</div>
                         <div class="fs-2 col-2"> <img src="../images/rate.png" width="20" height="20"></img></div>
                     </div>
@@ -109,7 +106,6 @@ Vue.component("sports-object", {
     `
     ,
     mounted() {
-
         axios
             .get('rest/homepage')
             .then(response => {
@@ -118,18 +114,6 @@ Vue.component("sports-object", {
                     this.isOpen(SportsObject);
                 }
             });
-        axios
-            .get('rest/testlogin')
-            .then(response => {
-                this.user = response.data;
-                if (this.user != "No") {
-                    this.mode = 'LoggedIn'
-                    this.$router.push({ path: '/user/' + response.data.id })
-                }
-            })
-            .catch((error) => {
-                return;
-            })
     }
     ,
     methods: {

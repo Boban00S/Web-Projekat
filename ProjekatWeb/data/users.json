@@ -17,7 +17,12 @@
         "lastName": "Stanimirovic",
         "gender": "female",
         "birthdate": "2001-01-26",
-        "role": "customer"
+        "role": "customer",
+        "customerType": {
+            "name": "silver",
+            "discount": 0,
+            "points": 0
+        }
     },
     {
         "id": 9,
@@ -58,5 +63,15 @@
         "gender": "male",
         "birthdate": "2012-12-13",
         "role": "trainer"
+    },
+    {
+        "id": 21,
+        "username": "sdfd",
+        "password": "213",
+        "name": "dsdsf",
+        "lastName": "sdsfs",
+        "gender": "female",
+        "birthdate": "2013-01-01",
+        "role": "manager"
     }
 ]

@@ -84,16 +84,16 @@ public class Test {
 		managerDAO.addManager(m1);
 	}
 	
-	private static void createCustomers() throws Exception{
-		Customer c1 = new Customer(-1, "nikolaN", "123", "Nikola", "Nikolic", Gender.male, LocalDate.of(1988, 2, 12), Role.customer);
-		c1.setPoints(0f);
-		c1.setMembership(null);
-		List<Integer> sOA = new ArrayList<>();
-		sOA.add(1);
-		sOA.add(2);
-		c1.setSportsObjectAttended(sOA);
-		customerDAO.addCustomer(c1);
-	}
+//	private static void createCustomers() throws Exception{
+//		Customer c1 = new Customer(-1, "nikolaN", "123", "Nikola", "Nikolic", Gender.male, LocalDate.of(1988, 2, 12), Role.customer);
+//		c1.setPoints(0f);
+//		c1.setMembership(null);
+//		List<Integer> sOA = new ArrayList<>();
+//		sOA.add(1);
+//		sOA.add(2);
+//		c1.setSportsObjectAttended(sOA);
+//		customerDAO.addCustomer(c1);
+//	}
 
 //	private static void createOffers() throws Exception{
 //		Offer o1 = new Offer(1, "Pool Pass", "Pool", "https://example.com/pool-pass.jpg",

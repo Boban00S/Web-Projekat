@@ -13,13 +13,15 @@ public class User {
 	private Gender gender;
 	private LocalDate birthdate;
 	private Role role;
-	
+	private CustomerType customerType;
+
+
 	public User() {
 		
 	}
-	
+
 	public User(int id, String username, String password, String name, String lastName, Gender gender,
-			LocalDate birthdate, Role role) {
+				LocalDate birthdate, Role role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -29,6 +31,20 @@ public class User {
 		this.gender = gender;
 		this.birthdate = birthdate;
 		this.role = role;
+	}
+
+	public User(int id, String username, String password, String name, String lastName, Gender gender,
+			LocalDate birthdate, Role role, CustomerType customerType) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.birthdate = birthdate;
+		this.role = role;
+		this.customerType = customerType;
 	}
 
 	public int getId() {
@@ -72,6 +88,14 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public CustomerType getCustomerType() {
+		return customerType;
+	}
+
+	public void setCustomerType(CustomerType customerType) {
+		this.customerType = customerType;
 	}
 
 	public Role getRole() {

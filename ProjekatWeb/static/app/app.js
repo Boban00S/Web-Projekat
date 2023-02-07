@@ -1,11 +1,13 @@
-const Homepage = { template: '<homepage></homepage>' }
 const Login = { template: '<login></login>' }
 const Registration = { template: '<registration></registration>' }
 const UserProfile = { template: '<user-profile></user-profile>' }
 const UserHomepage = { template: '<user-homepage></user-homepage>' }
+const Homepage = { template: '<homepage></homepage>' }
 
 const SportsObjectsInfo = { template: '<sports-object></sports-object>' }
+const BrSportsObjectsInfo = { template: '<br-sports-object></br-sports-object>' }
 const SportObjectInfo = { template: '<sport-object></sport-object>' }
+const BrSportObjectInfo = { template: '<br-sport-object></br-sport-object>' }
 const ShowUsers = { template: '<show-users></show-users>' }
 const ManagersSportsObject = { template: '<managers-object></managers-object>' }
 const CreateSportsObject = { template: '<admin-object></admin-object>' }
@@ -24,10 +26,10 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            component: UserHomepage,
+            component: Homepage,
             children: [
-                {path: '', component: SportsObjectsInfo, name: 'sports-object'},
-                {path: 'sport-object', component: SportObjectInfo, name: 'sport-object'}
+                {path: '', component: BrSportsObjectsInfo, name: 'br-sports-object'},
+                {path: 'br-sport-object', component: BrSportObjectInfo, name: 'br-sport-object'}
             ]},
         { path: '/login', name: 'login', component: Login },
         { path: '/registration', name: 'registration', component: Registration },

@@ -67,21 +67,12 @@ Vue.component("user-homepage", {
                 </div>
             </div>
         </nav>
-        </section>
 
         <router-view></router-view>
     </div>
     `
     ,
     mounted() {
-        axios
-            .get('rest/homepage')
-            .then(response => {
-                this.sportsObjects = response.data;
-                for (SportsObject of this.sportsObjects) {
-                    this.isOpen(SportsObject);
-                }
-            });
         axios
             .get('rest/testlogin')
             .then(response => {
@@ -108,39 +99,14 @@ Vue.component("user-homepage", {
                 .get('rest/logout')
                 .then(response => {
                     this.mode = 'Browse';
-                    this.$router.push({ name: 'sports-object' })
+                    this.$router.push('/')
                 });
-        },
-        isOpen: function (SportsObject) {
-            var current = new Date();
-            SportsObject.isOpen = current.getHours() >= SportsObject.openingHours.fromHours && current.getHours() < SportsObject.openingHours.toHours;
         },
         usersSettings: function () {
             this.$router.push({ name: 'user-profile', params: { id: this.user.id } })
         },
         showUsers: function () {
             this.$router.push({ name: 'show-users', params: { id: this.user.id } })
-        }
-    },
-    computed: {
-        filteredSportsObjects() {
-            if (this.sportsObjects === null) {
-                return;
-            }
-            return this.sportsObjects.filter(SportsObject => {
-                const nameSportsObject = SportsObject.name.toString().toLowerCase();
-                const typeSportsObject = SportsObject.objectType.name.toString().toLowerCase();
-                const placeSportsObject = SportsObject.location.place.toString().toLowerCase();
-                const countrySportsObject = SportsObject.location.country.toString().toLowerCase();
-                const averageGradeSportsObject = SportsObject.averageGrade.toString().toLowerCase();
-                const searchTerm = this.filter.toLowerCase();
-
-                return nameSportsObject.includes(searchTerm) ||
-                    typeSportsObject.includes(searchTerm) ||
-                    placeSportsObject.includes(searchTerm) ||
-                    averageGradeSportsObject.includes(searchTerm) ||
-                    countrySportsObject.includes(searchTerm);
-            });
         }
     }
 });

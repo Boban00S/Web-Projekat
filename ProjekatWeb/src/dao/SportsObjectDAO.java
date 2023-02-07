@@ -110,8 +110,8 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 		return i;
 	}
 
-	public Collection<SportsObject> sortBy(String sortColumn){
-		FlexibleCentersComparator comparator = new FlexibleCentersComparator();
+	public Collection<SportsObject> sortBy(String sortColumn, boolean isAscending){
+		FlexibleCentersComparator comparator = new FlexibleCentersComparator(isAscending);
 		comparator.setSortingBy(sortColumn);
 		List<SportsObject> objects = new ArrayList<>(findAll());
 		Collections.sort(objects, comparator);

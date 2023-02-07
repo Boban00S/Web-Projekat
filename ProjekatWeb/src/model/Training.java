@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Training{
+	@Expose
 	private int id;
 	private String name;
 	private String type;

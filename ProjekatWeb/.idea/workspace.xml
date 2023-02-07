@@ -4,11 +4,35 @@
     <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/customers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/managers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/managers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sports_objects.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/sports_objects.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/training.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/training_history.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training_history.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/TrainingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/SportsObjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/SportsObjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlexibleCentersComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexibleCentersComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Training.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Training.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/app/sport_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/sport_object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rest/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/add_offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/add_offer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/create_sports_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/create_sports_object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/customer_trainings.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/customer_trainings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/edit_offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/edit_offer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/manager_trainings.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/manager_trainings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/membership.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/show_users.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/show_users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/sports_object.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/sports_object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/user_homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/user_homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/user_profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/user_profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +158,9 @@
       <workItem from="1675110267530" duration="5799000" />
       <workItem from="1675175432751" duration="7676000" />
       <workItem from="1675270997789" duration="13564000" />
+      <workItem from="1675673584357" duration="10417000" />
+      <workItem from="1675712266192" duration="7795000" />
+      <workItem from="1675793256870" duration="8228000" />
     </task>
     <servers />
   </component>
@@ -152,6 +179,15 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/rest/SparkAppMain.java</url>
+          <line>232</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="spark.http.matching.RequestWrapper" memberName="params" />

@@ -61,7 +61,7 @@ Vue.component("edit-offer", {
                                     Trainers
                                   </label>
                                   <select v-model="newTraining.trainer" class="form-select border border-dark from-select-lg" aria-label="Default select example">
-                                  <option :value="trainers.username" v-for="trainer in trainers">
+                                  <option :value="trainer" v-for="trainer in trainers">
                                     @{{trainer.username}}
                                   </option>
                                   </select>
@@ -131,6 +131,10 @@ Vue.component("edit-offer", {
             return axios
                 .delete('rest/sport-object/training', {params: {objectId: this.sportsObject.id, trainingId: this.oldTraining.id}});
         },
+        validateInputs(){
+            return this.newTraining.name == null || this.newTraining.name === ""||
+                this.newTraining.type == null || this.newTraining.type === "";
+        },
         addTraining(){
             if(this.newTraining.name !== ""){
                 this.contains = this.containsTraining()
@@ -141,6 +145,12 @@ Vue.component("edit-offer", {
                 if(this.TrainingFile != null){
                     this.submitFile();
                 }
+
+                if(this.validateInputs()){
+                    alert("Input not valid!");
+                    return;
+                }
+
                 axios
                     .delete('rest/sport-object/training', {params: {objectId: this.sportsObject.id, trainingId: this.oldTraining.id}})
                     .then(response =>{

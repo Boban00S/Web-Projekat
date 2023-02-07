@@ -6,6 +6,7 @@ Vue.component("add-offer", {
             file: null,
             newTraining:{},
             trainers: null,
+            trainerObj: null
         }
     },
     template:
@@ -59,7 +60,7 @@ Vue.component("add-offer", {
                                     Trainers
                                   </label>
                                   <select v-model="newTraining.trainer" class="form-select border border-dark from-select-lg" aria-label="Default select example">
-                                  <option :value="trainers.username" v-for="trainer in trainers">
+                                  <option :value="trainer" v-for="trainer in trainers">
                                     @{{trainer.username}}
                                   </option>
                                   </select>
@@ -123,12 +124,21 @@ Vue.component("add-offer", {
             }
             return false;
         },
+        validateInputs() {
+            return this.newTraining.name == null || this.newTraining.name === "" ||
+                this.newTraining.type == null || this.newTraining.type === "" ||
+                this.$refs.myFile.files[0] == null;
+        },
         addTraining(){
             if(this.newTraining.name !== ""){
                 this.contains = this.containsTraining()
                 if(this.contains){
                     alert("Training is already added!");
                     return;
+                }
+                if(this.validateInputs()){
+                   alert("Input not valid!");
+                   return;
                 }
                 this.submitFile();
                 this.newTraining.sportsObject = this.sportsObject;

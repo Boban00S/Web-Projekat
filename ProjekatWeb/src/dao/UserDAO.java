@@ -139,8 +139,7 @@ public class UserDAO implements ISerializable<String, User> {
 	
 	@Override
 	public void serialize(List<User> objectList, boolean append) throws IOException{
-		GsonBuilder builder = new GsonBuilder()
-				.excludeFieldsWithoutExposeAnnotation();
+		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);

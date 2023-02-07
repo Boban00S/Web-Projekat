@@ -196,7 +196,7 @@ public class SparkAppMain {
 				ss.attribute("user", user);
 			}
 			res.status(200);
-			return user.getId();
+			return g.toJson(user);
 		});
 		
 		get("/rest/logout", (req, res) ->{
@@ -465,10 +465,12 @@ public class SparkAppMain {
 			
 		});
 
-		get("rest/sort", (req, res) ->{
+		get("rest/sort/sports-objects", (req, res) ->{
 			res.type("application/json");
 			String sortColumn = req.queryMap("sortColumn").value();
-			return g.toJson(sportsObjectDAO.sortBy(sortColumn));
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("true");
+			return g.toJson(sportsObjectDAO.sortBy(sortColumn, isAscending));
 		});
 
 		get("rest/sort/customer-trainings", (req, res) ->{
@@ -480,6 +482,17 @@ public class SparkAppMain {
 			Customer customer = customerDAO.findById(customerId);
 			return g.toJson(trainingHistoryDAO.sortyBy(sortColumn, isAscending, customer));
 		});
+
+		get("rest/sort/manager-trainings", (req, res) ->{
+			res.type("application/json");
+			int managerId = Integer.parseInt(req.queryMap("id").value());
+			String sortColumn = req.queryMap("sortColumn").value();
+			String ascending = req.queryMap("ascending").value();
+			boolean isAscending = ascending.equals("true");
+			Manager manager = managerDAO.findManagerById(managerId);
+			return g.toJson(trainingDAO.sortSportObjectTrainingsBy(sortColumn, isAscending, manager.getSportsObject()));
+		});
+
 
 		get("rest/customer-type", (req, res) ->{
 			res.type("application/json");

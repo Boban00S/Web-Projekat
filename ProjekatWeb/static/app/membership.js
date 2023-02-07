@@ -9,12 +9,11 @@ Vue.component("membership", {
     },
     template: `
     <div>
-        </section>
 
         <div class="container mt-5 px-2">
          
             
-            <div class="row">
+            <div v-if="memberships" class="row">
                 <div v-for="(m, i) in memberships" :key="i" class="col-xs-6 card m-3" style="width: 18rem;">
                     <div class="card-body">
                         <h4 class="card-title fw-bold">Code: {{m.code}} </h4>

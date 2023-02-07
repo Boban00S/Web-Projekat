@@ -13,7 +13,7 @@ Vue.component("user-profile", {
         <div class="col-12 col-lg-10 col-xl-8 mx-auto">
             <h2 class="h3 mb-4 page-title">Settings</h2>
             <div class="my-4">
-                <form>
+                <form method="post">
                     <div class="row mt-5 align-items-center">
                         <div class="col">
                             <div class="row align-items-center">
@@ -75,11 +75,11 @@ Vue.component("user-profile", {
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword5">New Password</label>
-                                <input type="password" name="newpassword" v-model="newPassword" class="form-control form-control-lg border border-dark" id="inputPassword5" />
+                                <input type="password" name="newpassword" v-model="newPassword" class="form-control form-control-lg border border-dark" id="inputPassword6" />
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword6">Confirm Password</label>
-                                <input type="password" name="confirmpassword" v-model="confirmPassword" class="form-control form-control-lg border border-dark" id="inputPassword6" />
+                                <input type="password" name="confirmpassword" v-model="confirmPassword" class="form-control form-control-lg border border-dark" id="inputPassword7" />
                             </div>
                         </div>
                     </div>
@@ -166,6 +166,12 @@ Vue.component("user-profile", {
             axios.post('rest/edit_user', this.user)
                 .then((response) => {
                     alert("Izmene su uspesno izvrsene.")
+                    this.$router.push({
+                        name: 'sports-object',
+                        params: {
+                            id: this.user.id
+                        }
+                    })
                 })
                 .catch(error => {
                     alert("Username is not available!");
@@ -203,6 +209,9 @@ Vue.component("user-profile", {
                 let field = document.getElementsByName("confirmpassword")[0]
                 field.setAttribute('style', 'border:1px solid red !important');
                 this.confirmPassword = "";
+            }
+            if(output === false){
+                alert("Your password is wrong!")
             }
             return output;
         }

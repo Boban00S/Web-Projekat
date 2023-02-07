@@ -96,7 +96,7 @@ Vue.component("registration", {
             }
             axios.post('rest/registration', this.user)
                 .then((response) => {
-                    this.$router.push({ name: 'homepage' })
+                    this.$router.push({ name: 'sports-object' })
                     alert("Novi korisnik je uspesno kreiran")
                 })
                 .catch(error => {

@@ -188,7 +188,6 @@ Vue.component("show-customer-trainings", {
                 .then(response =>{
                     this.oldTrainings = response.data;
                     this.search()
-                    // this.filterTable();
                 })
         },
         search(){
@@ -202,16 +201,13 @@ Vue.component("show-customer-trainings", {
         },
         sortOrder(event){
             this.ascending = event.target.value === "ascending";
+            this.sortTable(null);
         },
-        filterTable(){
-            this.trainings = this.trainings.filter(tH => {
-                const typeSportsObject = tH.training.sportsObject.objectType.name.toString().toLowerCase();
-                const trainingType = tH.training.type.toString().toLowerCase();
-                const filterTerm = this.filterBy.toLowerCase();
-
-                return typeSportsObject.includes(filterTerm) ||
-                    trainingType.includes(filterTerm)
-            })
+        filterTable(event){
+            if(event != null){
+                this.filterBy = event.target.value;
+            }
+            this.search();
         }
     }
 

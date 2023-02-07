@@ -7,7 +7,6 @@ public class Customer extends User{
 	private Float points;
 	private Membership membership;
 	private List<Integer> sportsObjectAttended;
-	private CustomerType customerType;
 	private int dailyUsageLeft;
 
 	
@@ -17,16 +16,15 @@ public class Customer extends User{
 		// TODO Auto-generated constructor stub
 	}
 	public Customer(int id, String username, String password, String name, String lastName, Gender gender,
-			LocalDate birthdate, Role role) {
-		super(id, username, password, name, lastName, gender, birthdate, role);
+			LocalDate birthdate, Role role, CustomerType customerType) {
+		super(id, username, password, name, lastName, gender, birthdate, role, customerType);
 		// TODO Auto-generated constructor stub
 	}
-	public Customer(Float points, Membership membership, List<Integer> sportsObjectAttended, CustomerType customerType) {
+	public Customer(Float points, Membership membership, List<Integer> sportsObjectAttended) {
 		super();
 		this.points = points;
 		this.membership = membership;
 		this.sportsObjectAttended = sportsObjectAttended;
-		this.customerType = customerType;
 	}
 	public Float getPoints() {
 		return points;
@@ -45,12 +43,6 @@ public class Customer extends User{
 	}
 	public void setSportsObjectAttended(List<Integer> sportsObjectAttended) {
 		this.sportsObjectAttended = sportsObjectAttended;
-	}
-	public CustomerType getCustomerType() {
-		return customerType;
-	}
-	public void setCustomerType(CustomerType customerType) {
-		this.customerType = customerType;
 	}
 
 	public int getDailyUsageLeft() {
