@@ -4,9 +4,12 @@
     <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/customers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/trainers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/trainers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/training_history.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training_history.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/TrainerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rest/SparkAppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rest/SparkAppMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/add_offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/add_offer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/app/edit_offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/app/edit_offer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +93,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.SparkAppMain" />
       <item itemvalue="Application.Test" />
@@ -137,6 +151,7 @@
       <workItem from="1675793256870" duration="8228000" />
       <workItem from="1675852273834" duration="600000" />
       <workItem from="1675854657550" duration="22078000" />
+      <workItem from="1675890853087" duration="2074000" />
     </task>
     <servers />
   </component>

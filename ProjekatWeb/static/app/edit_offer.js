@@ -94,7 +94,7 @@ Vue.component("edit-offer", {
                 this.sportsObject = response.data;
             });
         axios
-            .get('rest/sport-object/trainers', {params: {id: this.$route.params.userId}})
+            .get('rest/trainer', {params: {id: this.$route.params.userId}})
             .then(response => {
                 this.trainers = response.data;
             });

@@ -349,6 +349,11 @@ public class SparkAppMain {
 			return g.toJson(trainers);
 		});
 
+		get("rest/trainer", (req, res) ->{
+			res.type("application/json");
+			return g.toJson(trainerDAO.findAll());
+		});
+
 		get("rest/sports-object/available-trainings", (req, res) ->{
 			res.type("application/json");
 			int sportsObjectId = Integer.parseInt(req.queryMap("id").value());
