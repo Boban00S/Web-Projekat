@@ -88,7 +88,8 @@ public class TrainerDAO implements ISerializable<String, Trainer>{
 	@Override
 	public void serialize(List<Trainer> objectList, boolean append) throws IOException {
 		GsonBuilder builder = new GsonBuilder()
-				.setExclusionStrategies(new UserExcludingStrategy());
+				.setExclusionStrategies(new UserExcludingStrategy())
+						.setExclusionStrategies(new TrainerExcludingStrategy());
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
 		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
