@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class Manager extends User{
-	private SportsObject sportsObject;
+	private int sportsObjectId;
 
 	public Manager() {
 		super();
@@ -19,22 +19,14 @@ public class Manager extends User{
 	}
 
 
-
-	public Manager(SportsObject sportsObject) {
-		super();
-		this.sportsObject = sportsObject;
+	public int getSportsObject() {
+		return sportsObjectId;
 	}
 
 
 
-	public SportsObject getSportsObject() {
-		return sportsObject;
-	}
-
-
-
-	public void setSportsObject(SportsObject sportsObject) {
-		this.sportsObject = sportsObject;
+	public void setSportsObject(int sportsObject) {
+		this.sportsObjectId = sportsObject;
 	}
 	
 	

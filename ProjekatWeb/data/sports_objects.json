@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Tajs",
+        "objectType": {
+            "name": "gym"
+        },
+        "opened": false,
+        "location": {
+            "longitude": "45.243525",
+            "latitude": "24.234152",
+            "street": "Filipa Visnjica 5",
+            "place": "Novi Sad 21000",
+            "country": "Serbia"
+        },
+        "imagePath": "../images/tajs.jpg",
+        "averageGrade": 7.1,
+        "workingHours": "16-24",
+        "openingHours": {
+            "fromHours": 16,
+            "fromMinutes": 0,
+            "toHours": 24,
+            "toMinutes": 0
+        },
+        "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+    },
+    {
+        "id": 2,
+        "name": "Vatrogas",
+        "objectType": {
+            "name": "gym"
+        },
+        "opened": false,
+        "location": {
+            "longitude": "45.243525",
+            "latitude": "24.234152",
+            "street": "Georgija Jaksica 1",
+            "place": "Loznica 15300",
+            "country": "Serbia"
+        },
+        "imagePath": "../images/vatrogas.jpg",
+        "averageGrade": 9.0,
+        "workingHours": "00-24",
+        "openingHours": {
+            "fromHours": 0,
+            "fromMinutes": 0,
+            "toHours": 24,
+            "toMinutes": 0
+        },
+        "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
+    }
+]

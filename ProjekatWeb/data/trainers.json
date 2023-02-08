@@ -1,0 +1,35 @@
+[
+    {
+        "trainingHistoryList": [
+            {
+                "id": 4,
+                "training": {
+                    "id": 0,
+                    "sportsObject": {
+                        "id": 1
+                    },
+                    "deleted": false
+                },
+                "deleted": false
+            },
+            {
+                "id": 5,
+                "training": {
+                    "id": 17,
+                    "sportsObject": {
+                        "id": 1
+                    },
+                    "deleted": false
+                },
+                "deleted": false
+            }
+        ],
+        "username": "nikolaN",
+        "deleted": false
+    },
+    {
+        "trainingHistoryList": [],
+        "username": "alekA",
+        "deleted": false
+    }
+]

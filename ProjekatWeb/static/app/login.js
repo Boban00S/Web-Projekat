@@ -58,7 +58,13 @@ Vue.component("login", {
             this.error = ""
             axios.post('rest/login', this.user)
                 .then((response) => {
-                    this.$router.push({ name: 'homepage' })
+                    this.$router.push({
+                        name: 'sports-object',
+                        params: {
+                            id: response.data.id
+                        }
+                    })
+
                 })
                 .catch(error => {
                     alert("Wrong username or password!");

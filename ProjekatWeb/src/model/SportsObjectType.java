@@ -1,6 +1,9 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 public class SportsObjectType {
+	@Expose
 	private String name;
 
 	public SportsObjectType() {

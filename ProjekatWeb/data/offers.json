@@ -1,0 +1,80 @@
+[
+    {
+        "id": 3,
+        "name": "Body Combat",
+        "type": "Training",
+        "imagePath": "asd",
+        "description": "asdad",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        },
+        "price": 0,
+        "date": "2023-01-11T15:32:35.2342852"
+    },
+    {
+        "id": 4,
+        "name": "Sauna Special",
+        "type": "Pool",
+        "imagePath": "https://example.com/pool-pass.jpg",
+        "description": "Unlimited access to the pool for one month",
+        "duration": 30,
+        "sportsObject": {
+            "id": 2
+        },
+        "price": 10,
+        "date": "2023-01-11T15:32:35.2342852"
+    },
+    {
+        "id": 2,
+        "name": "Box",
+        "type": "Training",
+        "imagePath": "asfgg",
+        "description": "2 hours in the sauna for the price of 1!",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        },
+        "price": 10,
+        "date": "2023-01-11T15:32:35.2342852"
+    },
+    {
+        "id": 1,
+        "name": "Pool Pass",
+        "type": "Pool",
+        "imagePath": "https://example.com/pool-pass.jpgfsdfds",
+        "description": "Unlimited access to the pool for one month",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        },
+        "price": 30,
+        "date": "2023-01-11T15:32:35.2342852"
+    },
+    {
+        "id": 5,
+        "name": "KickBox",
+        "type": "Training",
+        "imagePath": "asd112312512",
+        "description": "asdad",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        },
+        "price": 100,
+        "date": "2023-01-11T15:32:35.2342852"
+    },
+    {
+        "id": 6,
+        "name": "Legs training",
+        "type": "Training",
+        "imagePath": "asd1231",
+        "description": "asdad",
+        "duration": 30,
+        "sportsObject": {
+            "id": 1
+        },
+        "price": 0,
+        "date": "2023-01-11T15:32:35.2342852"
+    }
+]

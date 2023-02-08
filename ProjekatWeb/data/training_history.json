@@ -1,0 +1,30 @@
+[
+    {
+        "id": 4,
+        "startDateAndTime": "2023-02-08T22:07:14.646547",
+        "customer": {
+            "id": 3
+        },
+        "trainer": {
+            "id": 18
+        },
+        "training": {
+            "id": 17
+        },
+        "deleted": false
+    },
+    {
+        "id": 5,
+        "startDateAndTime": "2023-02-08T22:08:41.4947673",
+        "customer": {
+            "id": 3
+        },
+        "trainer": {
+            "id": 18
+        },
+        "training": {
+            "id": 17
+        },
+        "deleted": false
+    }
+]

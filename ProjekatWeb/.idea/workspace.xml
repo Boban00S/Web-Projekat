@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/customers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/customers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/trainers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/trainers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/training_history.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/training_history.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TrainerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/TrainerDAO.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2I5aikVKAQfcH1cHdfyVJEXmvZS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stani/Desktop/FTN Projekti/Web-Projekat/ProjekatWeb/static/app&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\stani\Desktop\FTN Projekti\Web-Projekat\ProjekatWeb\static\app" />
+      <recent name="C:\Users\stani\Desktop\FTN Projekti\Web-Projekat\ProjekatWeb\data" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="model" />
+      <recent name="dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SparkAppMain">
+    <configuration name="SparkAppMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="JavaSE-1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="rest.SparkAppMain" />
+      <module name="ProjekatWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rest.Test" />
+      <module name="ProjekatWeb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SparkAppMain" />
+      <item itemvalue="Application.Test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7428f2e-c5e8-4a53-b1fc-5e5b954befef" name="Changes" comment="" />
+      <created>1669474028203</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669474028203</updated>
+      <workItem from="1669474029959" duration="50000" />
+      <workItem from="1669474148002" duration="92000" />
+      <workItem from="1669474330036" duration="6685000" />
+      <workItem from="1669670006218" duration="21000" />
+      <workItem from="1671870273455" duration="1429000" />
+      <workItem from="1671871729532" duration="18421000" />
+      <workItem from="1671997577258" duration="389000" />
+      <workItem from="1671998252753" duration="4776000" />
+      <workItem from="1672854327673" duration="8729000" />
+      <workItem from="1672941141958" duration="9003000" />
+      <workItem from="1673098918930" duration="11769000" />
+      <workItem from="1673117146241" duration="347000" />
+      <workItem from="1673117558951" duration="279000" />
+      <workItem from="1673117855409" duration="3802000" />
+      <workItem from="1673122256270" duration="1017000" />
+      <workItem from="1673125177407" duration="2220000" />
+      <workItem from="1673295398246" duration="3032000" />
+      <workItem from="1673369809347" duration="6711000" />
+      <workItem from="1673385519067" duration="1871000" />
+      <workItem from="1674678305439" duration="4997000" />
+      <workItem from="1675021873124" duration="1889000" />
+      <workItem from="1675110267530" duration="5799000" />
+      <workItem from="1675175432751" duration="7676000" />
+      <workItem from="1675270997789" duration="13564000" />
+      <workItem from="1675673584357" duration="10417000" />
+      <workItem from="1675712266192" duration="7795000" />
+      <workItem from="1675793256870" duration="8228000" />
+      <workItem from="1675852273834" duration="600000" />
+      <workItem from="1675854657550" duration="22078000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/rest/SparkAppMain.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="spark.http.matching.RequestWrapper" memberName="params" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
