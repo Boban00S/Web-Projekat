@@ -142,6 +142,7 @@ Vue.component("add-offer", {
                 }
                 this.submitFile();
                 this.newTraining.sportsObject = this.sportsObject;
+                this.newTraining.price = 0.0;
                 axios
                     .post('rest/sport-object/training', this.newTraining)
                     .then(response => {

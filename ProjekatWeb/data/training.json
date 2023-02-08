@@ -1,10 +1,10 @@
 [
     {
-        "id": 13,
-        "name": "Legs training",
-        "type": "Groups",
-        "imagePath": "asd1231",
-        "description": "asdad",
+        "id": 17,
+        "name": "Box",
+        "type": "Personal",
+        "imagePath": "../images/box.jpg",
+        "description": "Boxing training is a form of martial arts and fitness program that focuses on the sport of boxing. It involves learning and practicing various punches, including jabs, crosses, hooks, and uppercuts, as well as footwork, head movement, and defense techniques. Boxing training typically takes place in a gym setting, with participants using heavy bags, speed bags, and other equipment to improve their technique and power. ",
         "duration": 30,
         "sportsObject": {
             "id": 1,
@@ -30,92 +30,345 @@
                 "toMinutes": 0
             },
             "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
-        },
-        "price": 0.0,
-        "date": "2023-01-11T15:32:35.2342852",
-        "trainer": {
-            "sportsObjectId": 1,
-            "id": 18,
-            "username": "nikolaN",
-            "password": "123",
-            "name": "Nikola",
-            "lastName": "Nikolic",
-            "gender": "male",
-            "birthdate": "2012-12-31",
-            "role": "trainer"
-        }
-    },
-    {
-        "id": 4,
-        "name": "Sauna Special",
-        "type": "Pool",
-        "imagePath": "https://example.com/pool-pass.jpg",
-        "description": "Unlimited access to the pool for one month",
-        "duration": 30,
-        "sportsObject": {
-            "id": 2,
-            "name": "Vatrogas",
-            "objectType": {
-                "name": "gym"
-            },
-            "opened": false,
-            "location": {
-                "longitude": "45.243525",
-                "latitude": "24.234152",
-                "street": "Georgija Jaksica 1",
-                "place": "Loznica 15300",
-                "country": "Serbia"
-            },
-            "imagePath": "../images/vatrogas.jpg",
-            "averageGrade": 9.0,
-            "workingHours": "00-24",
-            "openingHours": {
-                "fromHours": 0,
-                "fromMinutes": 0,
-                "toHours": 24,
-                "toMinutes": 0
-            },
-            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
         },
         "price": 10.0,
-        "date": "2023-01-11T15:32:35.2342852"
-    },
-    {
-        "id": 14,
-        "name": "Body Combat",
-        "type": "Group",
-        "imagePath": "asd",
-        "description": "asdad",
-        "duration": 30,
-        "sportsObject": {
-            "id": 1,
-            "name": "Tajs",
-            "objectType": {
-                "name": "gym"
-            },
-            "opened": false,
-            "location": {
-                "longitude": "45.243525",
-                "latitude": "24.234152",
-                "street": "Filipa Visnjica 5",
-                "place": "Novi Sad 21000",
-                "country": "Serbia"
-            },
-            "imagePath": "../images/tajs.jpg",
-            "averageGrade": 7.1,
-            "workingHours": "16-24",
-            "openingHours": {
-                "fromHours": 16,
-                "fromMinutes": 0,
-                "toHours": 24,
-                "toMinutes": 0
-            },
-            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
-        },
-        "price": 0.0,
-        "date": "2023-01-11T15:32:35.2342852",
+        "date": "2023-02-08T21:43:55.3969668",
         "trainer": {
-            "sportsObjectId": 1,
+            "trainingHistoryList": [
+                {
+                    "id": 1,
+                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1
+                        ],
+                        "dailyUsageLeft": 12,
+                        "id": 0,
+                        "username": "anjaS",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [],
+                        "id": 0,
+                        "username": "nikolaN",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 14,
+                        "name": "Body Combat",
+                        "type": "Group",
+                        "imagePath": "../images/body_combat.jpg",
+                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 1,
+                            "name": "Tajs",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Filipa Visnjica 5",
+                                "place": "Novi Sad 21000",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/tajs.jpg",
+                            "averageGrade": 7.1,
+                            "workingHours": "16-24",
+                            "openingHours": {
+                                "fromHours": 16,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-10T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [],
+                            "id": 0,
+                            "username": "nikolaN",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                },
+                {
+                    "id": 2,
+                    "startDateAndTime": "2023-02-08T21:42:06.400757",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1,
+                            2
+                        ],
+                        "dailyUsageLeft": 10,
+                        "id": 3,
+                        "username": "anjaS",
+                        "password": "123",
+                        "name": "Anja",
+                        "lastName": "Stanimirovic",
+                        "gender": "female",
+                        "birthdate": "2001-01-26",
+                        "role": "customer",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [
+                            {
+                                "id": 1,
+                                "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                "customer": {
+                                    "points": 10.0,
+                                    "membership": {
+                                        "code": "M123456789",
+                                        "membershipType": "Month",
+                                        "payingDate": "2023-02-08",
+                                        "expireDate": "2023-03-08",
+                                        "price": 2000.0,
+                                        "active": true,
+                                        "dailyUsage": 14,
+                                        "description": "Gym access"
+                                    },
+                                    "sportsObjectAttended": [
+                                        1
+                                    ],
+                                    "dailyUsageLeft": 12,
+                                    "id": 0,
+                                    "username": "anjaS",
+                                    "customerType": {
+                                        "name": "silver",
+                                        "discount": 0,
+                                        "points": 0
+                                    },
+                                    "deleted": false
+                                },
+                                "trainer": {
+                                    "trainingHistoryList": [],
+                                    "id": 0,
+                                    "username": "nikolaN",
+                                    "deleted": false
+                                },
+                                "training": {
+                                    "id": 14,
+                                    "name": "Body Combat",
+                                    "type": "Group",
+                                    "imagePath": "../images/body_combat.jpg",
+                                    "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                    "duration": 30,
+                                    "sportsObject": {
+                                        "id": 1,
+                                        "name": "Tajs",
+                                        "objectType": {
+                                            "name": "gym"
+                                        },
+                                        "opened": false,
+                                        "location": {
+                                            "longitude": "45.243525",
+                                            "latitude": "24.234152",
+                                            "street": "Filipa Visnjica 5",
+                                            "place": "Novi Sad 21000",
+                                            "country": "Serbia"
+                                        },
+                                        "imagePath": "../images/tajs.jpg",
+                                        "averageGrade": 7.1,
+                                        "workingHours": "16-24",
+                                        "openingHours": {
+                                            "fromHours": 16,
+                                            "fromMinutes": 0,
+                                            "toHours": 24,
+                                            "toMinutes": 0
+                                        },
+                                        "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                    },
+                                    "price": 0.0,
+                                    "date": "2023-02-10T15:32:35.2342852",
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                },
+                                "deleted": false
+                            }
+                        ],
+                        "id": 18,
+                        "username": "nikolaN",
+                        "password": "123",
+                        "name": "Nikola",
+                        "lastName": "Nikolic",
+                        "gender": "male",
+                        "birthdate": "2012-12-31",
+                        "role": "trainer",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 15,
+                        "name": "Legs training",
+                        "type": "Groups",
+                        "imagePath": "../images/legs1.jpg",
+                        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 2,
+                            "name": "Vatrogas",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Georgija Jaksica 1",
+                                "place": "Loznica 15300",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/vatrogas.jpg",
+                            "averageGrade": 9.0,
+                            "workingHours": "00-24",
+                            "openingHours": {
+                                "fromHours": 0,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-11T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [
+                                {
+                                    "id": 1,
+                                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                    "customer": {
+                                        "points": 10.0,
+                                        "membership": {
+                                            "code": "M123456789",
+                                            "membershipType": "Month",
+                                            "payingDate": "2023-02-08",
+                                            "expireDate": "2023-03-08",
+                                            "price": 2000.0,
+                                            "active": true,
+                                            "dailyUsage": 14,
+                                            "description": "Gym access"
+                                        },
+                                        "sportsObjectAttended": [
+                                            1
+                                        ],
+                                        "dailyUsageLeft": 12,
+                                        "id": 0,
+                                        "username": "anjaS",
+                                        "customerType": {
+                                            "name": "silver",
+                                            "discount": 0,
+                                            "points": 0
+                                        },
+                                        "deleted": false
+                                    },
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "training": {
+                                        "id": 14,
+                                        "name": "Body Combat",
+                                        "type": "Group",
+                                        "imagePath": "../images/body_combat.jpg",
+                                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                        "duration": 30,
+                                        "sportsObject": {
+                                            "id": 1,
+                                            "name": "Tajs",
+                                            "objectType": {
+                                                "name": "gym"
+                                            },
+                                            "opened": false,
+                                            "location": {
+                                                "longitude": "45.243525",
+                                                "latitude": "24.234152",
+                                                "street": "Filipa Visnjica 5",
+                                                "place": "Novi Sad 21000",
+                                                "country": "Serbia"
+                                            },
+                                            "imagePath": "../images/tajs.jpg",
+                                            "averageGrade": 7.1,
+                                            "workingHours": "16-24",
+                                            "openingHours": {
+                                                "fromHours": 16,
+                                                "fromMinutes": 0,
+                                                "toHours": 24,
+                                                "toMinutes": 0
+                                            },
+                                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                        },
+                                        "price": 0.0,
+                                        "date": "2023-02-10T15:32:35.2342852",
+                                        "trainer": {
+                                            "trainingHistoryList": [],
+                                            "id": 0,
+                                            "username": "nikolaN",
+                                            "deleted": false
+                                        },
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                }
+                            ],
+                            "id": 18,
+                            "username": "nikolaN",
+                            "password": "123",
+                            "name": "Nikola",
+                            "lastName": "Nikolic",
+                            "gender": "male",
+                            "birthdate": "2012-12-31",
+                            "role": "trainer",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                }
+            ],
             "id": 18,
             "username": "nikolaN",
             "password": "123",
@@ -123,15 +376,17 @@
             "lastName": "Nikolic",
             "gender": "male",
             "birthdate": "2012-12-31",
-            "role": "trainer"
-        }
+            "role": "trainer",
+            "deleted": false
+        },
+        "deleted": false
     },
     {
         "id": 5,
         "name": "KickBox",
         "type": "Personal",
-        "imagePath": "asd112312512",
-        "description": "asdad",
+        "imagePath": "../images/kickbox.jpg",
+        "description": "Kickboxing training is a type of martial arts and fitness program that combines elements of boxing, karate, and other striking-based disciplines. It typically involves striking techniques such as punches, kicks, knee strikes, and elbow strikes, as well as some forms of grappling. Participants can practice these techniques on heavy bags, pads, or sparring partners, and engage in high-intensity workouts designed to improve cardiovascular fitness, coordination, speed, and power",
         "duration": 30,
         "sportsObject": {
             "id": 1,
@@ -161,7 +416,341 @@
         "price": 100.0,
         "date": "2023-01-11T15:32:35.2342852",
         "trainer": {
-            "sportsObjectId": 1,
+            "trainingHistoryList": [
+                {
+                    "id": 1,
+                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1
+                        ],
+                        "dailyUsageLeft": 12,
+                        "id": 0,
+                        "username": "anjaS",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [],
+                        "id": 0,
+                        "username": "nikolaN",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 14,
+                        "name": "Body Combat",
+                        "type": "Group",
+                        "imagePath": "../images/body_combat.jpg",
+                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 1,
+                            "name": "Tajs",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Filipa Visnjica 5",
+                                "place": "Novi Sad 21000",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/tajs.jpg",
+                            "averageGrade": 7.1,
+                            "workingHours": "16-24",
+                            "openingHours": {
+                                "fromHours": 16,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-10T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [],
+                            "id": 0,
+                            "username": "nikolaN",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                },
+                {
+                    "id": 2,
+                    "startDateAndTime": "2023-02-08T21:42:06.400757",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1,
+                            2
+                        ],
+                        "dailyUsageLeft": 10,
+                        "id": 3,
+                        "username": "anjaS",
+                        "password": "123",
+                        "name": "Anja",
+                        "lastName": "Stanimirovic",
+                        "gender": "female",
+                        "birthdate": "2001-01-26",
+                        "role": "customer",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [
+                            {
+                                "id": 1,
+                                "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                "customer": {
+                                    "points": 10.0,
+                                    "membership": {
+                                        "code": "M123456789",
+                                        "membershipType": "Month",
+                                        "payingDate": "2023-02-08",
+                                        "expireDate": "2023-03-08",
+                                        "price": 2000.0,
+                                        "active": true,
+                                        "dailyUsage": 14,
+                                        "description": "Gym access"
+                                    },
+                                    "sportsObjectAttended": [
+                                        1
+                                    ],
+                                    "dailyUsageLeft": 12,
+                                    "id": 0,
+                                    "username": "anjaS",
+                                    "customerType": {
+                                        "name": "silver",
+                                        "discount": 0,
+                                        "points": 0
+                                    },
+                                    "deleted": false
+                                },
+                                "trainer": {
+                                    "trainingHistoryList": [],
+                                    "id": 0,
+                                    "username": "nikolaN",
+                                    "deleted": false
+                                },
+                                "training": {
+                                    "id": 14,
+                                    "name": "Body Combat",
+                                    "type": "Group",
+                                    "imagePath": "../images/body_combat.jpg",
+                                    "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                    "duration": 30,
+                                    "sportsObject": {
+                                        "id": 1,
+                                        "name": "Tajs",
+                                        "objectType": {
+                                            "name": "gym"
+                                        },
+                                        "opened": false,
+                                        "location": {
+                                            "longitude": "45.243525",
+                                            "latitude": "24.234152",
+                                            "street": "Filipa Visnjica 5",
+                                            "place": "Novi Sad 21000",
+                                            "country": "Serbia"
+                                        },
+                                        "imagePath": "../images/tajs.jpg",
+                                        "averageGrade": 7.1,
+                                        "workingHours": "16-24",
+                                        "openingHours": {
+                                            "fromHours": 16,
+                                            "fromMinutes": 0,
+                                            "toHours": 24,
+                                            "toMinutes": 0
+                                        },
+                                        "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                    },
+                                    "price": 0.0,
+                                    "date": "2023-02-10T15:32:35.2342852",
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                },
+                                "deleted": false
+                            }
+                        ],
+                        "id": 18,
+                        "username": "nikolaN",
+                        "password": "123",
+                        "name": "Nikola",
+                        "lastName": "Nikolic",
+                        "gender": "male",
+                        "birthdate": "2012-12-31",
+                        "role": "trainer",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 15,
+                        "name": "Legs training",
+                        "type": "Groups",
+                        "imagePath": "../images/legs1.jpg",
+                        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 2,
+                            "name": "Vatrogas",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Georgija Jaksica 1",
+                                "place": "Loznica 15300",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/vatrogas.jpg",
+                            "averageGrade": 9.0,
+                            "workingHours": "00-24",
+                            "openingHours": {
+                                "fromHours": 0,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-11T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [
+                                {
+                                    "id": 1,
+                                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                    "customer": {
+                                        "points": 10.0,
+                                        "membership": {
+                                            "code": "M123456789",
+                                            "membershipType": "Month",
+                                            "payingDate": "2023-02-08",
+                                            "expireDate": "2023-03-08",
+                                            "price": 2000.0,
+                                            "active": true,
+                                            "dailyUsage": 14,
+                                            "description": "Gym access"
+                                        },
+                                        "sportsObjectAttended": [
+                                            1
+                                        ],
+                                        "dailyUsageLeft": 12,
+                                        "id": 0,
+                                        "username": "anjaS",
+                                        "customerType": {
+                                            "name": "silver",
+                                            "discount": 0,
+                                            "points": 0
+                                        },
+                                        "deleted": false
+                                    },
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "training": {
+                                        "id": 14,
+                                        "name": "Body Combat",
+                                        "type": "Group",
+                                        "imagePath": "../images/body_combat.jpg",
+                                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                        "duration": 30,
+                                        "sportsObject": {
+                                            "id": 1,
+                                            "name": "Tajs",
+                                            "objectType": {
+                                                "name": "gym"
+                                            },
+                                            "opened": false,
+                                            "location": {
+                                                "longitude": "45.243525",
+                                                "latitude": "24.234152",
+                                                "street": "Filipa Visnjica 5",
+                                                "place": "Novi Sad 21000",
+                                                "country": "Serbia"
+                                            },
+                                            "imagePath": "../images/tajs.jpg",
+                                            "averageGrade": 7.1,
+                                            "workingHours": "16-24",
+                                            "openingHours": {
+                                                "fromHours": 16,
+                                                "fromMinutes": 0,
+                                                "toHours": 24,
+                                                "toMinutes": 0
+                                            },
+                                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                        },
+                                        "price": 0.0,
+                                        "date": "2023-02-10T15:32:35.2342852",
+                                        "trainer": {
+                                            "trainingHistoryList": [],
+                                            "id": 0,
+                                            "username": "nikolaN",
+                                            "deleted": false
+                                        },
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                }
+                            ],
+                            "id": 18,
+                            "username": "nikolaN",
+                            "password": "123",
+                            "name": "Nikola",
+                            "lastName": "Nikolic",
+                            "gender": "male",
+                            "birthdate": "2012-12-31",
+                            "role": "trainer",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                }
+            ],
             "id": 18,
             "username": "nikolaN",
             "password": "123",
@@ -169,19 +758,21 @@
             "lastName": "Nikolic",
             "gender": "male",
             "birthdate": "2012-12-31",
-            "role": "trainer"
-        }
+            "role": "trainer",
+            "deleted": false
+        },
+        "deleted": false
     },
     {
-        "id": 9,
-        "name": "Nova Ponuda",
-        "type": "Training",
-        "imagePath": "../images/Nova Ponuda_Tajs.jpg",
-        "duration": 0,
-        "date": "2023-02-04T15:32:35.2342852",
+        "id": 15,
+        "name": "Legs training",
+        "type": "Groups",
+        "imagePath": "../images/legs1.jpg",
+        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
+        "duration": 30,
         "sportsObject": {
-            "id": 1,
-            "name": "Tajs",
+            "id": 2,
+            "name": "Vatrogas",
             "objectType": {
                 "name": "gym"
             },
@@ -189,57 +780,359 @@
             "location": {
                 "longitude": "45.243525",
                 "latitude": "24.234152",
-                "street": "Filipa Visnjica 5",
-                "place": "Novi Sad 21000",
+                "street": "Georgija Jaksica 1",
+                "place": "Loznica 15300",
                 "country": "Serbia"
             },
-            "imagePath": "../images/tajs.jpg",
-            "averageGrade": 7.1,
-            "workingHours": "16-24",
+            "imagePath": "../images/vatrogas.jpg",
+            "averageGrade": 9.0,
+            "workingHours": "00-24",
             "openingHours": {
-                "fromHours": 16,
+                "fromHours": 0,
                 "fromMinutes": 0,
                 "toHours": 24,
                 "toMinutes": 0
             },
-            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
         },
-        "price": 0.0
-    },
-    {
-        "id": 12,
-        "name": "sdf",
-        "type": "sdfsd",
-        "imagePath": "../images/sdf_Tajs.jpg",
-        "duration": 0,
-        "date": "2023-02-04T15:32:35.2342852",
-        "sportsObject": {
-            "id": 1,
-            "name": "Tajs",
-            "objectType": {
-                "name": "gym"
-            },
-            "opened": false,
-            "location": {
-                "longitude": "45.243525",
-                "latitude": "24.234152",
-                "street": "Filipa Visnjica 5",
-                "place": "Novi Sad 21000",
-                "country": "Serbia"
-            },
-            "imagePath": "../images/tajs.jpg",
-            "averageGrade": 7.1,
-            "workingHours": "16-24",
-            "openingHours": {
-                "fromHours": 16,
-                "fromMinutes": 0,
-                "toHours": 24,
-                "toMinutes": 0
-            },
-            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
-        },
+        "price": 0.0,
+        "date": "2023-02-11T15:32:35.2342852",
         "trainer": {
-            "sportsObjectId": 1,
+            "trainingHistoryList": [
+                {
+                    "id": 1,
+                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1
+                        ],
+                        "dailyUsageLeft": 12,
+                        "id": 0,
+                        "username": "anjaS",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [],
+                        "id": 0,
+                        "username": "nikolaN",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 14,
+                        "name": "Body Combat",
+                        "type": "Group",
+                        "imagePath": "../images/body_combat.jpg",
+                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 1,
+                            "name": "Tajs",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Filipa Visnjica 5",
+                                "place": "Novi Sad 21000",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/tajs.jpg",
+                            "averageGrade": 7.1,
+                            "workingHours": "16-24",
+                            "openingHours": {
+                                "fromHours": 16,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-10T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [],
+                            "id": 0,
+                            "username": "nikolaN",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                },
+                {
+                    "id": 2,
+                    "startDateAndTime": "2023-02-08T21:42:06.400757",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1,
+                            2
+                        ],
+                        "dailyUsageLeft": 10,
+                        "id": 3,
+                        "username": "anjaS",
+                        "password": "123",
+                        "name": "Anja",
+                        "lastName": "Stanimirovic",
+                        "gender": "female",
+                        "birthdate": "2001-01-26",
+                        "role": "customer",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [
+                            {
+                                "id": 1,
+                                "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                "customer": {
+                                    "points": 10.0,
+                                    "membership": {
+                                        "code": "M123456789",
+                                        "membershipType": "Month",
+                                        "payingDate": "2023-02-08",
+                                        "expireDate": "2023-03-08",
+                                        "price": 2000.0,
+                                        "active": true,
+                                        "dailyUsage": 14,
+                                        "description": "Gym access"
+                                    },
+                                    "sportsObjectAttended": [
+                                        1
+                                    ],
+                                    "dailyUsageLeft": 12,
+                                    "id": 0,
+                                    "username": "anjaS",
+                                    "customerType": {
+                                        "name": "silver",
+                                        "discount": 0,
+                                        "points": 0
+                                    },
+                                    "deleted": false
+                                },
+                                "trainer": {
+                                    "trainingHistoryList": [],
+                                    "id": 0,
+                                    "username": "nikolaN",
+                                    "deleted": false
+                                },
+                                "training": {
+                                    "id": 14,
+                                    "name": "Body Combat",
+                                    "type": "Group",
+                                    "imagePath": "../images/body_combat.jpg",
+                                    "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                    "duration": 30,
+                                    "sportsObject": {
+                                        "id": 1,
+                                        "name": "Tajs",
+                                        "objectType": {
+                                            "name": "gym"
+                                        },
+                                        "opened": false,
+                                        "location": {
+                                            "longitude": "45.243525",
+                                            "latitude": "24.234152",
+                                            "street": "Filipa Visnjica 5",
+                                            "place": "Novi Sad 21000",
+                                            "country": "Serbia"
+                                        },
+                                        "imagePath": "../images/tajs.jpg",
+                                        "averageGrade": 7.1,
+                                        "workingHours": "16-24",
+                                        "openingHours": {
+                                            "fromHours": 16,
+                                            "fromMinutes": 0,
+                                            "toHours": 24,
+                                            "toMinutes": 0
+                                        },
+                                        "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                    },
+                                    "price": 0.0,
+                                    "date": "2023-02-10T15:32:35.2342852",
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                },
+                                "deleted": false
+                            }
+                        ],
+                        "id": 18,
+                        "username": "nikolaN",
+                        "password": "123",
+                        "name": "Nikola",
+                        "lastName": "Nikolic",
+                        "gender": "male",
+                        "birthdate": "2012-12-31",
+                        "role": "trainer",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 15,
+                        "name": "Legs training",
+                        "type": "Groups",
+                        "imagePath": "../images/legs1.jpg",
+                        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 2,
+                            "name": "Vatrogas",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Georgija Jaksica 1",
+                                "place": "Loznica 15300",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/vatrogas.jpg",
+                            "averageGrade": 9.0,
+                            "workingHours": "00-24",
+                            "openingHours": {
+                                "fromHours": 0,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-11T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [
+                                {
+                                    "id": 1,
+                                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                    "customer": {
+                                        "points": 10.0,
+                                        "membership": {
+                                            "code": "M123456789",
+                                            "membershipType": "Month",
+                                            "payingDate": "2023-02-08",
+                                            "expireDate": "2023-03-08",
+                                            "price": 2000.0,
+                                            "active": true,
+                                            "dailyUsage": 14,
+                                            "description": "Gym access"
+                                        },
+                                        "sportsObjectAttended": [
+                                            1
+                                        ],
+                                        "dailyUsageLeft": 12,
+                                        "id": 0,
+                                        "username": "anjaS",
+                                        "customerType": {
+                                            "name": "silver",
+                                            "discount": 0,
+                                            "points": 0
+                                        },
+                                        "deleted": false
+                                    },
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "training": {
+                                        "id": 14,
+                                        "name": "Body Combat",
+                                        "type": "Group",
+                                        "imagePath": "../images/body_combat.jpg",
+                                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                        "duration": 30,
+                                        "sportsObject": {
+                                            "id": 1,
+                                            "name": "Tajs",
+                                            "objectType": {
+                                                "name": "gym"
+                                            },
+                                            "opened": false,
+                                            "location": {
+                                                "longitude": "45.243525",
+                                                "latitude": "24.234152",
+                                                "street": "Filipa Visnjica 5",
+                                                "place": "Novi Sad 21000",
+                                                "country": "Serbia"
+                                            },
+                                            "imagePath": "../images/tajs.jpg",
+                                            "averageGrade": 7.1,
+                                            "workingHours": "16-24",
+                                            "openingHours": {
+                                                "fromHours": 16,
+                                                "fromMinutes": 0,
+                                                "toHours": 24,
+                                                "toMinutes": 0
+                                            },
+                                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                        },
+                                        "price": 0.0,
+                                        "date": "2023-02-10T15:32:35.2342852",
+                                        "trainer": {
+                                            "trainingHistoryList": [],
+                                            "id": 0,
+                                            "username": "nikolaN",
+                                            "deleted": false
+                                        },
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                }
+                            ],
+                            "id": 18,
+                            "username": "nikolaN",
+                            "password": "123",
+                            "name": "Nikola",
+                            "lastName": "Nikolic",
+                            "gender": "male",
+                            "birthdate": "2012-12-31",
+                            "role": "trainer",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                }
+            ],
             "id": 18,
             "username": "nikolaN",
             "password": "123",
@@ -247,16 +1140,17 @@
             "lastName": "Nikolic",
             "gender": "male",
             "birthdate": "2012-12-31",
-            "role": "trainer"
+            "role": "trainer",
+            "deleted": false
         },
-        "price": 0.0
+        "deleted": false
     },
     {
-        "id": 2,
-        "name": "Box",
-        "type": "Personal",
-        "imagePath": "asfgg",
-        "description": "2 hours in the sauna for the price of 1!",
+        "id": 13,
+        "name": "Legs training",
+        "type": "Group",
+        "imagePath": "../images/legs.jpg",
+        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
         "duration": 30,
         "sportsObject": {
             "id": 1,
@@ -283,10 +1177,344 @@
             },
             "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
         },
-        "price": 10.0,
-        "date": "2023-01-11T15:32:35.2342852",
+        "price": 0.0,
+        "date": "2023-02-11T15:32:35.2342852",
         "trainer": {
-            "sportsObjectId": 1,
+            "trainingHistoryList": [
+                {
+                    "id": 1,
+                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1
+                        ],
+                        "dailyUsageLeft": 12,
+                        "id": 0,
+                        "username": "anjaS",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [],
+                        "id": 0,
+                        "username": "nikolaN",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 14,
+                        "name": "Body Combat",
+                        "type": "Group",
+                        "imagePath": "../images/body_combat.jpg",
+                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 1,
+                            "name": "Tajs",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Filipa Visnjica 5",
+                                "place": "Novi Sad 21000",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/tajs.jpg",
+                            "averageGrade": 7.1,
+                            "workingHours": "16-24",
+                            "openingHours": {
+                                "fromHours": 16,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-10T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [],
+                            "id": 0,
+                            "username": "nikolaN",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                },
+                {
+                    "id": 2,
+                    "startDateAndTime": "2023-02-08T21:42:06.400757",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1,
+                            2
+                        ],
+                        "dailyUsageLeft": 10,
+                        "id": 3,
+                        "username": "anjaS",
+                        "password": "123",
+                        "name": "Anja",
+                        "lastName": "Stanimirovic",
+                        "gender": "female",
+                        "birthdate": "2001-01-26",
+                        "role": "customer",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [
+                            {
+                                "id": 1,
+                                "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                "customer": {
+                                    "points": 10.0,
+                                    "membership": {
+                                        "code": "M123456789",
+                                        "membershipType": "Month",
+                                        "payingDate": "2023-02-08",
+                                        "expireDate": "2023-03-08",
+                                        "price": 2000.0,
+                                        "active": true,
+                                        "dailyUsage": 14,
+                                        "description": "Gym access"
+                                    },
+                                    "sportsObjectAttended": [
+                                        1
+                                    ],
+                                    "dailyUsageLeft": 12,
+                                    "id": 0,
+                                    "username": "anjaS",
+                                    "customerType": {
+                                        "name": "silver",
+                                        "discount": 0,
+                                        "points": 0
+                                    },
+                                    "deleted": false
+                                },
+                                "trainer": {
+                                    "trainingHistoryList": [],
+                                    "id": 0,
+                                    "username": "nikolaN",
+                                    "deleted": false
+                                },
+                                "training": {
+                                    "id": 14,
+                                    "name": "Body Combat",
+                                    "type": "Group",
+                                    "imagePath": "../images/body_combat.jpg",
+                                    "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                    "duration": 30,
+                                    "sportsObject": {
+                                        "id": 1,
+                                        "name": "Tajs",
+                                        "objectType": {
+                                            "name": "gym"
+                                        },
+                                        "opened": false,
+                                        "location": {
+                                            "longitude": "45.243525",
+                                            "latitude": "24.234152",
+                                            "street": "Filipa Visnjica 5",
+                                            "place": "Novi Sad 21000",
+                                            "country": "Serbia"
+                                        },
+                                        "imagePath": "../images/tajs.jpg",
+                                        "averageGrade": 7.1,
+                                        "workingHours": "16-24",
+                                        "openingHours": {
+                                            "fromHours": 16,
+                                            "fromMinutes": 0,
+                                            "toHours": 24,
+                                            "toMinutes": 0
+                                        },
+                                        "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                    },
+                                    "price": 0.0,
+                                    "date": "2023-02-10T15:32:35.2342852",
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                },
+                                "deleted": false
+                            }
+                        ],
+                        "id": 18,
+                        "username": "nikolaN",
+                        "password": "123",
+                        "name": "Nikola",
+                        "lastName": "Nikolic",
+                        "gender": "male",
+                        "birthdate": "2012-12-31",
+                        "role": "trainer",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 15,
+                        "name": "Legs training",
+                        "type": "Groups",
+                        "imagePath": "../images/legs1.jpg",
+                        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 2,
+                            "name": "Vatrogas",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Georgija Jaksica 1",
+                                "place": "Loznica 15300",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/vatrogas.jpg",
+                            "averageGrade": 9.0,
+                            "workingHours": "00-24",
+                            "openingHours": {
+                                "fromHours": 0,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-11T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [
+                                {
+                                    "id": 1,
+                                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                    "customer": {
+                                        "points": 10.0,
+                                        "membership": {
+                                            "code": "M123456789",
+                                            "membershipType": "Month",
+                                            "payingDate": "2023-02-08",
+                                            "expireDate": "2023-03-08",
+                                            "price": 2000.0,
+                                            "active": true,
+                                            "dailyUsage": 14,
+                                            "description": "Gym access"
+                                        },
+                                        "sportsObjectAttended": [
+                                            1
+                                        ],
+                                        "dailyUsageLeft": 12,
+                                        "id": 0,
+                                        "username": "anjaS",
+                                        "customerType": {
+                                            "name": "silver",
+                                            "discount": 0,
+                                            "points": 0
+                                        },
+                                        "deleted": false
+                                    },
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "training": {
+                                        "id": 14,
+                                        "name": "Body Combat",
+                                        "type": "Group",
+                                        "imagePath": "../images/body_combat.jpg",
+                                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                        "duration": 30,
+                                        "sportsObject": {
+                                            "id": 1,
+                                            "name": "Tajs",
+                                            "objectType": {
+                                                "name": "gym"
+                                            },
+                                            "opened": false,
+                                            "location": {
+                                                "longitude": "45.243525",
+                                                "latitude": "24.234152",
+                                                "street": "Filipa Visnjica 5",
+                                                "place": "Novi Sad 21000",
+                                                "country": "Serbia"
+                                            },
+                                            "imagePath": "../images/tajs.jpg",
+                                            "averageGrade": 7.1,
+                                            "workingHours": "16-24",
+                                            "openingHours": {
+                                                "fromHours": 16,
+                                                "fromMinutes": 0,
+                                                "toHours": 24,
+                                                "toMinutes": 0
+                                            },
+                                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                        },
+                                        "price": 0.0,
+                                        "date": "2023-02-10T15:32:35.2342852",
+                                        "trainer": {
+                                            "trainingHistoryList": [],
+                                            "id": 0,
+                                            "username": "nikolaN",
+                                            "deleted": false
+                                        },
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                }
+                            ],
+                            "id": 18,
+                            "username": "nikolaN",
+                            "password": "123",
+                            "name": "Nikola",
+                            "lastName": "Nikolic",
+                            "gender": "male",
+                            "birthdate": "2012-12-31",
+                            "role": "trainer",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                }
+            ],
             "id": 18,
             "username": "nikolaN",
             "password": "123",
@@ -294,107 +1522,17 @@
             "lastName": "Nikolic",
             "gender": "male",
             "birthdate": "2012-12-31",
-            "role": "trainer"
-        }
+            "role": "trainer",
+            "deleted": false
+        },
+        "deleted": false
     },
     {
-        "id": 7,
-        "name": "Novi trening",
+        "id": 14,
+        "name": "Body Combat",
         "type": "Group",
-        "imagePath": "../images/Novi trening_Tajs.jpg",
-        "description": "nesto",
-        "duration": 100,
-        "sportsObject": {
-            "id": 1,
-            "name": "Tajs",
-            "objectType": {
-                "name": "gym"
-            },
-            "opened": false,
-            "location": {
-                "longitude": "45.243525",
-                "latitude": "24.234152",
-                "street": "Filipa Visnjica 5",
-                "place": "Novi Sad 21000",
-                "country": "Serbia"
-            },
-            "imagePath": "../images/tajs.jpg",
-            "averageGrade": 7.1,
-            "workingHours": "16-24",
-            "openingHours": {
-                "fromHours": 16,
-                "fromMinutes": 0,
-                "toHours": 24,
-                "toMinutes": 0
-            },
-            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
-        },
-        "date": "2023-02-04T15:32:35.2342852",
-        "trainer": {
-            "sportsObjectId": 1,
-            "id": 18,
-            "username": "nikolaN",
-            "password": "123",
-            "name": "Nikola",
-            "lastName": "Nikolic",
-            "gender": "male",
-            "birthdate": "2012-12-31",
-            "role": "trainer"
-        },
-        "price": 0.0
-    },
-    {
-        "id": 8,
-        "name": "Jos jedan",
-        "type": "Group",
-        "imagePath": "../images/Jos jedan_Tajs.jpg",
-        "description": "aj",
-        "duration": 150,
-        "sportsObject": {
-            "id": 1,
-            "name": "Tajs",
-            "objectType": {
-                "name": "gym"
-            },
-            "opened": false,
-            "location": {
-                "longitude": "45.243525",
-                "latitude": "24.234152",
-                "street": "Filipa Visnjica 5",
-                "place": "Novi Sad 21000",
-                "country": "Serbia"
-            },
-            "imagePath": "../images/tajs.jpg",
-            "averageGrade": 7.1,
-            "workingHours": "16-24",
-            "openingHours": {
-                "fromHours": 16,
-                "fromMinutes": 0,
-                "toHours": 24,
-                "toMinutes": 0
-            },
-            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
-        },
-        "date": "2023-02-04T15:32:35.2342852",
-        "trainer": {
-            "sportsObjectId": 1,
-            "id": 18,
-            "username": "nikolaN",
-            "password": "123",
-            "name": "Nikola",
-            "lastName": "Nikolic",
-            "gender": "male",
-            "birthdate": "2012-12-31",
-            "role": "trainer"
-        },
-        "price": 0.0
-    },
-    {
-        "id": 1,
-        "name": "Pool Pass",
-        "type": "Pool",
-        "imagePath": "https://example.com/pool-pass.jpgfsdfds",
-        "description": "Unlimited access to the pool for one month",
+        "imagePath": "../images/body_combat.jpg",
+        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
         "duration": 30,
         "sportsObject": {
             "id": 1,
@@ -421,7 +1559,354 @@
             },
             "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
         },
-        "price": 30.0,
-        "date": "2023-01-11T15:32:35.2342852"
+        "price": 0.0,
+        "date": "2023-02-10T15:32:35.2342852",
+        "trainer": {
+            "trainingHistoryList": [
+                {
+                    "id": 1,
+                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1
+                        ],
+                        "dailyUsageLeft": 12,
+                        "id": 0,
+                        "username": "anjaS",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [],
+                        "id": 0,
+                        "username": "nikolaN",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 14,
+                        "name": "Body Combat",
+                        "type": "Group",
+                        "imagePath": "../images/body_combat.jpg",
+                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 1,
+                            "name": "Tajs",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Filipa Visnjica 5",
+                                "place": "Novi Sad 21000",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/tajs.jpg",
+                            "averageGrade": 7.1,
+                            "workingHours": "16-24",
+                            "openingHours": {
+                                "fromHours": 16,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-10T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [],
+                            "id": 0,
+                            "username": "nikolaN",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                },
+                {
+                    "id": 2,
+                    "startDateAndTime": "2023-02-08T21:42:06.400757",
+                    "customer": {
+                        "points": 10.0,
+                        "membership": {
+                            "code": "M123456789",
+                            "membershipType": "Month",
+                            "payingDate": "2023-02-08",
+                            "expireDate": "2023-03-08",
+                            "price": 2000.0,
+                            "active": true,
+                            "dailyUsage": 14,
+                            "description": "Gym access"
+                        },
+                        "sportsObjectAttended": [
+                            1,
+                            2
+                        ],
+                        "dailyUsageLeft": 10,
+                        "id": 3,
+                        "username": "anjaS",
+                        "password": "123",
+                        "name": "Anja",
+                        "lastName": "Stanimirovic",
+                        "gender": "female",
+                        "birthdate": "2001-01-26",
+                        "role": "customer",
+                        "customerType": {
+                            "name": "silver",
+                            "discount": 0,
+                            "points": 0
+                        },
+                        "deleted": false
+                    },
+                    "trainer": {
+                        "trainingHistoryList": [
+                            {
+                                "id": 1,
+                                "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                "customer": {
+                                    "points": 10.0,
+                                    "membership": {
+                                        "code": "M123456789",
+                                        "membershipType": "Month",
+                                        "payingDate": "2023-02-08",
+                                        "expireDate": "2023-03-08",
+                                        "price": 2000.0,
+                                        "active": true,
+                                        "dailyUsage": 14,
+                                        "description": "Gym access"
+                                    },
+                                    "sportsObjectAttended": [
+                                        1
+                                    ],
+                                    "dailyUsageLeft": 12,
+                                    "id": 0,
+                                    "username": "anjaS",
+                                    "customerType": {
+                                        "name": "silver",
+                                        "discount": 0,
+                                        "points": 0
+                                    },
+                                    "deleted": false
+                                },
+                                "trainer": {
+                                    "trainingHistoryList": [],
+                                    "id": 0,
+                                    "username": "nikolaN",
+                                    "deleted": false
+                                },
+                                "training": {
+                                    "id": 14,
+                                    "name": "Body Combat",
+                                    "type": "Group",
+                                    "imagePath": "../images/body_combat.jpg",
+                                    "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                    "duration": 30,
+                                    "sportsObject": {
+                                        "id": 1,
+                                        "name": "Tajs",
+                                        "objectType": {
+                                            "name": "gym"
+                                        },
+                                        "opened": false,
+                                        "location": {
+                                            "longitude": "45.243525",
+                                            "latitude": "24.234152",
+                                            "street": "Filipa Visnjica 5",
+                                            "place": "Novi Sad 21000",
+                                            "country": "Serbia"
+                                        },
+                                        "imagePath": "../images/tajs.jpg",
+                                        "averageGrade": 7.1,
+                                        "workingHours": "16-24",
+                                        "openingHours": {
+                                            "fromHours": 16,
+                                            "fromMinutes": 0,
+                                            "toHours": 24,
+                                            "toMinutes": 0
+                                        },
+                                        "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                    },
+                                    "price": 0.0,
+                                    "date": "2023-02-10T15:32:35.2342852",
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                },
+                                "deleted": false
+                            }
+                        ],
+                        "id": 18,
+                        "username": "nikolaN",
+                        "password": "123",
+                        "name": "Nikola",
+                        "lastName": "Nikolic",
+                        "gender": "male",
+                        "birthdate": "2012-12-31",
+                        "role": "trainer",
+                        "deleted": false
+                    },
+                    "training": {
+                        "id": 15,
+                        "name": "Legs training",
+                        "type": "Groups",
+                        "imagePath": "../images/legs1.jpg",
+                        "description": "Leg training involves exercises that target the muscles of the lower body, including the quadriceps, hamstrings, glutes, and calves. These exercises can be performed with bodyweight, resistance bands, dumbbells, barbells, or machines, and can range from squats, lunges, deadlifts, calf raises, and more. The goal of leg training is to improve strength, power, and endurance in the lower body, and can help to improve overall physical fitness, balance, and posture.",
+                        "duration": 30,
+                        "sportsObject": {
+                            "id": 2,
+                            "name": "Vatrogas",
+                            "objectType": {
+                                "name": "gym"
+                            },
+                            "opened": false,
+                            "location": {
+                                "longitude": "45.243525",
+                                "latitude": "24.234152",
+                                "street": "Georgija Jaksica 1",
+                                "place": "Loznica 15300",
+                                "country": "Serbia"
+                            },
+                            "imagePath": "../images/vatrogas.jpg",
+                            "averageGrade": 9.0,
+                            "workingHours": "00-24",
+                            "openingHours": {
+                                "fromHours": 0,
+                                "fromMinutes": 0,
+                                "toHours": 24,
+                                "toMinutes": 0
+                            },
+                            "description": "We provide quality service in our 400 m2 gym with latest Technogym equipment.You can choose between personal or group trainings that we know you would like-just come and see for yourself."
+                        },
+                        "price": 0.0,
+                        "date": "2023-02-11T15:32:35.2342852",
+                        "trainer": {
+                            "trainingHistoryList": [
+                                {
+                                    "id": 1,
+                                    "startDateAndTime": "2023-02-08T21:22:19.3375908",
+                                    "customer": {
+                                        "points": 10.0,
+                                        "membership": {
+                                            "code": "M123456789",
+                                            "membershipType": "Month",
+                                            "payingDate": "2023-02-08",
+                                            "expireDate": "2023-03-08",
+                                            "price": 2000.0,
+                                            "active": true,
+                                            "dailyUsage": 14,
+                                            "description": "Gym access"
+                                        },
+                                        "sportsObjectAttended": [
+                                            1
+                                        ],
+                                        "dailyUsageLeft": 12,
+                                        "id": 0,
+                                        "username": "anjaS",
+                                        "customerType": {
+                                            "name": "silver",
+                                            "discount": 0,
+                                            "points": 0
+                                        },
+                                        "deleted": false
+                                    },
+                                    "trainer": {
+                                        "trainingHistoryList": [],
+                                        "id": 0,
+                                        "username": "nikolaN",
+                                        "deleted": false
+                                    },
+                                    "training": {
+                                        "id": 14,
+                                        "name": "Body Combat",
+                                        "type": "Group",
+                                        "imagePath": "../images/body_combat.jpg",
+                                        "description": "Body Combat is a high-energy, martial arts-inspired fitness program. It combines moves and techniques from various styles such as karate, boxing, taekwondo, tai chi, and muay thai to provide a full-body workout. Participants perform choreographed routines set to high-energy music, and the program is typically led by a instructor. Body Combat focuses on building strength, endurance, and coordination, and can also help to improve cardiovascular fitness and burn calories.",
+                                        "duration": 30,
+                                        "sportsObject": {
+                                            "id": 1,
+                                            "name": "Tajs",
+                                            "objectType": {
+                                                "name": "gym"
+                                            },
+                                            "opened": false,
+                                            "location": {
+                                                "longitude": "45.243525",
+                                                "latitude": "24.234152",
+                                                "street": "Filipa Visnjica 5",
+                                                "place": "Novi Sad 21000",
+                                                "country": "Serbia"
+                                            },
+                                            "imagePath": "../images/tajs.jpg",
+                                            "averageGrade": 7.1,
+                                            "workingHours": "16-24",
+                                            "openingHours": {
+                                                "fromHours": 16,
+                                                "fromMinutes": 0,
+                                                "toHours": 24,
+                                                "toMinutes": 0
+                                            },
+                                            "description": "Tajs is a place where you will realize that physicall activity is enjoyable and where parents can spend quality time with their children in a very healthy way-by doing lots of different exercises together in one place, and that is Tajs."
+                                        },
+                                        "price": 0.0,
+                                        "date": "2023-02-10T15:32:35.2342852",
+                                        "trainer": {
+                                            "trainingHistoryList": [],
+                                            "id": 0,
+                                            "username": "nikolaN",
+                                            "deleted": false
+                                        },
+                                        "deleted": false
+                                    },
+                                    "deleted": false
+                                }
+                            ],
+                            "id": 18,
+                            "username": "nikolaN",
+                            "password": "123",
+                            "name": "Nikola",
+                            "lastName": "Nikolic",
+                            "gender": "male",
+                            "birthdate": "2012-12-31",
+                            "role": "trainer",
+                            "deleted": false
+                        },
+                        "deleted": false
+                    },
+                    "deleted": false
+                }
+            ],
+            "id": 18,
+            "username": "nikolaN",
+            "password": "123",
+            "name": "Nikola",
+            "lastName": "Nikolic",
+            "gender": "male",
+            "birthdate": "2012-12-31",
+            "role": "trainer",
+            "deleted": false
+        },
+        "deleted": false
     }
 ]

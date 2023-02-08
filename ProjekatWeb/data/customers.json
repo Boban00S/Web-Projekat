@@ -1,1 +1,27 @@
-[{"points":0.0,"membership":{"code":"M123456786","membershipType":"Year","payingDate":"2023-02-07","expireDate":"2024-02-07","price":20000.0,"active":true,"dailyUsage":140,"description":"Gym access"},"sportsObjectAttended":[1],"dailyUsageLeft":140,"username":"anjaS","customerType":{"name":"silver","discount":0,"points":0}}]
+[
+    {
+        "points": 10.0,
+        "membership": {
+            "code": "M123456789",
+            "membershipType": "Month",
+            "payingDate": "2023-02-08",
+            "expireDate": "2023-03-08",
+            "price": 2000.0,
+            "active": true,
+            "dailyUsage": 14,
+            "description": "Gym access"
+        },
+        "sportsObjectAttended": [
+            1,
+            2
+        ],
+        "dailyUsageLeft": 10,
+        "username": "anjaS",
+        "customerType": {
+            "name": "silver",
+            "discount": 0,
+            "points": 0
+        },
+        "deleted": false
+    }
+]

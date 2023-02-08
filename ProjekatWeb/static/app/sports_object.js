@@ -155,9 +155,9 @@ Vue.component("sports-object", {
         },
         getStatusString(isOpen) {
             if(isOpen){
-                return "open"
+                return "opened"
             }else{
-                return "close"
+                return "closed"
             }
         },
         sortOrder(event){

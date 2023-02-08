@@ -54,20 +54,10 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 
 	public Collection<TrainingHistory> findAll(){ return trainingHistories.values(); }
 
-//	public List<TrainingHistory> findTrainingsByCustomerId(int customerId){
-//		List<TrainingHistory> output = new ArrayList<>();
-//		for(TrainingHistory t: trainingHistories.values()){
-//			if(t.getCustomer().getId() == customerId){
-//				output.add(t);
-//			}
-//		}
-//		return output;
-//	}
-
 	public List<Training> findTrainingsByCustomerId(int customerId){
 		HashMap<String, Training> output = new HashMap<>();
 		for(TrainingHistory t: trainingHistories.values()){
-			if(t.getCustomer().getId() == customerId){
+			if(t.getCustomer().getId() == customerId && !t.isDeleted()){
 				output.put(t.getTraining().getImagePath(), t.getTraining());
 			}
 		}
@@ -80,6 +70,7 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 		trainingHistory.setId(getNextId());
 		trainingHistory.setStartDateAndTime(LocalDateTime.now());
 		trainingHistories.put(trainingHistory.getId().toString(), trainingHistory);
+		trainerDAO.addTrainingHistoryToTrainer(trainingHistory);
 		List<TrainingHistory> trainingHistoryList = new ArrayList<>(findAll());
 		serialize(trainingHistoryList, false);
 	}
@@ -99,7 +90,7 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 			for(TrainingHistory tH: trainingHistories.values()){
 				if(t.getId() == tH.getTraining().getId() && tH.getCustomer().getId() == customer.getId()){
 					Period diff = Period.between(tH.getStartDateAndTime().toLocalDate(), LocalDateTime.now().toLocalDate());
-					if(diff.getDays() < 30){
+					if(diff.getDays() < 30 && diff.getMonths() == 0 && diff.getYears() == 0){
 						last30Days.add(tH.getStartDateAndTime());
 					}
 				}
@@ -108,6 +99,20 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 			output.add(tD);
 		}
 		return output;
+	}
+
+	public void deleteByTrainingId(int trainingId) throws IOException{
+		for(TrainingHistory trainingHistory: trainingHistories.values()){
+			if(trainingHistory.getTraining().getId() == trainingId){
+				customerDAO.addDailyUsage(trainingHistory.getCustomer().getId());
+				trainingHistory.setDeleted(true);
+				trainingHistories.put(trainingHistory.getId().toString(), trainingHistory);
+				List<TrainingHistory> trainingHistoryList = new ArrayList<>(trainingHistories.values());
+				serialize(trainingHistoryList, false);
+				break;
+			}
+		}
+
 	}
 
 	@Override
@@ -139,7 +144,8 @@ public class TrainingHistoryDAO implements ISerializable<String, TrainingHistory
 				t.setTrainer(trainer);
 				t.setCustomer(customer);
 				t.setTraining(training);
-				output.put(t.getId().toString(), t);
+				if(!t.isDeleted())
+					output.put(t.getId().toString(), t);
 			}
 		}
 		return output;

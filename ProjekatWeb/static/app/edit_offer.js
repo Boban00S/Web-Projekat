@@ -161,6 +161,9 @@ Vue.component("edit-offer", {
                                 this.$router.push({path: '/user/' + this.user.id});
                             })
                     })
+            }else{
+                alert("Input not valid!");
+                return;
             }
         }
     }

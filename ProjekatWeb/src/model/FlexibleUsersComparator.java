@@ -62,7 +62,7 @@ public class FlexibleUsersComparator implements Comparator<User> {
         }
     }
     public Float getUserPoints(User user){
-        if(user.getRole().equals("Customer"))
+        if(user.getRole() == Role.customer)
             return customerDAO.findPointsById(user.getId());
         else
             return 0f;

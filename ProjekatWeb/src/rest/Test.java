@@ -11,9 +11,9 @@ import model.*;
 public class Test {
 	private static UserDAO userDAO = new UserDAO("data/users.json");
 	private static AdminDAO adminDAO = new AdminDAO("data/administrators.json");
-	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
-	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
-	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
+	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json", userDAO);
+	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json", userDAO);
+	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json", userDAO);
 	private static OfferDAO offerDAO = new OfferDAO("data/offers.json");
 
 	private static MembershipDAO membershipDAO = new MembershipDAO("data/memberships.json");
@@ -71,12 +71,12 @@ public class Test {
 
 	}
 	
-	private static void createTrainers() throws Exception{
-		Trainer t1 = new Trainer(-1, "stefanS", "sifra123", "Stefan", "Stefic", Gender.male, LocalDate.of(1988, 2, 12), Role.trainer);
-		t1.setSportsObjectId(1);
-		
-		trainerDAO.addTrainer(t1);
-	}
+//	private static void createTrainers() throws Exception{
+//		Trainer t1 = new Trainer(-1, "stefanS", "sifra123", "Stefan", "Stefic", Gender.male, LocalDate.of(1988, 2, 12), Role.trainer);
+//		t1.setSportsObjectId(1);
+//
+//		trainerDAO.addTrainer(t1);
+//	}
 	
 	private static void createManagers() throws Exception{
 		Manager m1 = new Manager(-1, "peraP", "123", "Pera", "Peric", Gender.male, LocalDate.of(1980, 12, 5), Role.manager);

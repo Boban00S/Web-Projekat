@@ -16,6 +16,9 @@ public class TrainingHistory {
 	@Expose
 	private Training training;
 
+	@Expose
+	private boolean deleted = false;
+
 	public TrainingHistory(Integer id, LocalDateTime startDateAndTime, Customer customer, Trainer trainer, Training training) {
 		super();
 		this.id = id;
@@ -23,6 +26,23 @@ public class TrainingHistory {
 		this.customer = customer;
 		this.trainer = trainer;
 		this.training = training;
+	}
+
+	public TrainingHistory(Integer id, LocalDateTime startDateAndTime, Customer customer, Trainer trainer, Training training, boolean deleted) {
+		this.id = id;
+		this.startDateAndTime = startDateAndTime;
+		this.customer = customer;
+		this.trainer = trainer;
+		this.training = training;
+		this.deleted = deleted;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public Integer getId() {

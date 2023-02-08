@@ -155,6 +155,7 @@ Vue.component("user-profile", {
     methods: {
         saveChanges: function () {
             if (!this.validateInput()) {
+                alert("Input not valid!");
                 return;
             }
             if (!this.validatePassword()) {
@@ -165,13 +166,8 @@ Vue.component("user-profile", {
             }
             axios.post('rest/edit_user', this.user)
                 .then((response) => {
-                    alert("Izmene su uspesno izvrsene.")
-                    this.$router.push({
-                        name: 'sports-object',
-                        params: {
-                            id: this.user.id
-                        }
-                    })
+                    alert("User updated");
+                    this.$router.push({ path: '/user/' + this.user.id})
                 })
                 .catch(error => {
                     alert("Username is not available!");

@@ -55,7 +55,7 @@ Vue.component("show-users", {
       <h5>Filter By:</h5>
             <span class="position-absolute search"><i class="fa fa-search"></i></span>
             <input class="form-control w-100" @input="filterTable($event)" v-model="filterBy" style="border:4px solid #e3f2fd;"
-                placeholder="Filter by object or training type...">
+                placeholder="Filter by role or customer type...">
       </div>
 </div>
 

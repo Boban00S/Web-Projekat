@@ -18,6 +18,9 @@ public class Training{
 	private LocalDateTime date;
 	private Trainer trainer;
 
+	private boolean deleted = false;
+
+
 	public Training(int id) {
 		this.id = id;
 	}
@@ -35,7 +38,27 @@ public class Training{
 		this.trainer = trainer;
 	}
 
+	public Training(int id, String name, String type, String imagePath, String description, int duration, SportsObject sportsObject, Float price, LocalDateTime date, Trainer trainer, boolean deleted) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.imagePath = imagePath;
+		this.description = description;
+		this.duration = duration;
+		this.sportsObject = sportsObject;
+		this.price = price;
+		this.date = date;
+		this.trainer = trainer;
+		this.deleted = deleted;
+	}
 
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 	public int getId() {
 		return id;
 	}

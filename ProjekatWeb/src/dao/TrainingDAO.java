@@ -39,7 +39,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 
 	public Training findById(int trainingId){
 		for(Training t: trainings.values()){
-			if(t.getId() == trainingId){
+			if(t.getId() == trainingId && !t.isDeleted()){
 				return t;
 			}
 		}
@@ -69,7 +69,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
 			if(t.getTrainer() != null){
-				if(t.getTrainer().getId() == trainerId && this.isPersonal(t)){
+				if(t.getTrainer().getId() == trainerId && this.isPersonal(t) && !t.isDeleted()){
 					output.add(t);
 				}
 			}
@@ -81,7 +81,8 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		List<Training> trainings1 = new ArrayList<>();
 		for(Training t: trainingsIds){
 			Training t1 = findById(t.getId());
-			trainings1.add(t1);
+			if(!t1.isDeleted())
+				trainings1.add(t1);
 		}
 		return trainings1;
 	}
@@ -120,7 +121,8 @@ public class TrainingDAO implements ISerializable<String, Training> {
 	public void deleteById(int trainingId) throws IOException{
 		for(Training t: trainings.values()){
 			if(t.getId() == trainingId){
-				trainings.remove(t.getImagePath());
+				t.setDeleted(true);
+				trainings.put(t.getImagePath(), t);
 				break;
 			}
 		}
@@ -155,7 +157,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 	public List<Training> findAllTrainingsInSportObject(int sportObjectId){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
-			if(t.getSportsObject().getId() == sportObjectId){
+			if(t.getSportsObject().getId() == sportObjectId && !t.isDeleted()){
 				output.add(t);
 			}
 		}
@@ -166,7 +168,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
 			if(t.getTrainer() != null){
-				if(t.getTrainer().getId() == trainerId && this.isNonPersonal(t)){
+				if(t.getTrainer().getId() == trainerId && this.isNonPersonal(t) && !t.isDeleted()){
 					output.add(t);
 				}
 			}
@@ -178,7 +180,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
 			if(t.getDate().isAfter(LocalDateTime.now()) && t.getDate().isBefore(LocalDateTime.now().plusDays(1))
-			&& t.getSportsObject().getId() == sportsObjectId){
+			&& t.getSportsObject().getId() == sportsObjectId && !t.isDeleted()){
 				output.add(t);
 			}
 		}
@@ -188,7 +190,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 	public List<Training> findAllTrainingsInSportObjectForDate(int sportsObjectId, LocalDate trainingDate){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
-			if(t.getSportsObject().getId() == sportsObjectId && t.getDate().toLocalDate().isEqual(trainingDate)){
+			if(t.getSportsObject().getId() == sportsObjectId && t.getDate().toLocalDate().isEqual(trainingDate) && !t.isDeleted()){
 				output.add(t);
 			}
 		}
@@ -198,7 +200,7 @@ public class TrainingDAO implements ISerializable<String, Training> {
 	public List<Training> findBySportsObjectId(int sportsObjectId){
 		List<Training> output = new ArrayList<>();
 		for(Training t: trainings.values()){
-			if(t.getSportsObject().getId() == sportsObjectId){
+			if(t.getSportsObject().getId() == sportsObjectId && !t.isDeleted()){
 				output.add(t);
 			}
 		}
@@ -235,7 +237,8 @@ public class TrainingDAO implements ISerializable<String, Training> {
 				if(t.getTrainer() != null)
 					t.setTrainer(trainerDAO.findById(t.getTrainer().getId()));
 				t.setSportsObject(sportsObjectDAO.findById(t.getSportsObject().getId()));
-				output.put(t.getImagePath(), t);
+				if(!t.isDeleted())
+					output.put(t.getImagePath(), t);
 			}
 		}
 		return output;

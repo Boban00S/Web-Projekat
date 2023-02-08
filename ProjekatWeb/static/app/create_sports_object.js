@@ -222,6 +222,10 @@ Vue.component("admin-object", {
           field.style.border = '1px solid black'
         }
       }
+      if(this.objectType.name == null){
+        alert("Input not valid");
+        output = false;
+      }
 
       return output;
     },
@@ -234,6 +238,9 @@ Vue.component("admin-object", {
         this.sportsObject.managerUsername = this.manager.username
       }
       if (this.manager.username == null && this.showAddManager) {
+        return;
+      }else if(this.sportsObject.managerUsername == null){
+        alert("Input not valid");
         return;
       }
       this.sportsObject.location = this.location;

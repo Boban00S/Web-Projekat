@@ -19,6 +19,7 @@ Vue.component("manager-trainings", {
                 {name: "Price"},
                 {name: "Date"}
             ],
+            sortColumn: "Price",
             ascending: false,
             filterBy: "",
             oldTrainings: null,

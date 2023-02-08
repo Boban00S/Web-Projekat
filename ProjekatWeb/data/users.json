@@ -7,7 +7,8 @@
         "lastName": "Stanisljevic",
         "gender": "male",
         "birthdate": "2012-12-31",
-        "role": "manager"
+        "role": "manager",
+        "deleted": false
     },
     {
         "id": 3,
@@ -22,7 +23,8 @@
             "name": "silver",
             "discount": 0,
             "points": 0
-        }
+        },
+        "deleted": false
     },
     {
         "id": 9,
@@ -32,7 +34,8 @@
         "lastName": "Peric",
         "gender": "male",
         "birthdate": "1980-12-05",
-        "role": "manager"
+        "role": "manager",
+        "deleted": false
     },
     {
         "id": 18,
@@ -42,7 +45,8 @@
         "lastName": "Nikolic",
         "gender": "male",
         "birthdate": "2012-12-31",
-        "role": "trainer"
+        "role": "trainer",
+        "deleted": false
     },
     {
         "id": 7,
@@ -52,7 +56,8 @@
         "lastName": "Andric",
         "gender": "male",
         "birthdate": "1980-12-05",
-        "role": "administrator"
+        "role": "administrator",
+        "deleted": false
     },
     {
         "id": 19,
@@ -62,16 +67,18 @@
         "lastName": "Aleksic",
         "gender": "male",
         "birthdate": "2012-12-13",
-        "role": "trainer"
+        "role": "trainer",
+        "deleted": false
     },
     {
-        "id": 21,
-        "username": "sdfd",
-        "password": "213",
-        "name": "dsdsf",
-        "lastName": "sdsfs",
+        "id": 20,
+        "username": "sanjaS",
+        "password": "123",
+        "name": "Sanja",
+        "lastName": "Sanjic",
         "gender": "female",
-        "birthdate": "2013-01-01",
-        "role": "manager"
+        "birthdate": "2012-12-31",
+        "role": "manager",
+        "deleted": false
     }
 ]

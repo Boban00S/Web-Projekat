@@ -69,19 +69,7 @@ public class SportsObjectDAO implements ISerializable<String, SportsObject> {
 
 		return oldObject;
 	}
-	
-//	public SportsObject deleteOfferById(int sportObjectId, int offerId) throws IOException{
-//		SportsObject sportsObject = findById(sportObjectId);
-//		for(Training o: sportsObject.getTrainings()){
-//			if(o.getId() == offerId){
-//				sportsObject.getTrainings().remove(o);
-//				break;
-//			}
-//		}
-//		trainingDAO.deleteById(offerId);
-//
-//		return sportsObject;
-//	}
+
 
 	public int getNextId() {
 		int maxId = 0;

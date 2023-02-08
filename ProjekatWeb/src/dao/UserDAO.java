@@ -7,6 +7,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import com.google.gson.Gson;
@@ -14,10 +15,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import jsonparsing.LocalDateConverter;
+import jsonparsing.LocalDateTimeConverter;
 import model.*;
 
 
-// ubaciti novu listu bez obzira na velicinu fajla
 
 public class UserDAO implements ISerializable<String, User> {
 	private HashMap<String, User> users;
@@ -35,18 +36,7 @@ public class UserDAO implements ISerializable<String, User> {
 			ex.printStackTrace();
 		}
 	}
-	
-//	public User find(String username, String password) {
-//		if (!users.containsKey(username)) {
-//			return null;
-//		}
-//		User user = users.get(username);
-//		if (!user.getPassword().equals(password)) {
-//			return null;
-//		}
-//		return user;
-//	}
-//	
+
 	public Collection<User> findAll() {
 		return users.values();
 	}
@@ -141,6 +131,7 @@ public class UserDAO implements ISerializable<String, User> {
 	public void serialize(List<User> objectList, boolean append) throws IOException{
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
 		Writer writer = new FileWriter(fileName, append);
 		gson.toJson(objectList, writer);
@@ -153,6 +144,7 @@ public class UserDAO implements ISerializable<String, User> {
 		Reader reader = Files.newBufferedReader(Paths.get(fileName));
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(new TypeToken<LocalDate>(){}.getType(), new LocalDateConverter());
+		builder.registerTypeAdapter(new TypeToken<LocalDateTime>(){}.getType(), new LocalDateTimeConverter());
 		Gson gson = builder.create();
 		User[] usersA = gson.fromJson(reader, User[].class);
 		HashMap<String, User> output; 

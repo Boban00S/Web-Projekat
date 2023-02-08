@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.security.Key;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -34,14 +35,12 @@ import ws.WsHandler;
 import static spark.Spark.*;
 
 public class SparkAppMain {
-
-	
 	
 	private static Gson g = getGson();
 	private static UserDAO userDAO = new UserDAO("data/users.json");
-	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json");
-	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json");
-	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json");
+	private static ManagerDAO managerDAO = new ManagerDAO("data/managers.json", userDAO);
+	private static CustomerDAO customerDAO = new CustomerDAO("data/customers.json", userDAO);
+	private static TrainerDAO trainerDAO = new TrainerDAO("data/trainers.json", userDAO);
 
 	private static SportsObjectDAO sportsObjectDAO = new SportsObjectDAO("data/sports_objects.json");
 
@@ -145,13 +144,13 @@ public class SparkAppMain {
 		post("/rest/registration", (req, res) ->{
 			res.type("application/json");
 			String user = req.body();
-			User u = g.fromJson(user, User.class);
+			Customer u = g.fromJson(user, Customer.class);
 			boolean contains = userDAO.contains(u);
 			if(contains == true) {
 				res.status(400);
 				return ("No");
 			}
-			userDAO.addCustomer(u);
+			customerDAO.addCustomer(u);
 			Session ss = req.session(true);
 			ss.attribute("user", u);
 			res.status(200);
@@ -266,7 +265,9 @@ public class SparkAppMain {
 			int trainerId = Integer.parseInt(req.queryMap("trainerId").value());
 			int trainingId = Integer.parseInt(req.queryMap("trainingId").value());
 			trainingDAO.deleteById(trainingId);
+			trainingHistoryDAO.deleteByTrainingId(trainingId);
 			List<Training> personalTrainings = trainingDAO.findPersonalTrainingsByTrainerId(trainerId);
+
 			res.status(200);
 			return g.toJson(personalTrainings);
 		});
@@ -332,6 +333,7 @@ public class SparkAppMain {
 			res.type("application/json");
 			String training = req.body();
 			Training t = g.fromJson(training, Training.class);
+			t.setDate(LocalDateTime.now());
 			trainingDAO.addTraining(t);
 			res.status(200);
 			return ("Yes");
@@ -422,12 +424,16 @@ public class SparkAppMain {
 		post("rest/training-history", (req, res) ->{
 			String trainingHistoryString = req.body();
 			TrainingHistory trainingHistory = g.fromJson(trainingHistoryString, TrainingHistory.class);
-			if(trainingHistory.getCustomer().getDailyUsageLeft() == 0 && trainingHistory.getCustomer().getMembership().isActive()){
+			if(trainingHistory.getCustomer().getDailyUsageLeft() == 0 || !trainingHistory.getCustomer().getMembership().isActive()){
 				res.status(400);
 				return ("No");
 			}
-			trainingHistory.getCustomer().setDailyUsageLeft(trainingHistory.getCustomer().getDailyUsageLeft()-1);
-			customerDAO.editCustomer(trainingHistory.getCustomer());
+			Customer c1 = trainingHistory.getCustomer();
+			c1.setDailyUsageLeft(trainingHistory.getCustomer().getDailyUsageLeft()-1);
+			List<Integer> sportsObjectsAttended = c1.getSportsObjectAttended();
+			sportsObjectsAttended.add(trainingHistory.getTraining().getSportsObject().getId());
+			c1.setSportsObjectAttended(sportsObjectsAttended);
+			customerDAO.editCustomer(c1);
 			trainingHistoryDAO.addTrainingHistory(trainingHistory);
 
 			res.status(200);

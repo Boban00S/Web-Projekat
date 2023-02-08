@@ -25,15 +25,16 @@ import model.User;
 import model.UserExcludingStrategy;
 
 public class ManagerDAO implements ISerializable<String, Manager> {
-	private UserDAO userDAO = new UserDAO("data/users.json");
+	private UserDAO userDAO;
 	
 	private HashMap<String, Manager> managers;
 	private String fileName;
 	
 	public ManagerDAO() {}
 	
-	public ManagerDAO(String fileName) {
+	public ManagerDAO(String fileName, UserDAO userDAO) {
 		this.fileName = fileName;
+		this.userDAO = userDAO;
 		try {
 			// citanje menadzera iz fajla (username, Menadzer)
 			managers = deserialize();
@@ -76,7 +77,7 @@ public class ManagerDAO implements ISerializable<String, Manager> {
 	public List<Manager> findAvailableManagers(){
 		List<Manager> output = new ArrayList<>();
 		for(Manager m: managers.values()) {
-			if(m.getSportsObject() == -1) {
+			if(m.getSportsObject() == 0) {
 				output.add(m);
 			}
 		}

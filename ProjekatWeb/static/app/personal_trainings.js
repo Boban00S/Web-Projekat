@@ -140,8 +140,8 @@ Vue.component("personal-trainings", {
     methods:{
         canCancel: function (training){
             var current = new Date();
-            var trainingDate = new Date(training.trainingDate);
-            training.canCancel = current.getDay() - trainingDate.getDay() >= 2;
+            var trainingDate = new Date(training.date);
+            training.canCancel = current.getDay() - trainingDate.getDay() <= -2;
         },
         deleteTraining: function (training){
             axios
